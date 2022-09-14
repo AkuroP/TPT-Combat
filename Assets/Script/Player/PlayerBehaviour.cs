@@ -17,7 +17,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
-    private Vector2 end;
+    private Vector2 dir;
     
     void Start()
     {
@@ -43,7 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         Flip(rb.velocity.x);
 
-        RaycastHit2D yes = Physics2D.Raycast(this.transform.position, end, range, wallLayer);
+        RaycastHit2D yes = Physics2D.Raycast(this.transform.position, dir, range, wallLayer);
         if(yes.collider != null)
         {
             rb.velocity = Vector2.zero;
@@ -52,7 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(this.transform.position, end * range);
+        Gizmos.DrawRay(this.transform.position, dir * range);
     }
 
     private void Flip(float _velocity)
@@ -75,9 +75,9 @@ public class PlayerBehaviour : MonoBehaviour
             }
             
         }
-            if(movement.x > 0)end = Vector2.right;
-            else if(movement.x < 0)end = Vector2.left;
-            if(movement.y > 0)end = Vector2.up;
-            else if(movement.y < 0)end = Vector2.down;
+            if(movement.x > 0)dir = Vector2.right;
+            else if(movement.x < 0)dir = Vector2.left;
+            if(movement.y > 0)dir = Vector2.up;
+            else if(movement.y < 0)dir = Vector2.down;
     }
 }
