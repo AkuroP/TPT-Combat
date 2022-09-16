@@ -6,7 +6,6 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Movement")] public float speed = 200.0f;
     public float limiter = 0.7f;
-    private bool flip = false;
 
     private Vector2 movement;
 

@@ -12,18 +12,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(instance);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     //remplacer string par script des entity
     public void StartBattle(string player, string enemy)
     {
