@@ -1119,7 +1119,7 @@ TextureImporter:
         x: 0
         y: 108
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1140,7 +1140,7 @@ TextureImporter:
         x: 26
         y: 108
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1161,7 +1161,7 @@ TextureImporter:
         x: 52
         y: 108
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1371,7 +1371,7 @@ TextureImporter:
         x: 0
         y: 72
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1392,7 +1392,7 @@ TextureImporter:
         x: 26
         y: 72
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1413,7 +1413,7 @@ TextureImporter:
         x: 52
         y: 72
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1623,7 +1623,7 @@ TextureImporter:
         x: 0
         y: 36
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1641,10 +1641,10 @@ TextureImporter:
       name: PRight_1
       rect:
         serializedVersion: 2
-        x: 27
+        x: 26
         y: 36
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1665,7 +1665,7 @@ TextureImporter:
         x: 52
         y: 36
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1875,7 +1875,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1896,7 +1896,7 @@ TextureImporter:
         x: 26
         y: 0
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1917,7 +1917,7 @@ TextureImporter:
         x: 52
         y: 0
         width: 26
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2173,11 +2173,11 @@ TextureImporter:
       PRight_1: -1616872884
       chara4_18: 900680936
       chara4_37: 925103732
-      chara4_75: 1654341961
-      PFront_2: -324134792
       chara4_12: -959307992
+      chara4_75: 1654341961
       chara4_36: -1088159082
       chara4_79: -518874396
+      PFront_2: -324134792
       PLeft_1: -2002820008
       chara4_17: -38261823
       PRight_0: -547618744
