@@ -4,10 +4,12 @@ using UnityEngine;
 
 public abstract class EntityManager : MonoBehaviour
 {
-    [Header("Statistiques")]
+    [Header("Statistiques")] 
+    public string entityName;
+    public int level;
     public int hp;
     public int atk;
-    public int def;
+    public int def; 
     public int satk;
     public int sdef;
     public int spe;

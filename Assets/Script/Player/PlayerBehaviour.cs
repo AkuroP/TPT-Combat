@@ -62,7 +62,14 @@ public class PlayerBehaviour : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
+    }
 
+    private void Update()
+    {
+        if (GameManager.instance.gameState == GameManager.GameState.Combat)
+        {
+            speed = 0;
+        }
     }
 
     private void OnDrawGizmos()

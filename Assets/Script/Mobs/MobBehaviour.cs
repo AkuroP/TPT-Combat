@@ -24,6 +24,11 @@ public class MobBehaviour : MonoBehaviour
     }
     void Update()
     {
+        if (GameManager.instance.gameState == GameManager.GameState.Combat)
+        {
+            speed = 0;
+        }
+        
         RaycastHit2D chaseCircle = Physics2D.CircleCast(this.transform.position, mobRadius, mobDir, mobDistance, targetLayer);
         if (chaseCircle.collider == null)
             return;
@@ -51,6 +56,7 @@ public class MobBehaviour : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             print("DUEL");
+            GameManager.instance.gameState = GameManager.GameState.Combat;
         }
     }
 
