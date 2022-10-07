@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "EntityData", menuName = "My game/EntityData")]
+public class EntityData : ScriptableObject
+{
+    public SpellsData spellsdata;
+
+    [Header("Type d'entité")]
+    public bool anEnemy;
+
+    [Header("Stats de l'entité")]
+    public int _hp;
+    public int _atk;
+    public int _sAtk;
+    public int _def;
+    public int _sDef;
+    public int _speed;
+
+    [Header("StatusAppliqués")]
+    public bool _burned;
+    public bool _frozen;
+    public bool _paralyzed;
+
+    public void AffectedByStatus()
+    {
+        if (_burned)
+            _atk /= 2;
+
+        if (_frozen)
+        {
+            Debug.Log("T'es Freeze zbi");
+        }
+
+    }
+}

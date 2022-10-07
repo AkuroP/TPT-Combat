@@ -5,10 +5,11 @@ using UnityEngine;
 [CreateAssetMenu( fileName = "SpellsData", menuName = "My game/SpellsData")]
 public class SpellsData : ScriptableObject
 {
+    [Header("Caractéristiques de l'attaque")]
     public string _name;
     public string _description;
-    public string _power;
-    public string _manaCost;
+    public int _power;
+    public int _manaCost;
     public bool _special;
 
     [Header("Status différents applicables")]

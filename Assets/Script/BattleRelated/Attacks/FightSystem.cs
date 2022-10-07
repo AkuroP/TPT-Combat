@@ -17,8 +17,8 @@ public class FightSystem : MonoBehaviour
     {
         atkName.text = spellData._name;
         description.text = spellData._description;
-        power.text = spellData._power;
-        manaCost.text = spellData._manaCost;
+        power.text = spellData._power.ToString();
+        manaCost.text = spellData._manaCost.ToString();
 
     }
 
