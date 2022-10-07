@@ -8,7 +8,7 @@ public class Character : ScriptableObject
     [Header("References")]
     public Sprite sprite;
 
-    // public SpellsData attack;
+    public SpellsData spell;
 
     [Space]
     [Header("Parameters")]

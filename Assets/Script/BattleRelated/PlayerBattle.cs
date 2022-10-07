@@ -15,4 +15,9 @@ public class PlayerBattle : MonoBehaviour
     {
         spriteRenderer.sprite = isPlayerTeam ? BattleSystem.GetInstance().playerSprite : BattleSystem.GetInstance().ennemySprite;
     }
+
+    public void Attack(PlayerBattle target)
+    {
+
+    }
 }

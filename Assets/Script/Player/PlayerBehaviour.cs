@@ -53,27 +53,28 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetFloat("Xinput", movement.x);
             anim.SetFloat("Yinput", movement.y);
             anim.SetBool("isMoving", true);
+            dir = new Vector2(movement.x, movement.y);
         }
 
-
-
-        if (movement.x > 0) dir = Vector2.right;
-        else if (movement.x < 0) dir = Vector2.left;
-        if (movement.y > 0) dir = Vector2.up;
-        else if (movement.y < 0) dir = Vector2.down;
-
-        RaycastHit2D yes = Physics2D.Raycast(this.transform.position, dir, range, wallLayer);
+        RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
         if (yes.collider != null)
         {
             rb.velocity = Vector2.zero;
         }
 
+    }
 
+    private void Update()
+    {
+        if (GameManager.instance.gameState == GameManager.GameState.Combat)
+        {
+            speed = 0;
+        }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(this.transform.position, dir * range);
+        Gizmos.DrawRay((Vector2)this.transform.position, dir * range);
     }
 }
     
