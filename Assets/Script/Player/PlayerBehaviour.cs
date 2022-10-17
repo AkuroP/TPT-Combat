@@ -57,10 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
-        if (yes.collider != null)
-        {
-            rb.velocity = Vector2.zero;
-        }
+        if (yes.collider != null)rb.velocity = Vector2.zero;
 
     }
 
