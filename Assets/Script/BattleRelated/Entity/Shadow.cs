@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class Shadow : MonoBehaviour
 {
     public EntityData MyEntity;
-    public EntityData EntitySelected;
+    public Shadow EntitySelected;
     public SpellsData spells;
 
     [Header("Statistiques")]
@@ -45,7 +45,8 @@ public class Shadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damageFormule = spells._power * atk / def;
+        if(EntitySelected != null)
+        damageFormule = spells._power * atk / EntitySelected.def;
 
         if (burned)
         {
