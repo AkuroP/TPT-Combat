@@ -12,15 +12,19 @@ public class MobBehaviour : MonoBehaviour
     private Vector2 mobDir;
     public GameObject player;
     private Rigidbody2D rb;
+    private BoxCollider2D col;
 
     private bool isHunting;
     private Vector2 mov;
+    public Animator animator;
+    public GameObject fightScene;
+    public GameObject transitionObject;
 
-    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<BoxCollider2D>();
     }
     void Update()
     {
@@ -35,7 +39,6 @@ public class MobBehaviour : MonoBehaviour
         
         if(chaseCircle.collider !=null)
         {
-            Debug.Log("PLAYER DETECT");
             isHunting = true;
         }
     }
@@ -56,10 +59,28 @@ public class MobBehaviour : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             print("DUEL");
+            col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
+            transitionObject.SetActive(true);
+            StartCoroutine(Transition());
+
         }
     }
 
+    IEnumerator Transition()
+    {
+        //Déplacer la caméra vers la scène de combat
+        
+        yield return new WaitForSeconds(1.2f);
+        fightScene.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        //End Animation transition
+        animator.SetTrigger("Transition");
+        yield return new WaitForSeconds(1.2f);
+        transitionObject.SetActive(false);
+        
+    }
+    
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.transform.position, mobRadius);

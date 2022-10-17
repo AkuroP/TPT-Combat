@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState = GameState.Adventure;
     public static GameManager instance;
-    public GameObject UIFight;
+    
 
     private void Awake()
     {
@@ -24,14 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameState == GameState.Adventure)
-        {
-            UIFight.SetActive(false);
-        }
-        else if (gameState == GameState.Combat)
-        {
-            UIFight.SetActive(true);
-        }
+        
         
     }
     
