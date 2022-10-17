@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 5913108476535833474}
   - component: {fileID: 5913108476535833473}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,6 +286,7 @@ MonoBehaviour:
   myCharacter: {fileID: 0}
   enemyToSelect: []
   selection: 0
+  spellList: []
 --- !u!1 &5913108476587729759
 GameObject:
   m_ObjectHideFlags: 0

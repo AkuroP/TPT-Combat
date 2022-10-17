@@ -14,14 +14,19 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Shadow myCharacter;
     public OnSelection[] enemyToSelect;
 
-    [Header("Debug booleans")]
     public bool selection;
+    [Header("Debug")]
 
+    public OnButtonOver[] spellList;
+    public string nameOfAtk;
     public void Awake()
     {
         selection = true;
-        myCharacter = GetComponentInChildren<Shadow>();
+        myCharacter = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
         enemyToSelect = FindObjectsOfType<OnSelection>();
+        spellList = FindObjectsOfType<OnButtonOver>();
+        nameOfAtk = this.name;
+
     }
 
     private void Update()
@@ -36,8 +41,8 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (selection)
         {
-        gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 40);
-        infos.SetActive(true);
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 40);
+            infos.SetActive(true);
         }
     }
 
@@ -56,9 +61,13 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (selection)
         {
-        gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            myCharacter.spellSelected = GetComponentInParent<FightSystem>().spellData;
+            
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+
+
             enemyToSelect[0].canBeSelected = true;
-            selection = false;
+            enemyToSelect[0].atkSelected = nameOfAtk;           
         }
     }
 
