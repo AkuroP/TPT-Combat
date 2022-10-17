@@ -5,19 +5,24 @@ using UnityEngine.Tilemaps;
 
 public class MapManager : MonoBehaviour
 {
-    public string testSTR;
     [SerializeField] private TileBase tileBase;
-    [Header("Accessible")]
+    
     [SerializeField] private List<Tilemap> accessibleMap;
     [SerializeField] private Tilemap mm_accessible;
 
-    [Header("Unacessible")]
     [SerializeField] private List<Tilemap> unaccessibleMap;
     [SerializeField] private Tilemap mm_unaccessible;
 
-    [Header("Interactible")]
     [SerializeField] private List<Tilemap> interactibleMap;
     [SerializeField] private Tilemap mm_interactible;
+    public MapState mapState;
+    public enum MapState
+    {
+        ACCESSIBLE,
+        UNACESSIBLE,
+        INTERACTIBLE
+    }
+
 
 
     // Start is called before the first frame update
