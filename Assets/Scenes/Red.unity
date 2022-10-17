@@ -467,10 +467,9 @@ MonoBehaviour:
   speed: 4
   player: {fileID: 1417083351}
   animator: {fileID: 1856328728}
-  camera: {fileID: 1010713260}
-  timeOffset: 0.1
-  posOffset: {x: 0, y: 0, z: 0}
-  fightScene: {fileID: 0}
+  fightScene: {fileID: 1153941115}
+  transitionObject: {fileID: 1856328727}
+  radius: 4
 --- !u!61 &980031992
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -763,7 +762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1153941116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,8 +812,8 @@ Canvas:
   m_GameObject: {fileID: 1153941115}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1010713260}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -823,7 +822,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1153941119
 RectTransform:
@@ -883,7 +882,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  UIFight: {fileID: 0}
 --- !u!4 &1697121499
 Transform:
   m_ObjectHideFlags: 0
@@ -918,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1856328728
 Animator:
   serializedVersion: 4
@@ -927,7 +925,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856328727}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3556cac2ce2b4d44d8b378ff93973327, type: 2}
   m_CullingMode: 0
@@ -988,8 +986,8 @@ Canvas:
   m_GameObject: {fileID: 1856328727}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1010713260}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -998,7 +996,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1856328732
 RectTransform:
@@ -1114,11 +1112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990525, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990525, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.015094332
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990525, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_LocalPosition.z
