@@ -7,6 +7,11 @@ using UnityEngine.EventSystems;
 
 public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, IPointerExitHandler
 {
+    public Shadow enemy;
+
+    [Header("Attaque choisie")]
+    public string atkSelected;
+
     [Header("Liste des attaques associées")]
     public OnButtonOver[] atkButton;
 
@@ -15,12 +20,14 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
 
     [Header ("Debug booleans")]
     public bool canBeSelected;
+    
 
     public void Awake()
     {
         canBeSelected = false;
         atkButton = FindObjectsOfType<OnButtonOver>();
         selectionSprite = transform.GetChild(0).gameObject;
+        enemy = GetComponent<Shadow>();
     }
 
     private void Update()
@@ -33,6 +40,7 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
         {
             gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -50,24 +58,38 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
     {
 
         if (canBeSelected)
-        {
-            atkButton[0].myCharacter.EntitySelected = GetComponent<Shadow>();
-            atkButton[0].selection = false;
-            
+        {                  
+            Debug.Log(atkSelected);
             StartCoroutine(AttackAnim());
-            Debug.Log("Fonctionne");
-
         }
     }
 
     IEnumerator AttackAnim()
     {
-        atkButton[0].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-        canBeSelected = false;
-        selectionSprite.SetActive(false);
-        yield return new WaitForSeconds(1);
-        atkButton[0].myCharacter.Attack();
-        atkButton[0].selection = true;
+        int i = 0;
+        while(i < atkButton.Length)
+        {
+            if(atkButton[i].nameOfAtk == atkSelected)
+            {
+                atkButton[i].myCharacter.EntitySelected = GetComponent<Shadow>();
+                atkButton[i].selection = false;
+
+                atkButton[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                canBeSelected = false;
+                selectionSprite.SetActive(false);
+
+                yield return new WaitForSeconds(1);
+                atkButton[i].myCharacter.Attack();
+                atkButton[i].selection = true;
+                i++;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
     }
 
+    
 }
