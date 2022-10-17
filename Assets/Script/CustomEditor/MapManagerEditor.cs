@@ -16,6 +16,31 @@ public class MapManagerEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        EditorGUILayout.HelpBox("When adding more map don't forget to add it here \n according to if it's interactible or not", MessageType.Info);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("tileBase"), new GUIContent("Tile Base", "The base of Colored tiles"));
+        EditorGUILayout.Space();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("mapState"), new GUIContent($"{this.mapManager.mapState} maps", $"Map that is {this.mapManager.mapState} to the player"));
+
+        EditorGUILayout.BeginHorizontal();
+        switch(mapManager.mapState)
+        {
+            case MapManager.MapState.ACCESSIBLE :
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("accessibleMap"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("mm_accessible"));
+            break;
+
+            case MapManager.MapState.UNACESSIBLE :
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("unaccessibleMap"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("mm_unaccessible"));
+            break;
+
+            case MapManager.MapState.INTERACTIBLE :
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("interactibleMap"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("mm_interactible"));
+            break;
+        }
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.HelpBox($"Don't forget to add new {this.mapManager.mapState} maps here !", MessageType.Info);
+
+        serializedObject.ApplyModifiedProperties();
     }
 }

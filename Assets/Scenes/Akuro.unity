@@ -52457,7 +52457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c0a62701bafdc48a4227c26ac1b53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testSTR: 
   tileBase: {fileID: 11400000, guid: 41cec8de13487034ab18cb39d169bdf5, type: 2}
   accessibleMap:
   - {fileID: 1393009461}
@@ -52470,6 +52469,7 @@ MonoBehaviour:
   interactibleMap:
   - {fileID: 1596792788}
   mm_interactible: {fileID: 1015144224}
+  mapState: 0
 --- !u!1 &1833297448
 GameObject:
   m_ObjectHideFlags: 0
