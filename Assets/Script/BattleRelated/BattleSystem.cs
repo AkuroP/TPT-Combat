@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum State
+{
+    START, PLAYERTURN, ENEMYTURN, WIN, LOST 
+}
+
 public class BattleSystem : MonoBehaviour
 {
     static BattleSystem instance;
@@ -18,11 +23,7 @@ public class BattleSystem : MonoBehaviour
     PlayerBattle enemyBattle;
     State state;
 
-    enum State
-    {
-        WaitingForPlayer,
-        Busy,
-    }
+    
 
     void Awake()
     {
@@ -34,17 +35,17 @@ public class BattleSystem : MonoBehaviour
         playerBattle = SpawnCharacter(true);
         enemyBattle = SpawnCharacter(false);
 
-        state = State.WaitingForPlayer; 
+        state = State.START; 
     }
 
     void Update()
     {
-        if (state == State.WaitingForPlayer)
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                state = State.Busy;
-                Debug.Log("Attack");
-            }
+        // if (state == State.WaitingForPlayer)
+        //     if (Input.GetKeyDown(KeyCode.Space))
+        //     {
+        //         state = State.Busy;
+        //         Debug.Log("Attack");
+        //     }
     }
 
     PlayerBattle SpawnCharacter(bool isPlayerTeam)
