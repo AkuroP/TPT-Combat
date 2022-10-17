@@ -23,25 +23,32 @@ public class ToolboxWindow : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.BeginHorizontal();
-        
-        GUILayout.Label("GO TO :");
-        string scenePath = Application.dataPath + "/Scenes/";
-        string[] allScene = Directory.GetFiles(scenePath, "*.unity");
-        
-        foreach(string file in allScene)
+        if(!EditorApplication.isPlaying)
         {
-            //Debug.Log(Path.GetFileName(file));
-            string sceneName = Path.GetFileName(file);
-            Scene scene = EditorSceneManager.OpenScene("Assets/Scenes/" + sceneName, OpenSceneMode.AdditiveWithoutLoading);
-            //Debug.Log(sceneName);
-            if(GUILayout.Button(scene.name))
-            {
-                if(EditorSceneManager.GetActiveScene() != EditorSceneManager.GetSceneByName(sceneName))EditorSceneManager.OpenScene(scenePath + sceneName, OpenSceneMode.Single);
-                else Debug.LogError($"{SceneManager.GetActiveScene().name} SCENE ALREADY OPEN");
-            }
+            GUILayout.BeginHorizontal();
             
+            GUILayout.Label("GO TO :");
+            string scenePath = Application.dataPath + "/Scenes/";
+            string[] allScene = Directory.GetFiles(scenePath, "*.unity");
+            
+            foreach(string file in allScene)
+            {
+                //Debug.Log(Path.GetFileName(file));
+                string sceneName = Path.GetFileName(file);
+                Scene scene = EditorSceneManager.OpenScene("Assets/Scenes/" + sceneName, OpenSceneMode.AdditiveWithoutLoading);
+                //Debug.Log(sceneName);
+                if(GUILayout.Button(scene.name))
+                {
+                    if(EditorSceneManager.GetActiveScene() != EditorSceneManager.GetSceneByName(sceneName))
+                    {
+                        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+                        EditorSceneManager.OpenScene(scenePath + sceneName, OpenSceneMode.Single);
+                    }
+                    else Debug.LogError($"{SceneManager.GetActiveScene().name} SCENE ALREADY OPEN");
+                }
+                
+            }
+            GUILayout.EndHorizontal();
         }
-        GUILayout.EndHorizontal();
     }
 }
