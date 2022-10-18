@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [Header("Movement")] public float speed = 200.0f;
+    [Header("Movement")] public float moveSpeed = 200.0f;
     public float limiter = 0.7f;
 
     private Vector2 movement;
@@ -19,14 +19,36 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float range;
     private Vector2 dir;
 
+    public EntityData playerData;
+    [Header("Player Stats")] 
+    [HideInInspector]public int _hp;
+    [HideInInspector]public int _atk;
+    [HideInInspector]public int _sAtk;
+    [HideInInspector]public int _def;
+    [HideInInspector]public int _sDef;
+    [HideInInspector]public int _speed;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        if (playerData != null)
+            LoadPlayerData(playerData);
     }
 
+
+    private void LoadPlayerData(EntityData data)
+    {
+        _hp = data._hp;
+        _atk = data._atk;
+        _sAtk = data._sAtk;
+        _def = data._def;
+        _sDef = data._sDef;
+        _speed = data._speed;
+    }
 
     private void FixedUpdate()
     {
@@ -49,7 +71,7 @@ public class PlayerBehaviour : MonoBehaviour
         else
         {
             //Moving
-            rb.velocity = new Vector2(movement.x * speed * Time.deltaTime, movement.y * speed * Time.deltaTime);
+            rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
             anim.SetFloat("Xinput", movement.x);
             anim.SetFloat("Yinput", movement.y);
             anim.SetBool("isMoving", true);
@@ -65,7 +87,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (GameManager.instance.gameState == GameManager.GameState.Combat)
         {
-            speed = 0;
+            rb.bodyType = RigidbodyType2D.Static;
+            this.enabled = false;
         }
     }
 
