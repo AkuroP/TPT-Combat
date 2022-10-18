@@ -129,6 +129,7 @@ public class MobBehaviour : MonoBehaviour
         
         yield return new WaitForSeconds(1.2f);
         fightScene.SetActive(true);
+        GameManager.instance.HideMM();
         yield return new WaitForSeconds(0.5f);
         //End Animation transition
         animator.SetTrigger("Transition");

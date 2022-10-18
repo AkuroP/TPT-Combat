@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState = GameState.Adventure;
     public static GameManager instance;
+
+    [SerializeField] private GameObject mmUI;
     
 
     private void Awake()
@@ -28,4 +30,13 @@ public class GameManager : MonoBehaviour
         
     }
     
+    public void HideMM()
+    {
+        mmUI.SetActive(false);
+    }
+
+    public void ShowMM()
+    {
+        mmUI.SetActive(true);
+    }
 }
