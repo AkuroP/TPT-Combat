@@ -7,9 +7,10 @@ using UnityEngine.EventSystems;
 
 public class Shadow : MonoBehaviour
 {
-    public EntityData MyEntity;
-    public Shadow EntitySelected;
-    public SpellsData spells;
+    
+    public SpellsData spellSelected;
+
+    public SpellsData[] spells;
 
     [Header("Statistiques")]
     public int hp;
@@ -19,12 +20,18 @@ public class Shadow : MonoBehaviour
     public int sDef;
     public int speed;
     public int mana;
+
     public float damageFormule;
+    public float damages;
 
     [Header("Status")]
     public bool burned;
     public bool frozen;
     public bool paralyzed;
+
+    [Header("Debug")]
+    public EntityData MyEntity;
+    public Shadow EntitySelected;
     // Start is called before the first frame update
     void Awake()
     {       
@@ -42,11 +49,16 @@ public class Shadow : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        spells = FindObjectsOfType<SpellsData>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(EntitySelected != null)
-        damageFormule = spells._power * atk / EntitySelected.def;
+        damageFormule = spellSelected._power * atk / EntitySelected.def;
 
         if (burned)
         {
@@ -56,14 +68,50 @@ public class Shadow : MonoBehaviour
 
     public void Attack()
     {
-        if(mana >= spells._manaCost)
+        if(mana >= spellSelected._manaCost)
         {
-            Debug.Log("Attaque réussie !, vous avez infligé " + damageFormule + " dégâts");
-            mana -= spells._manaCost;
+            if (paralyzed)
+            {
+                int cucked = Random.Range(0, 100);
+
+                if(cucked >= 25)
+                    SuccessfulAttack();
+
+                else
+                {
+                    Debug.Log("T'es Paralysé , pas de chance mon boug !");
+                }
+                    
+            }
+            else if (frozen)
+            {
+                Debug.Log("T'es gelé zebi Kekw");
+            }
+            else
+            {
+                SuccessfulAttack();
+            }
+            
         }
         else
         {
             Debug.Log("T'as plus de mana zebi");
+        }
+    }
+
+    public void SuccessfulAttack()
+    {
+        Debug.Log("Attaque réussie !, vous avez infligé " + damageFormule + " dégâts");
+        mana -= spellSelected._manaCost;
+        EntitySelected.hp -= (int)damageFormule;
+
+        if(spellSelected.currentStatus == SpellsData.Status.Paralyze)
+        {
+            EntitySelected.paralyzed = true;
+        }
+        if (spellSelected.currentStatus == SpellsData.Status.Frozen)
+        {
+            EntitySelected.frozen = true;
         }
     }
 }

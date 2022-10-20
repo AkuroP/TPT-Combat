@@ -19,29 +19,78 @@ public class ToolboxWindow : EditorWindow
     }
 
 
-    
+    public string aled = "Assets/Scenes/";
 
     private void OnGUI()
     {
-        GUILayout.BeginHorizontal();
-        
-        GUILayout.Label("GO TO :");
-        string scenePath = Application.dataPath + "/Scenes/";
-        string[] allScene = Directory.GetFiles(scenePath, "*.unity");
-        
-        foreach(string file in allScene)
+        if(!EditorApplication.isPlaying)
         {
-            //Debug.Log(Path.GetFileName(file));
-            string sceneName = Path.GetFileName(file);
-            Scene scene = EditorSceneManager.OpenScene("Assets/Scenes/" + sceneName, OpenSceneMode.AdditiveWithoutLoading);
-            //Debug.Log(sceneName);
-            if(GUILayout.Button(scene.name))
+        
+            aled = EditorGUILayout.TextField("Path mark last / in the end", aled);
+            if(aled.EndsWith("/"))
             {
-                if(EditorSceneManager.GetActiveScene() != EditorSceneManager.GetSceneByName(sceneName))EditorSceneManager.OpenScene(scenePath + sceneName, OpenSceneMode.Single);
-                else Debug.LogError($"{SceneManager.GetActiveScene().name} SCENE ALREADY OPEN");
+                if(System.IO.Directory.Exists(aled))
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("GO TO :");
+
+                    string[] allScene = Directory.GetFiles(aled, "*.unity");
+                    if(allScene.Length > 0)
+                    {
+
+                        foreach(string file in allScene)
+                        {
+                            //Debug.Log(Path.GetFileName(file));
+                            string sceneName = Path.GetFileName(file);
+                            
+                            Scene scene;
+                            if(!EditorSceneManager.GetSceneByPath(aled + sceneName).isSubScene && !EditorSceneManager.GetSceneByPath(aled + sceneName).IsValid())
+                            {
+                                //Debug.Log(removedExtension);
+                                scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName));
+                            }
+                            else
+                            {
+                                if(SceneManager.sceneCount < allScene.Length)scene = EditorSceneManager.OpenScene(aled + sceneName, OpenSceneMode.AdditiveWithoutLoading);
+                                else scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName));
+                                //Debug.Log(scene.name);
+                            }
+                            //Debug.Log(sceneName);
+                            if(GUILayout.Button(scene.name))
+                            {
+                                if(EditorSceneManager.GetActiveScene() != EditorSceneManager.GetSceneByName(sceneName))
+                                {
+                                    EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+                                    EditorSceneManager.OpenScene(aled + sceneName, OpenSceneMode.Single);
+                                }
+                                else Debug.LogError($"{SceneManager.GetActiveScene().name} SCENE ALREADY OPEN");
+                            }
+
+                            
+                        }
+                        GUILayout.EndHorizontal();
+                        
+                    }
+                    else
+                    {
+                        GUILayout.EndHorizontal();
+                        EditorGUILayout.HelpBox($"No scenes currently in path {aled}", MessageType.Warning);
+                    }
+                }
+                else
+                {
+                    EditorGUILayout.HelpBox($"No path existing in path {aled}", MessageType.Warning);
+                }
+                
+                
             }
-            
         }
-        GUILayout.EndHorizontal();
+    }
+
+    private string NameWithoutExt(string sceneName)
+    {
+        string copy = sceneName;
+        string removedExtension = copy.Replace(".unity", "");
+        return removedExtension;
     }
 }

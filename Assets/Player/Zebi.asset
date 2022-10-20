@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e204fcd9a4c28504baa9db09d6eb2e09, type: 3}
-  m_Name: Iceball
+  m_Name: Zebi
   m_EditorClassIdentifier: 
-  _name: Iceball
-  _description: Iceball to freeze the enemy
-  _power: 40
-  _manaCost: 30
-  _special: 1
+  _name: Zebi
+  _description: une dance qui confus l'adversaire
+  _power: 0
+  _manaCost: 20
+  _special: 0
   _Status: 1
   _BurnStatus: 0
-  _FreezeStatus: 1
-  _ParalyzeStatus: 0
-  _chanceToApplyStatus: 15
-  currentStatus: 1
+  _FreezeStatus: 0
+  _ParalyzeStatus: 1
+  _chanceToApplyStatus: 100
+  currentStatus: 2

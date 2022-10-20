@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState = GameState.Adventure;
     public static GameManager instance;
-    public GameObject UIFight;
+
+    [SerializeField] private GameObject mmUI;
+    [SerializeField] private CameraFollow cameraFollow;
+    
 
     private void Awake()
     {
@@ -24,15 +27,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameState == GameState.Adventure)
-        {
-            UIFight.SetActive(false);
-        }
-        else if (gameState == GameState.Combat)
-        {
-            UIFight.SetActive(true);
-        }
-        
+
     }
     
+    public void HideMM()
+    {
+        mmUI.SetActive(false);
+    }
+
+    public void ShowMM()
+    {
+        mmUI.SetActive(true);
+    }
+
+    public void OnEnableCamFollow()
+    {
+        cameraFollow.enabled = true;
+    }
+    
+    public void OnDisableCamFollow()
+    {
+        cameraFollow.enabled = false;
+    }
 }
