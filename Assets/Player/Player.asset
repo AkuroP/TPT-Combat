@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  Name: John
+  _Name: John
   spellsdata: {fileID: 11400000, guid: 9a3d37c8102617f44a694841baab40f0, type: 2}
   anEnemy: 0
   _hp: 100

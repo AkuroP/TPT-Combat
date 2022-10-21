@@ -139,12 +139,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e6e0e8d6becdc45bc302e08b07e148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  moveSpeed: 200
   limiter: 0.7
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
   range: 0.6
+  playerData: {fileID: 11400000, guid: 5ce7764c2d63b6940bb4eba658f8cafd, type: 2}
+  _hp: 0
+  _atk: 0
+  _sAtk: 0
+  _def: 0
+  _sDef: 0
+  _speed: 0
 --- !u!95 &7055361948115525600
 Animator:
   serializedVersion: 4
