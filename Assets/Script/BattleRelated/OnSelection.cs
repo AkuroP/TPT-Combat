@@ -34,11 +34,11 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
     {
         if (!canBeSelected)
         {
-            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 87);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 87);
         }
         else
         {
-            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
         }
 
     }
