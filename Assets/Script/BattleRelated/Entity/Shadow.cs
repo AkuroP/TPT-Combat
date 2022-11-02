@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class Shadow : MonoBehaviour
 {
-    
     public SpellsData spellSelected;
 
     public SpellsData[] spells;
@@ -46,7 +45,7 @@ public class Shadow : MonoBehaviour
         burned = MyEntity._burned;
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
-
+        
     }
 
     private void Start()

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
-  m_Name: ShadowTutorial
+  m_Name: WarBear
   m_EditorClassIdentifier: 
   spellsdata: {fileID: 0}
-  anEnemy: 0
-  _hp: 200
-  _atk: 40
+  anEnemy: 1
+  _hp: 400
+  _atk: 120
   _sAtk: 0
-  _def: 20
+  _def: 60
   _sDef: 0
-  _speed: 0
+  _speed: 40
   _burned: 0
   _frozen: 0
   _paralyzed: 0

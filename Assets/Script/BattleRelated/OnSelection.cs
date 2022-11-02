@@ -59,7 +59,7 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
 
         if (canBeSelected)
         {                  
-            Debug.Log(atkSelected);
+            //Debug.Log(atkSelected);
             StartCoroutine(AttackAnim());
         }
     }
