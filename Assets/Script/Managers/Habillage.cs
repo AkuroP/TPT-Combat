@@ -26,6 +26,6 @@ public class Habillage : MonoBehaviour
         mob.transform.position = mobStation.position; 
         
         playerHUD.SetHUD(player.GetComponent<PlayerBehaviour>().playerData);
-        playerHUD.SetHUD(mob.GetComponent<MobBehaviour>().mobData);
+        mobHUD.SetHUD(mob.GetComponent<MobBehaviour>().mobData);
     }
 }
