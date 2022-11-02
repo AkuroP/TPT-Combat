@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject mmUI;
+    [SerializeField] private CameraFollow cameraFollow;
     
 
     private void Awake()
@@ -26,8 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
-        
+
     }
     
     public void HideMM()
@@ -38,5 +38,15 @@ public class GameManager : MonoBehaviour
     public void ShowMM()
     {
         mmUI.SetActive(true);
+    }
+
+    public void OnEnableCamFollow()
+    {
+        cameraFollow.enabled = true;
+    }
+    
+    public void OnDisableCamFollow()
+    {
+        cameraFollow.enabled = false;
     }
 }

@@ -5,12 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EntityData", menuName = "My game/EntityData")]
 public class EntityData : ScriptableObject
 {
+    public string _Name;
     public SpellsData spellsdata;
 
-    [Header("Type d'entité")]
+    [Header("Type d'entitï¿½")]
     public bool anEnemy;
 
-    [Header("Stats de l'entité")]
+    [Header("Stats de l'entitï¿½")]
     public int _hp;
     public int _atk;
     public int _sAtk;
@@ -18,7 +19,7 @@ public class EntityData : ScriptableObject
     public int _sDef;
     public int _speed;
 
-    [Header("StatusAppliqués")]
+    [Header("StatusAppliquï¿½s")]
     public bool _burned;
     public bool _frozen;
     public bool _paralyzed;
