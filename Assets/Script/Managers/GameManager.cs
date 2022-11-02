@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject mmUI;
-    [SerializeField] private CameraFollow cameraFollow;
+    [SerializeField] private Camera cameraFollow;
     
 
     private void Awake()
