@@ -8,13 +8,12 @@ public class BattleOrderManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Test();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-            Test();
+          
     }
 
     private void Test()
@@ -42,6 +41,16 @@ public class BattleOrderManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void FightProgress()
+    {
+        int i = 0;
+        while(i < Shadows.Count)
+        {
+            Shadows[i].Attack();
+            i++;
         }
     }
 

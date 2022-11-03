@@ -9,6 +9,9 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
 {
     public Shadow enemy;
 
+    [Header("BO")]
+    public BattleOrderManager BattleOrder;
+
     [Header("Attaque choisie")]
     public string atkSelected;
 
@@ -28,17 +31,18 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
         atkButton = FindObjectsOfType<OnButtonOver>();
         selectionSprite = transform.GetChild(0).gameObject;
         enemy = GetComponent<Shadow>();
+        BattleOrder = FindObjectOfType<BattleOrderManager>();
     }
 
     private void Update()
     {
         if (!canBeSelected)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 87);
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 87);
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
 
     }
@@ -79,7 +83,8 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
                 selectionSprite.SetActive(false);
 
                 yield return new WaitForSeconds(1);
-                atkButton[i].myCharacter.Attack();
+                // atkButton[i].myCharacter.Attack();
+                BattleOrder.FightProgress();
                 atkButton[i].selection = true;
                 i++;
             }

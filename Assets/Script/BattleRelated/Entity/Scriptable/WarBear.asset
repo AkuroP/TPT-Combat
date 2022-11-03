@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: WarBear
   m_EditorClassIdentifier: 
-  _Name: 
+  _Name: WarBear
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   - {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}

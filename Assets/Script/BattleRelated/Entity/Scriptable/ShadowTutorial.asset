@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: ShadowTutorial
   m_EditorClassIdentifier: 
-  _Name: 
+  _Name: The Shadow
   _ListOfSpells:
   - {fileID: 11400000, guid: 1d3dd50a4992b404d83f19fb10fba283, type: 2}
   - {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
