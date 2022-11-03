@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: ShadowTutorial
   m_EditorClassIdentifier: 
-  spellsdata: {fileID: 0}
-  anEnemy: 1
+  _Name: 
+  spell1: {fileID: 11400000, guid: 39ad443e9b0351144afc344421f0fdc9, type: 2}
+  spell2: {fileID: 11400000, guid: 1d3dd50a4992b404d83f19fb10fba283, type: 2}
+  spell3: {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
+  spell4: {fileID: 0}
+  _anEnemy: 1
   _hp: 200
   _atk: 40
   _sAtk: 0

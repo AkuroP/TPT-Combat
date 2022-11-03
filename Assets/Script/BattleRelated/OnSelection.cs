@@ -58,8 +58,7 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
     {
 
         if (canBeSelected)
-        {                  
-            //Debug.Log(atkSelected);
+        {   
             StartCoroutine(AttackAnim());
         }
     }
@@ -75,7 +74,8 @@ public class OnSelection : MonoBehaviour, IPointerClickHandler , IPointerEnterHa
                 atkButton[i].selection = false;
 
                 atkButton[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-                canBeSelected = false;
+                atkButton[i].EveryEnemy(true);
+
                 selectionSprite.SetActive(false);
 
                 yield return new WaitForSeconds(1);
