@@ -1,21 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using Random = UnityEngine.Random;
 
 public class Shadow : MonoBehaviour
 {
-    
     public SpellsData spellSelected;
 
-    public SpellsData[] spells;
+    public List<SpellsData> ListOfSpells;
 
-    [Header("Statistiques")] 
-    public String _Name;
+    public BattleOrderManager BO;
+
+    [Header("Type de personnage")]
+    public bool anEnemy;
+
+    [Header("Statistiques")]
     public int hp;
     public int atk;
     public int sAtk;
@@ -36,11 +37,9 @@ public class Shadow : MonoBehaviour
     public EntityData MyEntity;
     public Shadow EntitySelected;
     // Start is called before the first frame update
+    void Awake()
+    {       
 
-    private void Start()
-    {
-        spells = FindObjectsOfType<SpellsData>();
-        _Name = MyEntity._Name;
         hp = MyEntity._hp;
         atk = MyEntity._atk;
         sAtk = MyEntity._sAtk;
@@ -51,6 +50,16 @@ public class Shadow : MonoBehaviour
         burned = MyEntity._burned;
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
+
+        anEnemy = MyEntity._anEnemy;
+      
+    }
+
+    private void Start()
+    {
+        BO = FindObjectOfType<BattleOrderManager>();
+        BO.Shadows.Add(this);
+     
     }
 
     // Update is called once per frame
@@ -65,6 +74,17 @@ public class Shadow : MonoBehaviour
         }
     }
 
+    public void IsAnEnemy()
+    {
+        if (anEnemy)
+        {
+            EntitySelected = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
+
+            int randAtk = Random.Range(0, 4);
+            //spellSelected = spells[randAtk];
+        }
+    }
+    
     public void Attack()
     {
         if(mana >= spellSelected._manaCost)
