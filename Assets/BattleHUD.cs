@@ -7,14 +7,12 @@ public class BattleHUD : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public Slider hpSlider;
-    public String name;
 
     public void SetHUD(Shadow data)
     {
-        name = data._Name;
         nameText.text = data._Name;
-        // hpSlider.maxValue = data.maxHp;
-        // hpSlider.value = data.currentHp;
+        hpSlider.maxValue = data.maxHP;
+        hpSlider.value = data.currentHP;
     }
 
     public void SetHP(int hp)

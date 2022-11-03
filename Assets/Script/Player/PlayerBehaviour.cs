@@ -27,7 +27,6 @@ public class PlayerBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        
     }
 
 
@@ -70,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Static;
             this.enabled = false;
+            sprite.enabled = false;
         }
     }
 

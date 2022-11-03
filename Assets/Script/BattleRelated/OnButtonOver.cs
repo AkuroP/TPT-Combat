@@ -23,7 +23,7 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void Awake()
     {
         selection = true;
-        myCharacter = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
+        myCharacter = GameObject.FindGameObjectWithTag("PlayerStation").GetComponent<Shadow>();
         enemyToSelect = FindObjectsOfType<OnSelection>();
         spellList = FindObjectsOfType<OnButtonOver>();
         nameOfAtk = this.name;
@@ -63,6 +63,7 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (selection)
         {
             myCharacter.spellSelected = GetComponentInParent<FightSystem>().spellData;
+            print(myCharacter.spellSelected);
             
             gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
 
