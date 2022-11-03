@@ -7,10 +7,14 @@ using UnityEngine.EventSystems;
 
 public class Shadow : MonoBehaviour
 {
-    
     public SpellsData spellSelected;
 
-    public SpellsData[] spells;
+    public List<SpellsData> ListOfSpells;
+
+    public BattleOrderManager BO;
+
+    [Header("Type de personnage")]
+    public bool anEnemy;
 
     [Header("Statistiques")]
     public int hp;
@@ -47,11 +51,15 @@ public class Shadow : MonoBehaviour
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
 
+        anEnemy = MyEntity._anEnemy;
+      
     }
 
     private void Start()
     {
-        spells = FindObjectsOfType<SpellsData>();
+        BO = FindObjectOfType<BattleOrderManager>();
+        BO.Shadows.Add(this);
+     
     }
 
     // Update is called once per frame
@@ -66,6 +74,17 @@ public class Shadow : MonoBehaviour
         }
     }
 
+    public void IsAnEnemy()
+    {
+        if (anEnemy)
+        {
+            EntitySelected = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
+
+            int randAtk = Random.Range(0, 4);
+            //spellSelected = spells[randAtk];
+        }
+    }
+    
     public void Attack()
     {
         if(mana >= spellSelected._manaCost)
