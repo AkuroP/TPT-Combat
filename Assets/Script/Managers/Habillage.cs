@@ -5,27 +5,28 @@ using UnityEngine.UI;
 
 public class Habillage : MonoBehaviour
 {
-    public Transform playerStation;
-    public Transform mobStation;
-
-    private GameObject player;
-    [HideInInspector]public GameObject mob;
+    public GameObject ennemy;
+    public GameObject player;
+    public GameObject Getmob;
+    public GameObject GetPlayer;
 
     public BattleHUD playerHUD;
     public BattleHUD mobHUD;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         SetupBattle();
     }
 
     private void SetupBattle()
     {
-        player.transform.position = playerStation.position; 
-        mob.transform.position = mobStation.position; 
         
-        playerHUD.SetHUD(player.GetComponent<PlayerBehaviour>().playerData);
-        mobHUD.SetHUD(mob.GetComponent<MobBehaviour>().mobData);
+        ennemy.GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
+        ennemy.GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+        
+        player.GetComponent<Image>().sprite = GetPlayer.GetComponent<SpriteRenderer>().sprite;
+        
+        playerHUD.SetHUD(player.GetComponent<Shadow>());
+        mobHUD.SetHUD(ennemy.GetComponent<Shadow>());
     }
 }

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class Shadow : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class Shadow : MonoBehaviour
 
     public SpellsData[] spells;
 
-    [Header("Statistiques")]
+    [Header("Statistiques")] 
+    public String _Name;
     public int hp;
     public int atk;
     public int sAtk;
@@ -33,9 +36,11 @@ public class Shadow : MonoBehaviour
     public EntityData MyEntity;
     public Shadow EntitySelected;
     // Start is called before the first frame update
-    void Awake()
-    {       
 
+    private void Start()
+    {
+        spells = FindObjectsOfType<SpellsData>();
+        _Name = MyEntity._Name;
         hp = MyEntity._hp;
         atk = MyEntity._atk;
         sAtk = MyEntity._sAtk;
@@ -46,12 +51,6 @@ public class Shadow : MonoBehaviour
         burned = MyEntity._burned;
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
-
-    }
-
-    private void Start()
-    {
-        spells = FindObjectsOfType<SpellsData>();
     }
 
     // Update is called once per frame
