@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class Shadow : MonoBehaviour
 {
@@ -16,7 +18,8 @@ public class Shadow : MonoBehaviour
     [Header("Type de personnage")]
     public bool anEnemy;
 
-    [Header("Statistiques")]
+    [Header("Statistiques")] 
+    public String _Name;
     public int maxHP;
     public int currentHP;
     public int atk;
@@ -38,9 +41,9 @@ public class Shadow : MonoBehaviour
     public EntityData MyEntity;
     public Shadow EntitySelected;
     // Start is called before the first frame update
-    void Awake()
-    {       
-
+    void Start()
+    {
+        _Name = MyEntity._Name;
         maxHP = MyEntity._hp;
         atk = MyEntity._atk;
         sAtk = MyEntity._sAtk;
@@ -56,10 +59,7 @@ public class Shadow : MonoBehaviour
 
         anEnemy = MyEntity._anEnemy;
         ListOfSpells = MyEntity._ListOfSpells;
-    }
-
-    private void Start()
-    {
+    
         BO = FindObjectOfType<BattleOrderManager>();
         BO.Shadows.Add(this);
 
@@ -82,7 +82,7 @@ public class Shadow : MonoBehaviour
     {
         if (anEnemy)
         {
-            EntitySelected = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
+            EntitySelected = GameObject.FindGameObjectWithTag("PlayerStation").GetComponent<Shadow>();
 
             int randAtk = Random.Range(0, ListOfSpells.Count);
             spellSelected = ListOfSpells[randAtk];

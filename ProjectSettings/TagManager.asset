@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Habillage
   - BatlleOrder
+  - PlayerStation
   layers:
   - Default
   - TransparentFX
