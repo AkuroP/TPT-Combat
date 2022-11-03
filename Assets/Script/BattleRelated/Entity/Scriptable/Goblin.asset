@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
-  _Name: 
-  spell1: {fileID: 11400000, guid: 9a3d37c8102617f44a694841baab40f0, type: 2}
-  spell2: {fileID: 0}
-  spell3: {fileID: 0}
-  spell4: {fileID: 0}
+  _Name: Goblin
+  _ListOfSpells:
+  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   _anEnemy: 1
   _hp: 100
   _atk: 60
