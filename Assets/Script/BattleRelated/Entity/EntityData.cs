@@ -8,7 +8,7 @@ public class EntityData : ScriptableObject
     public string _Name;
 
     [Header("Attaques")]
-    public List<SpellsData> _ListOfAttacks;
+    public List<SpellsData> _ListOfSpells;
 
     [Header("Type d'entit�")]
     public bool _anEnemy;
