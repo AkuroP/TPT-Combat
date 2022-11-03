@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
   _Name: 
-  spell1: {fileID: 11400000, guid: 1d3dd50a4992b404d83f19fb10fba283, type: 2}
-  spell2: {fileID: 11400000, guid: e94cba23f875a8044bca2694a02d3d9b, type: 2}
-  spell3: {fileID: 11400000, guid: 39ad443e9b0351144afc344421f0fdc9, type: 2}
-  spell4: {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
+  _ListOfSpells:
+  - {fileID: 11400000, guid: 1d3dd50a4992b404d83f19fb10fba283, type: 2}
+  - {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
+  - {fileID: 11400000, guid: e94cba23f875a8044bca2694a02d3d9b, type: 2}
+  - {fileID: 11400000, guid: 39ad443e9b0351144afc344421f0fdc9, type: 2}
   _anEnemy: 0
   _hp: 250
   _atk: 40

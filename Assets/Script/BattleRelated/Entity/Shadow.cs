@@ -17,7 +17,8 @@ public class Shadow : MonoBehaviour
     public bool anEnemy;
 
     [Header("Statistiques")]
-    public int hp;
+    public int maxHP;
+    public int currentHP;
     public int atk;
     public int sAtk;
     public int def;
@@ -40,19 +41,21 @@ public class Shadow : MonoBehaviour
     void Awake()
     {       
 
-        hp = MyEntity._hp;
+        maxHP = MyEntity._hp;
         atk = MyEntity._atk;
         sAtk = MyEntity._sAtk;
         def = MyEntity._def;
         sDef = MyEntity._sDef;
         speed = MyEntity._speed;
 
+        currentHP = maxHP;
+
         burned = MyEntity._burned;
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
 
         anEnemy = MyEntity._anEnemy;
-      
+        ListOfSpells = MyEntity._ListOfSpells;
     }
 
     private void Start()
@@ -80,8 +83,8 @@ public class Shadow : MonoBehaviour
         {
             EntitySelected = GameObject.FindGameObjectWithTag("Player").GetComponent<Shadow>();
 
-            int randAtk = Random.Range(0, 4);
-            //spellSelected = spells[randAtk];
+            int randAtk = Random.Range(0, ListOfSpells.Count);
+            spellSelected = ListOfSpells[randAtk];
         }
     }
     
@@ -122,7 +125,7 @@ public class Shadow : MonoBehaviour
     {
         Debug.Log("Attaque réussie !, vous avez infligé " + damageFormule + " dégâts");
         mana -= spellSelected._manaCost;
-        EntitySelected.hp -= (int)damageFormule;
+        EntitySelected.maxHP -= (int)damageFormule;
 
         if(spellSelected.currentStatus == SpellsData.Status.Paralyze)
         {

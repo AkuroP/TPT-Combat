@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: WarBear
   m_EditorClassIdentifier: 
   _Name: 
-  spell1: {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
-  spell2: {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
-  spell3: {fileID: 0}
-  spell4: {fileID: 0}
+  _ListOfSpells:
+  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
+  - {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
   _anEnemy: 1
   _hp: 400
   _atk: 120
