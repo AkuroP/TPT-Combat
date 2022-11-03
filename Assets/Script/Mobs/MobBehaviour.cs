@@ -49,6 +49,8 @@ public class MobBehaviour : MonoBehaviour
     [HideInInspector]public int _def;
     [HideInInspector]public int _sDef;
     [HideInInspector]public int _fightSpeed;
+
+    private OnSelection onSelect;
     
 
     private void Start()
@@ -58,6 +60,7 @@ public class MobBehaviour : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+        onSelect = GetComponent<OnSelection>();
 
         start = transform.localPosition;
         basestartpoint = transform.localPosition;
@@ -162,6 +165,7 @@ public class MobBehaviour : MonoBehaviour
         fightScene.SetActive(true);
         habillage.SetActive(true);
         habillage.GetComponent<Habillage>().mob = this.gameObject;
+        onSelect.enabled = true;
         GameManager.instance.HideMM();
         yield return new WaitForSeconds(0.5f);
         //End Animation transition
