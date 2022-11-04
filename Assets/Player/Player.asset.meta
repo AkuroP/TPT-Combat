@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/BattleRelated/Entity/Entitys.meta
+guid: c80b1b66081eec54eaf3e05ed1b034a2
+folderAsset: yes
+DefaultImporter:
+========
 guid: 5ce7764c2d63b6940bb4eba658f8cafd
 NativeFormatImporter:
+>>>>>>>> 8a46ad33ae388037364e103ba6b3a9b7eba97a27:Assets/Player/Player.asset.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

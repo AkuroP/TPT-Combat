@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Wolfu
   m_EditorClassIdentifier: 
   _Name: Akuro
-  spellsdata: {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
-  anEnemy: 1
-  _hp: 0
-  _atk: 0
-  _sAtk: 0
-  _def: 0
-  _sDef: 0
-  _speed: 0
+  _ListOfSpells:
+  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
+  _anEnemy: 1
+  _hp: 332
+  _atk: 5
+  _sAtk: 4
+  _def: 45
+  _sDef: 6
+  _speed: 67
   _burned: 0
   _frozen: 0
   _paralyzed: 0

@@ -18,15 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
     private Vector2 dir;
-
-    public EntityData playerData;
-    [Header("Player Stats")] 
-    [HideInInspector]public int _hp;
-    [HideInInspector]public int _atk;
-    [HideInInspector]public int _sAtk;
-    [HideInInspector]public int _def;
-    [HideInInspector]public int _sDef;
-    [HideInInspector]public int _speed;
+    
 
     void Start()
     {
@@ -35,20 +27,8 @@ public class PlayerBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        if (playerData != null)
-            LoadPlayerData(playerData);
     }
 
-
-    private void LoadPlayerData(EntityData data)
-    {
-        _hp = data._hp;
-        _atk = data._atk;
-        _sAtk = data._sAtk;
-        _def = data._def;
-        _sDef = data._sDef;
-        _speed = data._speed;
-    }
 
     private void FixedUpdate()
     {
@@ -89,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Static;
             this.enabled = false;
+            sprite.enabled = false;
         }
     }
 

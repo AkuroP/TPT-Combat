@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e204fcd9a4c28504baa9db09d6eb2e09, type: 3}
   m_Name: Morsure
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Morsure
   _description: 
-  _power: 0
+  _power: 30
   _manaCost: 0
   _special: 0
   _Status: 0

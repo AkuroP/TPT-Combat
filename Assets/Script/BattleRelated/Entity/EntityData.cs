@@ -6,10 +6,12 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     public string _Name;
-    public SpellsData spellsdata;
+
+    [Header("Attaques")]
+    public List<SpellsData> _ListOfSpells;
 
     [Header("Type d'entit�")]
-    public bool anEnemy;
+    public bool _anEnemy;
 
     [Header("Stats de l'entit�")]
     public int _hp;

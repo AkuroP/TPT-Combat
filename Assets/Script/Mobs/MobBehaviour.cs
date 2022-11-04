@@ -38,29 +38,14 @@ public class MobBehaviour : MonoBehaviour
     // Current move's progress
     private float progress = 0.0f;
 
-
-    private Transform playerPos;
-
     public EntityData mobData;
-    [Header("Mob Stats")] 
-    [HideInInspector]public int _hp;
-    [HideInInspector]public int _atk;
-    [HideInInspector]public int _sAtk;
-    [HideInInspector]public int _def;
-    [HideInInspector]public int _sDef;
-    [HideInInspector]public int _fightSpeed;
-
-    private OnSelection onSelect;
-    
-
     private void Start()
     {
-        if (mobData != null)
-            LoadMobData(mobData);
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
         
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
-        onSelect = GetComponent<OnSelection>();
+        
 
         start = transform.localPosition;
         basestartpoint = transform.localPosition;
@@ -69,17 +54,7 @@ public class MobBehaviour : MonoBehaviour
         PickNewRandomDestination();
 
     }
-    
-    private void LoadMobData(EntityData data)
-    {
-        _hp = data._hp;
-        _atk = data._atk;
-        _sAtk = data._sAtk;
-        _def = data._def;
-        _sDef = data._sDef;
-        _fightSpeed = data._speed;
-    }
-    
+
     void Update()
     {
         if (GameManager.instance.gameState == GameManager.GameState.Combat)
@@ -150,9 +125,9 @@ public class MobBehaviour : MonoBehaviour
             col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
             transitionObject.SetActive(true);
-            GameManager.instance.OnDisableCamFollow();
+            // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());
-            playerPos = other.collider.GetComponent<Transform>();
+            
             
 
         }
@@ -162,10 +137,10 @@ public class MobBehaviour : MonoBehaviour
     {
         //Déplacer la caméra vers la scène de combat
         yield return new WaitForSeconds(1.2f);
-        fightScene.SetActive(true);
         habillage.SetActive(true);
-        habillage.GetComponent<Habillage>().mob = this.gameObject;
-        onSelect.enabled = true;
+        habillage.GetComponent<Habillage>().Getmob = this.gameObject;
+        fightScene.SetActive(true);
+
         GameManager.instance.HideMM();
         yield return new WaitForSeconds(0.5f);
         //End Animation transition

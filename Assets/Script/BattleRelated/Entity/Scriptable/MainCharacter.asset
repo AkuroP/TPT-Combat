@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
+  m_Name: MainCharacter
+  m_EditorClassIdentifier: 
+  _Name: Sung Woo
+  _ListOfSpells:
+  - {fileID: 11400000, guid: 1d3dd50a4992b404d83f19fb10fba283, type: 2}
+  - {fileID: 11400000, guid: e31c67b5547c32c49aa3570b9530ecb2, type: 2}
+  - {fileID: 11400000, guid: e94cba23f875a8044bca2694a02d3d9b, type: 2}
+  - {fileID: 11400000, guid: 39ad443e9b0351144afc344421f0fdc9, type: 2}
+  _anEnemy: 0
+  _hp: 250
+  _atk: 40
+  _sAtk: 0
+  _def: 25
+  _sDef: 0
+  _speed: 70
+  _burned: 0
+  _frozen: 0
+  _paralyzed: 0
