@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,11 +30,11 @@ public class ToolboxWindow : EditorWindow
         {
             //Scenes TP
             aled = EditorGUILayout.TextField("Path mark last / in the end", aled);
-            if(GUILayout.Button("Search"))
-            {
+            //if(GUILayout.Button("Search"))
+            //{
                     if(System.IO.Directory.Exists(aled))
                     {
-                        //GUILayout.BeginHorizontal();
+                        GUILayout.BeginHorizontal();
                         GUILayout.Label("GO TO :");
 
                         string[] allScene = Directory.GetFiles(aled, "*.unity");
@@ -70,24 +72,20 @@ public class ToolboxWindow : EditorWindow
 
                                 
                             }
-                            //GUILayout.EndHorizontal();
+                            GUILayout.EndHorizontal();
                             
                         }
                         else
                         {
-                            //GUILayout.EndHorizontal();
                             EditorGUILayout.HelpBox($"No scenes currently in path {aled}", MessageType.Warning);
+                            GUILayout.EndHorizontal();
                         }
                     }
                     else
                     {
                         EditorGUILayout.HelpBox($"No path existing in path {aled}", MessageType.Warning);
-                    }
-
-                
-                
-                
-            }
+                    }  
+            //}
 
             //Entity list
             entitiesPath = EditorGUILayout.TextField("Entities Paths (end with a '/')", entitiesPath);
@@ -117,3 +115,5 @@ public class ToolboxWindow : EditorWindow
         return removedExtension;
     }
 }
+
+#endif
