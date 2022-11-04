@@ -65,11 +65,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.gameState == GameManager.GameState.Combat)
+
+        switch (GameManager.instance.gameState)
         {
-            rb.bodyType = RigidbodyType2D.Static;
-            this.enabled = false;
-            sprite.enabled = false;
+            case GameManager.GameState.Combat :
+                rb.bodyType = RigidbodyType2D.Static;
+                sprite.enabled = false;
+                break;
+            
+            case GameManager.GameState.Adventure :
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                sprite.enabled = true;
+                break;
         }
     }
 

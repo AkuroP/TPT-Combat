@@ -9,15 +9,31 @@ public class Habillage : MonoBehaviour
     public GameObject player;
     public GameObject Getmob;
     public GameObject GetPlayer;
+    public GameObject figthScene;
 
     public BattleHUD playerHUD;
     public BattleHUD mobHUD;
-
+    
+    public static Habillage instance;
+    private void Awake()
+    {
+        if(instance != null)Destroy(gameObject);
+        instance = this;
+        
+    }
     private void Start()
     {
         StartCoroutine(SetupBattle());
     }
 
+    private void Update()
+    {
+        if (GameManager.instance.gameState == GameManager.GameState.Adventure)
+        {
+            figthScene.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
+    }
     IEnumerator SetupBattle()
     {
         
@@ -27,7 +43,7 @@ public class Habillage : MonoBehaviour
         player.GetComponent<Image>().sprite = GetPlayer.GetComponent<SpriteRenderer>().sprite;
 
         yield return new WaitForSeconds(0.8f);
-        playerHUD.SetHUD(player.GetComponent<Shadow>());
-        mobHUD.SetHUD(ennemy.GetComponent<Shadow>());
+        playerHUD.SetHUD(player.GetComponent<Shadow>()); playerHUD.SetHP(player.GetComponent<Shadow>().currentHP);
+        mobHUD.SetHUD(ennemy.GetComponent<Shadow>()); mobHUD.SetHP(ennemy.GetComponent<Shadow>().currentHP);
     }
 }

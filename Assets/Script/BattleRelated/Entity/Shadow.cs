@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class Shadow : MonoBehaviour
@@ -14,6 +15,7 @@ public class Shadow : MonoBehaviour
     public List<SpellsData> ListOfSpells;
 
     public BattleOrderManager BO;
+    public BattleHUD healthHUD;
 
     [Header("Type de personnage")]
     public bool anEnemy;
@@ -40,7 +42,11 @@ public class Shadow : MonoBehaviour
     [Header("Debug")]
     public EntityData MyEntity;
     public Shadow EntitySelected;
-    // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        InitVar(_Name, maxHP, atk, sAtk, def, sDef, speed, burned, frozen, paralyzed, anEnemy, ListOfSpells);
+    }
     void Start()
     {
         _Name = MyEntity._Name;
@@ -52,7 +58,7 @@ public class Shadow : MonoBehaviour
         speed = MyEntity._speed;
 
         currentHP = maxHP;
-
+        
         burned = MyEntity._burned;
         frozen = MyEntity._frozen;
         paralyzed = MyEntity._paralyzed;
@@ -66,6 +72,23 @@ public class Shadow : MonoBehaviour
         IsAnEnemy();
     }
 
+    private void InitVar(String _Name, int maxHP, int atk, int sAtk, int def, int sDef, int speed, 
+        bool burned, bool frozen, bool paralyzed, bool anEnemy, List<SpellsData> ListOfSpells)
+    {
+        _Name = null;
+        
+        maxHP = 0;        atk =  0;        sAtk = 0;
+        def =  0;        sDef =  0;        speed =  0;
+        
+        burned = false;
+        frozen = false;
+        paralyzed = false;
+
+        anEnemy = false;
+        ListOfSpells = null;
+    }
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -76,6 +99,25 @@ public class Shadow : MonoBehaviour
         {
             atk /= 2;
         }
+
+        if (currentHP <= 0 && !anEnemy)
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        }
+        else if (currentHP <= 0 && anEnemy)
+        {
+            StartCoroutine(Victory());
+        }
+        
+    }
+
+    IEnumerator Victory()
+    {
+        Destroy(Habillage.instance.Getmob.gameObject);
+        yield return new WaitForSeconds(1f);
+        GameManager.instance.ShowMM();
+        GameManager.instance.gameState = GameManager.GameState.Adventure;
+        
     }
 
     public void IsAnEnemy()
@@ -91,42 +133,36 @@ public class Shadow : MonoBehaviour
     
     public void Attack()
     {
-        if(currentHP <= 0)
+        if (mana >= spellSelected._manaCost)
         {
-            Debug.Log("T'es mort " + MyEntity._Name);
-        }
-        else
-        {
-            if (mana >= spellSelected._manaCost)
+            if (paralyzed)
             {
-                if (paralyzed)
-                {
-                    int cucked = Random.Range(0, 100);
+                int cucked = Random.Range(0, 100);
 
-                    if (cucked >= 25)
-                        SuccessfulAttack();
+                if (cucked >= 25)
+                    SuccessfulAttack();
 
-                    else
-                    {
-                        Debug.Log("T'es Paralysé , pas de chance mon boug ! " + MyEntity._Name);
-                    }
-
-                }
-                else if (frozen)
-                {
-                    Debug.Log("T'es gelé zebi Kekw " + MyEntity._Name);
-                }
                 else
                 {
-                    SuccessfulAttack();
+                    Debug.Log("T'es Paralysé , pas de chance mon boug ! " + MyEntity._Name);
                 }
 
+            }
+            else if (frozen)
+            {
+                Debug.Log("T'es gelé zebi Kekw " + MyEntity._Name);
             }
             else
             {
-                Debug.Log("T'as plus de mana " + MyEntity._Name);
+                SuccessfulAttack();
             }
+
         }
+        else
+        {
+            Debug.Log("T'as plus de mana " + MyEntity._Name);
+        }
+        
         
     }
 
@@ -135,6 +171,7 @@ public class Shadow : MonoBehaviour
         Debug.Log("Attaque réussie !, " + MyEntity._Name + " a infligé " + damageFormule + " dégâts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
+        healthHUD.SetHP(EntitySelected.currentHP);        
 
         if(spellSelected.currentStatus == SpellsData.Status.Paralyze)
         {

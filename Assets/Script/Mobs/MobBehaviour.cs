@@ -15,6 +15,7 @@ public class MobBehaviour : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb;
     private BoxCollider2D col;
+    private SpriteRenderer sprite;
 
     private bool isHunting;
     private Vector2 mov;
@@ -45,6 +46,7 @@ public class MobBehaviour : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
         
 
         start = transform.localPosition;
@@ -57,10 +59,21 @@ public class MobBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.gameState == GameManager.GameState.Combat)
+        
+
+        switch (GameManager.instance.gameState)
         {
-            rb.bodyType = RigidbodyType2D.Static;
-            this.enabled = false;
+            case GameManager.GameState.Combat :
+                rb.bodyType = RigidbodyType2D.Static;
+                col.enabled = false;
+                sprite.enabled = false;
+                break;
+            
+            case GameManager.GameState.Adventure :
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                col.enabled = true;
+                sprite.enabled = true;
+                break;
         }
         
         RaycastHit2D chaseCircle = Physics2D.CircleCast(this.transform.position, mobRadius, mobDir, mobDistance, targetLayer);
