@@ -180,7 +180,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
 --- !u!2083052967 &613806413
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -295,6 +295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990524, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e12cb61672ee0441899d360f5aa06a8, type: 2}
     - target: {fileID: 3915407302710990525, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_RootOrder
       value: 1

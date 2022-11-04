@@ -9,10 +9,17 @@ public class VFX_test : MonoBehaviour
     public Transform hit01Pos;
     Transform playerTransform;
 
+    public float lerpAmountMax = 0.25f;
+    public float lerpSpeed = 2f;
+    float lerpAmount;
+
+    Material mat;
+
     void Start()
     {
         hit01Pos = hit01.GetComponent<Transform>();
         playerTransform = GetComponent<Transform>();
+        mat = GetComponent<SpriteRenderer>().material;
     }
 
     void Update()
@@ -21,6 +28,13 @@ public class VFX_test : MonoBehaviour
         {
             hit01Pos.position = playerTransform.position;
             hit01.Play();
+            lerpAmount = lerpAmountMax;
+        }
+
+        if (lerpAmount > 0)
+        {
+            mat.SetFloat("_LerpAmount", lerpAmount);
+            lerpAmount -= Time.deltaTime * lerpAmountMax * lerpSpeed;
         }
     }
 }
