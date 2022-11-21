@@ -21,8 +21,11 @@ public class Habillage : MonoBehaviour
         instance = this;
         
     }
-    private void Start()
+    private void OnEnable()
     {
+        if (Getmob != null)
+            return;
+        
         StartCoroutine(SetupBattle());
     }
 
@@ -36,13 +39,15 @@ public class Habillage : MonoBehaviour
     }
     IEnumerator SetupBattle()
     {
-        
+        yield return new WaitForSeconds(0.2f);
+        print("uwu");
         ennemy.GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
         ennemy.GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
         
         player.GetComponent<Image>().sprite = GetPlayer.GetComponent<SpriteRenderer>().sprite;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
+        
         playerHUD.SetHUD(player.GetComponent<Shadow>()); playerHUD.SetHP(player.GetComponent<Shadow>().currentHP);
         mobHUD.SetHUD(ennemy.GetComponent<Shadow>()); mobHUD.SetHP(ennemy.GetComponent<Shadow>().currentHP);
     }

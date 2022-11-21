@@ -396,6 +396,7 @@ MonoBehaviour:
   ListOfSpells: []
   BO: {fileID: 0}
   healthHUD: {fileID: 807836005}
+  habillage: {fileID: 0}
   anEnemy: 0
   _Name: 
   maxHP: 0
@@ -2417,6 +2418,7 @@ MonoBehaviour:
   ListOfSpells: []
   BO: {fileID: 0}
   healthHUD: {fileID: 790856364}
+  habillage: {fileID: 0}
   anEnemy: 0
   _Name: 
   maxHP: 0
@@ -3972,6 +3974,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2287183903717067962, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990464, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_Name
       value: Player

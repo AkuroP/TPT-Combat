@@ -16,7 +16,7 @@ public class Shadow : MonoBehaviour
 
     public BattleOrderManager BO;
     public BattleHUD healthHUD;
-
+    public Habillage habillage;
     [Header("Type de personnage")]
     public bool anEnemy;
 
@@ -43,12 +43,21 @@ public class Shadow : MonoBehaviour
     public EntityData MyEntity;
     public Shadow EntitySelected;
 
-    private void OnEnable()
+    
+    void OnEnable()
     {
-        InitVar(_Name, maxHP, atk, sAtk, def, sDef, speed, burned, frozen, paralyzed, anEnemy, ListOfSpells);
+        StartCoroutine(InitEntity());
     }
-    void Start()
+
+    void OnDisable()
     {
+        if (anEnemy)
+            InitVar(MyEntity, _Name, maxHP, atk, sAtk, def, sDef, speed, burned, frozen, paralyzed, ListOfSpells);
+    }
+
+    IEnumerator InitEntity()
+    {
+        yield return new WaitForSeconds(1f);
         _Name = MyEntity._Name;
         maxHP = MyEntity._hp;
         atk = MyEntity._atk;
@@ -72,19 +81,18 @@ public class Shadow : MonoBehaviour
         IsAnEnemy();
     }
 
-    private void InitVar(String _Name, int maxHP, int atk, int sAtk, int def, int sDef, int speed, 
-        bool burned, bool frozen, bool paralyzed, bool anEnemy, List<SpellsData> ListOfSpells)
+    public void InitVar(EntityData entityData,String _Name, int CurrentHp, int atk, int sAtk, int def, int sDef, int speed, 
+        bool burned, bool frozen, bool paralyzed, List<SpellsData> ListOfSpells)
     {
+        entityData = null;
         _Name = null;
         
-        maxHP = 0;        atk =  0;        sAtk = 0;
+        CurrentHp = 0;        atk =  0;        sAtk = 0;
         def =  0;        sDef =  0;        speed =  0;
         
         burned = false;
         frozen = false;
         paralyzed = false;
-
-        anEnemy = false;
         ListOfSpells = null;
     }
     
@@ -102,9 +110,9 @@ public class Shadow : MonoBehaviour
 
         if (currentHP <= 0 && !anEnemy)
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
-        else if (currentHP <= 0 && anEnemy)
+        else if (currentHP <= -0.1f && anEnemy)
         {
             StartCoroutine(Victory());
         }
@@ -113,9 +121,13 @@ public class Shadow : MonoBehaviour
 
     IEnumerator Victory()
     {
+        
         Destroy(Habillage.instance.Getmob.gameObject);
         yield return new WaitForSeconds(1f);
         GameManager.instance.ShowMM();
+
+        Habillage.instance.Getmob = null;
+        print("mob null normalement");
         GameManager.instance.gameState = GameManager.GameState.Adventure;
         
     }

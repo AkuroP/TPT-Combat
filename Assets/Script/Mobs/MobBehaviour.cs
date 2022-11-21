@@ -64,7 +64,7 @@ public class MobBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                rb.bodyType = RigidbodyType2D.Static;
+                rb.bodyType = RigidbodyType2D.Kinematic;
                 col.enabled = false;
                 sprite.enabled = false;
                 break;
@@ -149,11 +149,12 @@ public class MobBehaviour : MonoBehaviour
     IEnumerator Transition()
     {
         //Déplacer la caméra vers la scène de combat
+        
         yield return new WaitForSeconds(1.2f);
         habillage.SetActive(true);
         habillage.GetComponent<Habillage>().Getmob = this.gameObject;
         fightScene.SetActive(true);
-
+        
         GameManager.instance.HideMM();
         yield return new WaitForSeconds(0.5f);
         //End Animation transition
