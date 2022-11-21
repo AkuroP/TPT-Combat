@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
-  m_Name: Raptor
+  m_Name: EntityData
   m_EditorClassIdentifier: 
-  _Name: Red
-  _ListOfSpells:
-  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
-  _anEnemy: 1
-  _hp: 20
-  _atk: 5
-  _sAtk: 2
-  _def: 3
+  _Name: 
+  spellsdata: {fileID: 0}
+  anEnemy: 0
+  _hp: 0
+  _atk: 0
+  _sAtk: 0
+  _def: 0
   _sDef: 0
   _speed: 0
   _burned: 0

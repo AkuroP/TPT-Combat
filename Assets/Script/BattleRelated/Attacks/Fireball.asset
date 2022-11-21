@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Fireball
   _description: launch a fireball to your ennemy to inflict damages
   _power: 60
-  _manaCost: 50
+  _manaCost: 0
   _special: 1
   _Status: 1
   _BurnStatus: 1
