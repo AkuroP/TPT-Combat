@@ -16,7 +16,7 @@ public class Shadow : MonoBehaviour
 
     public BattleOrderManager BO;
     public BattleHUD healthHUD;
-    public Habillage habillage;
+    public GameObject transitionObject;
     [Header("Type de personnage")]
     public bool anEnemy;
 
@@ -51,8 +51,13 @@ public class Shadow : MonoBehaviour
 
     void OnDisable()
     {
+        EntitySelected = null;
         if (anEnemy)
-            InitVar(MyEntity, _Name, maxHP, atk, sAtk, def, sDef, speed, burned, frozen, paralyzed, ListOfSpells);
+        {
+            InitVar(ref MyEntity, ref _Name, ref maxHP, ref currentHP, ref atk, ref sAtk, ref def, ref sDef, ref speed,
+                ref burned, ref frozen, ref paralyzed,ref  ListOfSpells); 
+        }
+            
     }
 
     IEnumerator InitEntity()
@@ -80,14 +85,14 @@ public class Shadow : MonoBehaviour
 
         IsAnEnemy();
     }
-
-    public void InitVar(EntityData entityData,String _Name, int CurrentHp, int atk, int sAtk, int def, int sDef, int speed, 
-        bool burned, bool frozen, bool paralyzed, List<SpellsData> ListOfSpells)
+ 
+    public void InitVar(ref EntityData entityData,ref String _Name, ref int maxhp, ref int CurrentHp, ref int atk, ref int sAtk, ref int def, ref int sDef, ref int speed, 
+        ref bool burned, ref bool frozen, ref bool paralyzed, ref List<SpellsData> ListOfSpells)
     {
         entityData = null;
         _Name = null;
-        
-        CurrentHp = 0;        atk =  0;        sAtk = 0;
+
+        maxhp = 0; CurrentHp = 0;        atk =  0;        sAtk = 0;
         def =  0;        sDef =  0;        speed =  0;
         
         burned = false;
@@ -100,8 +105,12 @@ public class Shadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transitionObject == null)
+            return;
+        
         if(EntitySelected != null)
-        damageFormule = spellSelected._power * atk / EntitySelected.def;
+            damageFormule = spellSelected._power * atk / EntitySelected.def;
+        
 
         if (burned)
         {
@@ -121,13 +130,17 @@ public class Shadow : MonoBehaviour
 
     IEnumerator Victory()
     {
-        
+        transitionObject.SetActive(true);
         Destroy(Habillage.instance.Getmob.gameObject);
         yield return new WaitForSeconds(1f);
         GameManager.instance.ShowMM();
 
         Habillage.instance.Getmob = null;
-        print("mob null normalement");
+        yield return new WaitForSeconds(0.5f);
+        //End Animation transition
+        transitionObject.GetComponent<Animator>().SetTrigger("Transition");
+        yield return new WaitForSeconds(1.2f);
+        transitionObject.SetActive(false);
         GameManager.instance.gameState = GameManager.GameState.Adventure;
         
     }
