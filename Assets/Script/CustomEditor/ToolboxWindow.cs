@@ -24,6 +24,7 @@ public class ToolboxWindow : EditorWindow
     private string aled = "Assets/Scenes/";
     private string entitiesPath = "Script/BattleRelated/Entity/";
     private Vector2 scrollPos;
+    [SerializeField] private ChangeZone[] explorationMaps;
     private void OnGUI()
     {
         if(!EditorApplication.isPlaying)
@@ -105,6 +106,26 @@ public class ToolboxWindow : EditorWindow
                 GUILayout.EndScrollView();
 
             }
+
+            //Exploration maps
+            //EditorGUILayout.LabelField("All Exploration Maps :", explorationMaps);
+            SerializedObject so = new SerializedObject(this);
+            explorationMaps = GameObject.FindObjectsOfType<ChangeZone>(true);
+            
+            SerializedProperty allExplorMaps = so.FindProperty("explorationMaps");
+            EditorGUILayout.PropertyField(allExplorMaps);
+            so.ApplyModifiedProperties();
+            
+        }
+        else
+        {
+            if(GUILayout.Button("SAVE"))
+            {
+                //SAVE PLAYER
+                // GameObject.FindGameObjectWithTag("Player").transform.position;
+            }
+
+            //LOAD PLAYER
         }
     }
 
