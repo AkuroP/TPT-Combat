@@ -69,7 +69,8 @@ public class PlayerBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.bodyType = RigidbodyType2D.Static;
+                rb.velocity = Vector2.zero;
                 sprite.enabled = false;
                 break;
             

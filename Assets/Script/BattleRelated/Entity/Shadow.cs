@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -16,7 +17,7 @@ public class Shadow : MonoBehaviour
 
     public BattleOrderManager BO;
     public BattleHUD healthHUD;
-    public GameObject transitionObject;
+    public GameObject transition;
     [Header("Type de personnage")]
     public bool anEnemy;
 
@@ -43,7 +44,7 @@ public class Shadow : MonoBehaviour
     public EntityData MyEntity;
     public Shadow EntitySelected;
 
-    
+   
     void OnEnable()
     {
         StartCoroutine(InitEntity());
@@ -105,9 +106,7 @@ public class Shadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transitionObject == null)
-            return;
-        
+
         if(EntitySelected != null)
             damageFormule = spellSelected._power * atk / EntitySelected.def;
         
@@ -130,18 +129,19 @@ public class Shadow : MonoBehaviour
 
     IEnumerator Victory()
     {
-        transitionObject.SetActive(true);
+        transition.SetActive(true);
         Destroy(Habillage.instance.Getmob.gameObject);
-        yield return new WaitForSeconds(1f);
-        GameManager.instance.ShowMM();
-
-        Habillage.instance.Getmob = null;
-        yield return new WaitForSeconds(0.5f);
-        //End Animation transition
-        transitionObject.GetComponent<Animator>().SetTrigger("Transition");
+        
         yield return new WaitForSeconds(1.2f);
-        transitionObject.SetActive(false);
         GameManager.instance.gameState = GameManager.GameState.Adventure;
+        transition.GetComponent<Animator>().SetTrigger("Transition");
+        
+        yield return new WaitForSeconds(1.2f);
+        
+        GameManager.instance.ShowMM();
+        Habillage.instance.Getmob = null;
+        transition.SetActive(false);
+        
         
     }
 
