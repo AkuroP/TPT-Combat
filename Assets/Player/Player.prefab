@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3915407302710990525}
+  - component: {fileID: 869984715506050135}
   - component: {fileID: 3915407302710990524}
   - component: {fileID: 3915407302710990527}
   - component: {fileID: 3915407302710990526}
@@ -39,6 +40,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &869984715506050135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3915407302710990464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a9a84a8fb871d5a498b359014a8fd06a, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!212 &3915407302710990524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,13 +177,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   range: 0.6
-  playerData: {fileID: 11400000, guid: 5ce7764c2d63b6940bb4eba658f8cafd, type: 2}
-  _hp: 0
-  _atk: 0
-  _sAtk: 0
-  _def: 0
-  _sDef: 0
-  _speed: 0
 --- !u!95 &7055361948115525600
 Animator:
   serializedVersion: 4
@@ -180,11 +204,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3915407302710990464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a906dbd73333a33408be65b92129c225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit01: {fileID: 0}
+  hit01Pos: {fileID: 0}
+  lerpAmountMax: 0.25
+  lerpSpeed: 2
 --- !u!1 &5831174413619017794
 GameObject:
   m_ObjectHideFlags: 0
