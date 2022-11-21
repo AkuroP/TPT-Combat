@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        audioMixer.SetFloat(musicVolume, 0);
+        //audioMixer.SetFloat(musicVolume, 0);
     }
 
     // Update is called once per frame

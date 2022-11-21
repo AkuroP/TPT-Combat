@@ -7,6 +7,7 @@ TagManager:
   - Habillage
   - BatlleOrder
   - PlayerStation
+  - ChangeZone
   layers:
   - Default
   - TransparentFX
