@@ -23,9 +23,6 @@ public class Habillage : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (Getmob != null)
-            return;
-        
         StartCoroutine(SetupBattle());
     }
 
@@ -39,8 +36,7 @@ public class Habillage : MonoBehaviour
     }
     IEnumerator SetupBattle()
     {
-        yield return new WaitForSeconds(0.2f);
-        print("uwu");
+        yield return new WaitForSeconds(0.1f);
         ennemy.GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
         ennemy.GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
         
