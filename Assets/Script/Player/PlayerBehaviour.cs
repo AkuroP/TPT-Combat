@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [Header("Movement")] public float moveSpeed = 200.0f;
+    [Header("Movement")] 
+    public float moveSpeed = 200.0f;
+    private float speedSave;
     public float limiter = 0.7f;
 
     private Vector2 movement;
@@ -14,6 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
     private CapsuleCollider2D playerCollider;
     private SpriteRenderer sprite;
     private Animator anim;
+    private CapsuleCollider2D col;
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
@@ -26,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        col = GetComponent<CapsuleCollider2D>();
+
+        speedSave = moveSpeed;
 
     }
 
@@ -69,14 +75,18 @@ public class PlayerBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                rb.bodyType = RigidbodyType2D.Static;
-                rb.velocity = Vector2.zero;
-                sprite.enabled = false;
+                // rb.bodyType = RigidbodyType2D.Static;
+                // rb.velocity = Vector2.zero;
+                // sprite.enabled = false;
+                
+                GameManager.instance.combat.Invoke(moveSpeed, col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-                rb.bodyType = RigidbodyType2D.Dynamic;
-                sprite.enabled = true;
+                // rb.bodyType = RigidbodyType2D.Dynamic;
+                // sprite.enabled = true;
+                
+                GameManager.instance.adventure.Invoke(speedSave,moveSpeed, col,sprite);
                 break;
         }
     }

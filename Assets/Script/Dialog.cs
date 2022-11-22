@@ -10,6 +10,8 @@ public class Dialog : MonoBehaviour
     public float textSpeed;
 
     private int index;
+    public bool isIntroDialog;
+    public GameObject intro;
     
     void Start()
     {
@@ -60,6 +62,9 @@ public class Dialog : MonoBehaviour
         }
         else
         {
+            if (isIntroDialog)
+                intro.SetActive(false);
+            
             gameObject.SetActive(false);
         }
     }

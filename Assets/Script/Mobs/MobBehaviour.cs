@@ -11,6 +11,7 @@ public class MobBehaviour : MonoBehaviour
     [SerializeField] private LayerMask targetLayer;
     public float Huntspeed;
     public float speed = 6f;
+    private float saveSpeed;
     private Vector2 mobDir;
     public GameObject player;
     private Rigidbody2D rb;
@@ -53,6 +54,8 @@ public class MobBehaviour : MonoBehaviour
         basestartpoint = transform.localPosition;
         progress = 0.0f;
 
+        saveSpeed = speed;
+
         PickNewRandomDestination();
 
     }
@@ -64,16 +67,20 @@ public class MobBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                rb.bodyType = RigidbodyType2D.Static;
-                rb.velocity = Vector2.zero;
-                col.enabled = false;
-                sprite.enabled = false;
+                // rb.bodyType = RigidbodyType2D.Static;
+                // rb.velocity = Vector2.zero;
+                // col.enabled = false;
+                // sprite.enabled = false;
+
+                GameManager.instance.combat.Invoke(speed,col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-                rb.bodyType = RigidbodyType2D.Dynamic;
-                col.enabled = true;
-                sprite.enabled = true;
+                // rb.bodyType = RigidbodyType2D.Dynamic;
+                // col.enabled = true;
+                // sprite.enabled = true;
+                
+                GameManager.instance.adventure.Invoke(saveSpeed,speed,col,sprite);
                 break;
         }
         

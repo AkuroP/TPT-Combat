@@ -43,7 +43,15 @@ public class Shadow : MonoBehaviour
     [Header("Debug")]
     public EntityData MyEntity;
     public Shadow EntitySelected;
+    public bool isIntroFinish;
+    public static Shadow instance;
 
+    private void Awake()
+    {
+        if(instance == null)
+            return;
+        instance = this;
+    }
    
     void OnEnable()
     {
@@ -158,35 +166,36 @@ public class Shadow : MonoBehaviour
     
     public void Attack()
     {
-        if (mana >= spellSelected._manaCost)
-        {
-            if (paralyzed)
+        
+            if (mana >= spellSelected._manaCost)
             {
-                int cucked = Random.Range(0, 100);
+                if (paralyzed)
+                {
+                    int cucked = Random.Range(0, 100);
 
-                if (cucked >= 25)
-                    SuccessfulAttack();
+                    if (cucked >= 25)
+                        SuccessfulAttack();
 
+                    else
+                    {
+                        Debug.Log("T'es Paralysé , pas de chance mon boug ! " + MyEntity._Name);
+                    }
+
+                }
+                else if (frozen)
+                {
+                    Debug.Log("T'es gelé zebi Kekw " + MyEntity._Name);
+                }
                 else
                 {
-                    Debug.Log("T'es Paralysé , pas de chance mon boug ! " + MyEntity._Name);
+                    SuccessfulAttack();
                 }
 
             }
-            else if (frozen)
-            {
-                Debug.Log("T'es gelé zebi Kekw " + MyEntity._Name);
-            }
             else
             {
-                SuccessfulAttack();
+                Debug.Log("T'as plus de mana " + MyEntity._Name);
             }
-
-        }
-        else
-        {
-            Debug.Log("T'as plus de mana " + MyEntity._Name);
-        }
         
         
     }
