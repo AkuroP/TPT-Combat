@@ -44,14 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bce0795c0a17940b221beb5a6a6bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ennemys:
-  - {fileID: 0}
-  - {fileID: 0}
+  ennemy: {fileID: 0}
   player: {fileID: 0}
   Getmob: {fileID: 0}
   GetPlayer: {fileID: 0}
   figthScene: {fileID: 0}
   playerHUD: {fileID: 0}
-  mobsHUD:
-  - {fileID: 0}
-  - {fileID: 0}
+  mobHUD: {fileID: 0}
