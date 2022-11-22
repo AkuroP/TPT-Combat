@@ -22,6 +22,11 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
     private Vector2 dir;
+
+    [SerializeField] private GameObject runParticles;
+    [SerializeField] private float particlesTimerMax = 0.6f;
+    private float particlesTimer;
+    bool particleStop;
     
 
     void Start()
@@ -35,6 +40,8 @@ public class PlayerBehaviour : MonoBehaviour
         speedSave = moveSpeed;
 
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer);
+        runParticles.SetActive(false);
+        particlesTimer = 0;
     }
 
 
@@ -55,6 +62,11 @@ public class PlayerBehaviour : MonoBehaviour
             //Idle
             rb.velocity = Vector2.zero;
             anim.SetBool("isMoving", false);
+            
+            
+            if (particlesTimer > 0)particlesTimer = Mathf.Clamp(particlesTimer - Time.fixedDeltaTime, 0, particlesTimerMax);
+            else runParticles.SetActive(false);
+
         }
         else
         {
@@ -64,6 +76,7 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetFloat("Yinput", movement.y);
             anim.SetBool("isMoving", true);
             dir = new Vector2(movement.x, movement.y);
+            runParticles.SetActive(true);
         }
 
         RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
@@ -93,9 +106,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    void OnMove(InputValue v)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        movement = v.Get<Vector2>();
+        movement = ctx.ReadValue<Vector2>();
+
+        if (ctx.canceled)
+        {
+            particlesTimer = particlesTimerMax;
+        }
     }
 
     private void OnDrawGizmos()
