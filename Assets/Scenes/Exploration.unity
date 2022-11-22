@@ -10521,6 +10521,7 @@ MonoBehaviour:
   player: {fileID: 963917800}
   Getmob: {fileID: 0}
   GetPlayer: {fileID: 149963052}
+  figthScene: {fileID: 0}
   playerHUD: {fileID: 487633745}
   mobHUD: {fileID: 643542324}
 --- !u!1 &174326887
@@ -11724,6 +11725,8 @@ MonoBehaviour:
   spellSelected: {fileID: 0}
   ListOfSpells: []
   BO: {fileID: 0}
+  healthHUD: {fileID: 0}
+  habillage: {fileID: 0}
   anEnemy: 0
   _Name: 
   maxHP: 0
@@ -23728,6 +23731,8 @@ MonoBehaviour:
   spellSelected: {fileID: 0}
   ListOfSpells: []
   BO: {fileID: 0}
+  healthHUD: {fileID: 0}
+  habillage: {fileID: 0}
   anEnemy: 0
   _Name: 
   maxHP: 0

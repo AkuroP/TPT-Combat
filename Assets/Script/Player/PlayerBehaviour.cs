@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -38,14 +39,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.y = Input.GetAxisRaw("Vertical");
 
-        if (movement.x != 0 && movement.y != 0)
-        {
-            movement.x *= limiter;
-            movement.y *= limiter;
-        }
+        // if (movement.x != 0 && movement.y != 0)
+        // {
+        //     movement.x *= limiter;
+        //     movement.y *= limiter;
+        // }
 
         bool isIdle = movement.x == 0 && movement.y == 0;
         if (isIdle)
@@ -89,6 +90,11 @@ public class PlayerBehaviour : MonoBehaviour
                 GameManager.instance.adventure.Invoke(speedSave,moveSpeed, col,sprite);
                 break;
         }
+    }
+
+    void OnMove(InputValue v)
+    {
+        movement = v.Get<Vector2>();
     }
 
     private void OnDrawGizmos()
