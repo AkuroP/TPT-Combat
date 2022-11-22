@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class Habillage : MonoBehaviour
 {
-    public GameObject ennemy;
+    [Header("Station")]
+    public List<GameObject> ennemys = new List<GameObject>();
     public GameObject player;
+    
+    [Header("Get Player and mob")]
     public GameObject Getmob;
     public GameObject GetPlayer;
+    
+    [Header("L'UI")]
     public GameObject figthScene;
-
     public BattleHUD playerHUD;
-    public BattleHUD mobHUD;
+    public List<BattleHUD> mobsHUD = new List<BattleHUD>();
     
     public static Habillage instance;
     private void Awake()
@@ -37,14 +41,23 @@ public class Habillage : MonoBehaviour
     IEnumerator SetupBattle()
     {
         yield return new WaitForSeconds(0.1f);
-        ennemy.GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
-        ennemy.GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+        for (int i = 0; i < ennemys.Count; i++)
+        {
+            ennemys[i].GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
+            ennemys[i].GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+        }
+        
         
         player.GetComponent<Image>().sprite = GetPlayer.GetComponent<SpriteRenderer>().sprite;
 
         yield return new WaitForSeconds(1f);
         
         playerHUD.SetHUD(player.GetComponent<Shadow>()); playerHUD.SetHP(player.GetComponent<Shadow>().currentHP);
-        mobHUD.SetHUD(ennemy.GetComponent<Shadow>()); mobHUD.SetHP(ennemy.GetComponent<Shadow>().currentHP);
+        
+        for (int i = 0; i < mobsHUD.Count; i++)
+        {
+            mobsHUD[i].SetHUD(ennemys[i].GetComponent<Shadow>()); 
+            mobsHUD[i].SetHP(ennemys[i].GetComponent<Shadow>().currentHP);
+        }
     }
 }
