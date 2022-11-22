@@ -144,6 +144,9 @@ public class Shadow : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.Adventure;
         transition.GetComponent<Animator>().SetTrigger("Transition");
         
+        AudioManager.instance.DestroyOST();
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], GameObject.FindWithTag("Player").transform.position, AudioManager.instance.ostMixer);
+        
         yield return new WaitForSeconds(1.2f);
         
         GameManager.instance.ShowMM();
@@ -178,13 +181,13 @@ public class Shadow : MonoBehaviour
 
                     else
                     {
-                        Debug.Log("T'es Paralysé , pas de chance mon boug ! " + MyEntity._Name);
+                        Debug.Log("T'es Paralysï¿½ , pas de chance mon boug ! " + MyEntity._Name);
                     }
 
                 }
                 else if (frozen)
                 {
-                    Debug.Log("T'es gelé zebi Kekw " + MyEntity._Name);
+                    Debug.Log("T'es gelï¿½ zebi Kekw " + MyEntity._Name);
                 }
                 else
                 {
@@ -202,7 +205,7 @@ public class Shadow : MonoBehaviour
 
     public void SuccessfulAttack()
     {
-        Debug.Log("Attaque réussie !, " + MyEntity._Name + " a infligé " + damageFormule + " dégâts avec " + spellSelected._name );
+        Debug.Log("Attaque rï¿½ussie !, " + MyEntity._Name + " a infligï¿½ " + damageFormule + " dï¿½gï¿½ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
         healthHUD.SetHP(EntitySelected.currentHP);        

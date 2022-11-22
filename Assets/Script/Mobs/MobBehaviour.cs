@@ -167,8 +167,33 @@ public class MobBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //End Animation transition
         animator.SetTrigger("Transition");
+
+        AudioManager.instance.DestroyOST();
+        int randomBattleOST = Random.Range(0,3);
+        string battleOST;
+        switch (randomBattleOST)
+        {
+            case 0 :
+                battleOST = "battle1";
+            break;
+            
+            case 1 :
+                battleOST = "battle2";
+            break;
+            
+            case 2 :
+                battleOST = "battle3";
+            break;
+
+            default :
+                battleOST = "battle1";
+            break;
+        }
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[battleOST], player.transform.position, AudioManager.instance.ostMixer);
+        
         yield return new WaitForSeconds(1.2f);
         transitionObject.SetActive(false);
+
         
     }
     #if UNITY_EDITOR

@@ -5,39 +5,59 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public AudioMixerGroup musicMixer;
-    public AudioMixerGroup sfxMixer;
+    public static AudioManager instance;
+    public AudioMixerGroup soundEffectMixer;
+    public AudioMixerGroup ostMixer;
 
-    private readonly string musicVolume = "Music_Volume";
-
-    // Start is called before the first frame update
-    private void Start()
+    [System.Serializable]
+    public class KeyValue
     {
-        //audioMixer.SetFloat(musicVolume, 0);
+        public string audioName;
+        public AudioClip audio;
     }
+    public List<KeyValue> audioLibrary = new List<KeyValue>();
+    public Dictionary<string, AudioClip> allAudio = new Dictionary<string, AudioClip>();
 
-    // Update is called once per frame
-    void Update()
+    private GameObject actualOST;
+
+    private void Awake()
     {
+        if (instance != null)
+            return;
+        instance = this;
+
+        foreach(var ui in audioLibrary)
+        {
+            allAudio[ui.audioName] = ui.audio;
+        }
         
     }
-    
-    public static float ParseToDebit0(float value)
+
+    public AudioSource PlayClipAt(AudioClip clip, Vector3 pos, AudioMixerGroup whatMixer)
     {
-        float parse = Mathf.Lerp(-80, 0, Mathf.Clamp01(value));
-        return parse;
+        //Create GameObject
+        GameObject tempGO = new GameObject("TempAudio");
+        //pos of GO
+        tempGO.transform.position = pos;
+        //Add an audiosource
+        AudioSource audioSource = tempGO.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        //Get the audio mixer
+        audioSource.outputAudioMixerGroup = whatMixer;
+        audioSource.Play();
+        //Destroy at the lenght of the clip
+        if(whatMixer != ostMixer)Destroy(tempGO, clip.length);
+        else
+        {
+            audioSource.loop = true;
+            actualOST = tempGO;
+        } 
+        return audioSource;
     }
 
-    public static float ParseToDebit20(float value)
+    public void DestroyOST()
     {
-        float parse = Mathf.Lerp(-80, 20, Mathf.Clamp01(value));
-        return parse;
-    }
-
-    public static float ParseToDebit(float value, float min = -80, float max = 20)
-    {
-        float parse = Mathf.Lerp(min, max, Mathf.Clamp01(value));
-        return parse;
+        if(actualOST == null)return;
+        Destroy(actualOST);
     }
 }

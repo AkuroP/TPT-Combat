@@ -34,7 +34,7 @@ public class BattleSystem : MonoBehaviour
     {
         playerBattle = SpawnCharacter(true);
         enemyBattle = SpawnCharacter(false);
-
+        
         state = State.START; 
     }
 

@@ -34,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         speedSave = moveSpeed;
 
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer);
     }
 
 
