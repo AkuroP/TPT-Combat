@@ -6,6 +6,8 @@ public class NPCdetection : MonoBehaviour
 {
     PlayerBehaviour player;
 
+    public List<string> Dialogue;
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
@@ -14,6 +16,12 @@ public class NPCdetection : MonoBehaviour
                 player = col.GetComponent<PlayerBehaviour>();
 
             player.canTalk = true;
+
+            player.currentDialog.Clear();
+            foreach(string line in Dialogue)
+            {
+                player.currentDialog.Add(line);
+            }
         }
     }
 
@@ -22,6 +30,8 @@ public class NPCdetection : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             player.canTalk = false;
+            //player.currentDialog = Dialogue;
+            
         }
     }
 }

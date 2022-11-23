@@ -32,9 +32,8 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     public bool canTalk;
-
-    public InputActionMap PlayerActionMap;
-    public InputActionMap DialogueActionMap;
+    public GameObject dialogueUI;
+    public List<string> currentDialog;
     
 
     void Start()
@@ -51,6 +50,8 @@ public class PlayerBehaviour : MonoBehaviour
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer, false);
         runParticles.SetActive(false);
         particlesTimer = 0;
+
+        dialogueUI.SetActive(false);
     }
 
 
@@ -125,14 +126,27 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (ctx.performed && canTalk)
             {
-                Debug.Log("blabla");
-
                 playerInput.SwitchCurrentActionMap("UI");
+
+                dialogueUI.GetComponent<Dialog>().lines.Clear();
+                foreach(string line in currentDialog)
+                    dialogueUI.GetComponent<Dialog>().lines.Add(line);
+
+                dialogueUI.SetActive(true);
+                //dialogueUI.GetComponent<Dialog>().lines = currentDialog;
             }
         }
 
 
     #endregion
+
+    public void SwitchActionMap(string am)
+    {
+        if (GameManager.instance.gameState == GameManager.GameState.Adventure)
+        {
+            playerInput.SwitchCurrentActionMap(am);
+        }
+    }
 
     private void OnDrawGizmos()
     {

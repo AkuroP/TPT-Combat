@@ -6,14 +6,17 @@ using TMPro;
 public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    public string[] lines;
+    //public string[] lines;
+    public List<string> lines;
     public float textSpeed;
 
     private int index;
     public bool isIntroDialog;
     public GameObject intro;
+
+    public PlayerBehaviour player;
     
-    void Start()
+    void OnEnable()
     {
         textComponent.text = string.Empty;
         StartDialogue();
@@ -54,7 +57,7 @@ public class Dialog : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < lines.Count - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -67,5 +70,10 @@ public class Dialog : MonoBehaviour
             
             gameObject.SetActive(false);
         }
+    }
+
+    void OnDisable()
+    {
+        player.SwitchActionMap("Player");
     }
 }
