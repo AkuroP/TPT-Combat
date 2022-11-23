@@ -19,6 +19,7 @@ public class Dialog : MonoBehaviour
     void OnEnable()
     {
         textComponent.text = string.Empty;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
         StartDialogue();
     }
 

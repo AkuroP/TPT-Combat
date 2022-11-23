@@ -369,6 +369,6 @@ MonoBehaviour:
   - Y a un monstre ma boi
   - Tue le
   textSpeed: 0.3
-  isIntroDialog: 1
+  isIntroDialog: 0
   intro: {fileID: 0}
   player: {fileID: 0}

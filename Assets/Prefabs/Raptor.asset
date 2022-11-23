@@ -20,8 +20,8 @@ MonoBehaviour:
   _atk: 5
   _sAtk: 2
   _def: 3
-  _sDef: 0
-  _speed: 0
+  _sDef: 1
+  _speed: 1
   _burned: 0
   _frozen: 0
   _paralyzed: 0
