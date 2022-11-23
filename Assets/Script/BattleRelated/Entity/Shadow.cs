@@ -16,8 +16,9 @@ public class Shadow : MonoBehaviour
     public List<SpellsData> ListOfSpells;
 
     public BattleOrderManager BO;
-    public BattleHUD[] mobsHealthHUD;
+    public BattleHUD mobsHealthHUD;
     public BattleHUD playerHealthHUD;
+    public List<GameObject> mobsInLife = new List<GameObject>();
     public GameObject transition;
     [Header("Type de personnage")]
     public bool anEnemy;
@@ -44,7 +45,7 @@ public class Shadow : MonoBehaviour
     [Header("Debug")]
     public EntityData MyEntity;
     public Shadow EntitySelected;
-    public bool isIntroFinish;
+    
     public static Shadow instance;
 
     private void Awake()
@@ -73,7 +74,7 @@ public class Shadow : MonoBehaviour
     IEnumerator InitEntity()
     {
         yield return new WaitForSeconds(1f);
-        mobsHealthHUD = Habillage.instance.mobsHUD;
+        mobsInLife.AddRange(GameObject.FindGameObjectsWithTag("MobStation"));
         _Name = MyEntity._Name;
         maxHP = MyEntity._hp;
         atk = MyEntity._atk;
@@ -132,7 +133,11 @@ public class Shadow : MonoBehaviour
         }
         else if (currentHP <= -0.1f && anEnemy)
         {
-            StartCoroutine(Victory());
+            EntitySelected?.KilledOpponent(gameObject);
+            if (!anEnemy && AreOpponentsDead())
+            {
+                Victory();
+            }
         }
         
     }
@@ -207,16 +212,13 @@ public class Shadow : MonoBehaviour
 
     public void SuccessfulAttack()
     {
-        Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
+        // Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
         if (!anEnemy)
         {
-            for (int i = 0; i < mobsHealthHUD.Length; i++)
-            {
-                mobsHealthHUD[i].SetHP(EntitySelected.currentHP); 
-            }
-            
+            EntitySelected.mobsHealthHUD.SetHP(EntitySelected.currentHP);
+            EntitySelected = null;
         }
         else
         {
@@ -231,6 +233,31 @@ public class Shadow : MonoBehaviour
         if (spellSelected.currentStatus == SpellsData.Status.Frozen)
         {
             EntitySelected.frozen = true;
+        }
+    }
+    
+    public void KilledOpponent(GameObject opponent)
+    {
+        if(mobsInLife.Contains(opponent))
+        {
+            opponent.SetActive(false);
+            mobsInLife.Remove(opponent);
+        }
+ 
+        print(mobsInLife.Count);
+    }
+ 
+    public bool AreOpponentsDead()
+    {
+        if(mobsInLife.Count <= 0)
+        {
+            //dead
+            return true;
+        }
+        else
+        {
+            //tss alive
+            return false;
         }
     }
 }

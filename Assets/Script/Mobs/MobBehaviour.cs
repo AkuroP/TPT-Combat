@@ -41,7 +41,7 @@ public class MobBehaviour : MonoBehaviour
     private float progress = 0.0f;
 
     public EntityData mobData;
-    private bool canMove = true;
+    
 
     private void Start()
     {
@@ -69,19 +69,15 @@ public class MobBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                // rb.bodyType = RigidbodyType2D.Static;
-                // rb.velocity = Vector2.zero;
-                // col.enabled = false;
-                // sprite.enabled = false;
 
-                GameManager.instance.combat.Invoke(canMove,col,sprite);
+                speed = 0;
+                
+
+                GameManager.instance.combat.Invoke(col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-                // rb.bodyType = RigidbodyType2D.Dynamic;
-                // col.enabled = true;
-                // sprite.enabled = true;
-                
+                speed = 6f;
                 GameManager.instance.adventure.Invoke(col,sprite);
                 break;
         }
@@ -106,32 +102,27 @@ public class MobBehaviour : MonoBehaviour
         }
         else
         {
-            if (canMove)
+            bool reached = false;
+
+            // Update our progress to our destination
+            progress += speed * Time.deltaTime;
+
+            // Check for the case when we overshoot or reach our destination
+            if (progress >= 1.0f)
             {
-                
-            
-                bool reached = false;
+                progress = 1.0f;
+                reached = true;
+            }
 
-                // Update our progress to our destination
-                progress += speed * Time.deltaTime;
+            // Update out position based on our start postion, destination and progress.
+            transform.localPosition = (destination * progress) + start * (1 - progress);
 
-                // Check for the case when we overshoot or reach our destination
-                if (progress >= 1.0f)
-                {
-                    progress = 1.0f;
-                    reached = true;
-                }
-
-                // Update out position based on our start postion, destination and progress.
-                transform.localPosition = (destination * progress) + start * (1 - progress);
-
-                // If we have reached the destination, set it as the new start and pick a new random point. Reset the progress
-                if (reached)
-                {
-                    start = destination;
-                    PickNewRandomDestination();
-                    progress = 0.0f;
-                }
+            // If we have reached the destination, set it as the new start and pick a new random point. Reset the progress
+            if (reached)
+            {
+                start = destination;
+                PickNewRandomDestination();
+                progress = 0.0f;
             }
         }
         

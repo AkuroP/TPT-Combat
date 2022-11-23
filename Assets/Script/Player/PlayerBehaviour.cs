@@ -27,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float particlesTimerMax = 0.6f;
     private float particlesTimer;
     bool particleStop;
-    private bool canMove = true;
+    
 
 
     void Start()
@@ -71,19 +71,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
-            if (canMove)
-            {
-                
-                //Moving
-                rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
-                anim.SetFloat("Xinput", movement.x);
-                anim.SetFloat("Yinput", movement.y);
-                anim.SetBool("isMoving", true);
-                dir = new Vector2(movement.x, movement.y);
-                runParticles.SetActive(true);
-            }
+            //Moving
+            rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
+            anim.SetFloat("Xinput", movement.x);
+            anim.SetFloat("Yinput", movement.y);
+            anim.SetBool("isMoving", true);
+            dir = new Vector2(movement.x, movement.y);
+            runParticles.SetActive(true);
         }
-
         RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
         if (yes.collider != null)rb.velocity = Vector2.zero;
 
@@ -95,12 +90,12 @@ public class PlayerBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                
-                GameManager.instance.combat.Invoke(canMove, col,sprite);
+                moveSpeed = 0;
+                GameManager.instance.combat.Invoke(col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-
+                moveSpeed = 200f;
                 GameManager.instance.adventure.Invoke(col,sprite);
                 break;
         }
