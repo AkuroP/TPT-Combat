@@ -4344,7 +4344,6 @@ MonoBehaviour:
   paralyzed: 0
   MyEntity: {fileID: 0}
   EntitySelected: {fileID: 0}
-  isIntroFinish: 0
 --- !u!114 &3355723281791059322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,7 +5174,6 @@ MonoBehaviour:
   paralyzed: 0
   MyEntity: {fileID: 11400000, guid: 00635e523f8458642ae15d64f0fad574, type: 2}
   EntitySelected: {fileID: 0}
-  isIntroFinish: 0
 --- !u!1 &3355723282742035969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7007,7 +7005,6 @@ MonoBehaviour:
   paralyzed: 0
   MyEntity: {fileID: 0}
   EntitySelected: {fileID: 0}
-  isIntroFinish: 0
 --- !u!114 &5106832684712574902
 MonoBehaviour:
   m_ObjectHideFlags: 0

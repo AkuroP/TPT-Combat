@@ -134,13 +134,25 @@ public class Shadow : MonoBehaviour
         else if (currentHP <= -0.1f && anEnemy)
         {
             EntitySelected?.KilledOpponent(gameObject);
-            if (!anEnemy && AreOpponentsDead())
-            {
-                Victory();
-            }
+            
+            
         }
+
+        // if (!anEnemy && mobsInLife.Count == 1)
+        //     EntitySelected = mobsInLife[^1].GetComponent<Shadow>();
+        
+        
+        // if (!anEnemy && AreOpponentsDead())
+        // {
+        //     StartCoroutine(Victory());
+        // }
         
     }
+
+    // IEnumerator OneEnnemyLeft()
+    // {
+    //     yield return new WaitUntil();
+    // }
 
     IEnumerator Victory()
     {
@@ -215,10 +227,11 @@ public class Shadow : MonoBehaviour
         // Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
+        print("EntitySelected : " + EntitySelected.name);
         if (!anEnemy)
         {
             EntitySelected.mobsHealthHUD.SetHP(EntitySelected.currentHP);
-            EntitySelected = null;
+            
         }
         else
         {
