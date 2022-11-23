@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     }
 
     public delegate void OnAdventureMode(Collider2D col, SpriteRenderer sprite);
-    public delegate void OnCombatMode(bool canMoving, Collider2D col, SpriteRenderer sprite);
-
+    public delegate void OnCombatMode(Collider2D col, SpriteRenderer sprite);
+    
     public OnAdventureMode adventure;
     public OnCombatMode combat;
     public GameState gameState = GameState.Adventure;
@@ -23,14 +23,15 @@ public class GameManager : MonoBehaviour
     // [SerializeField] private Camera cameraFollow;
 
     
-    private void AdventureMode( Collider2D col, SpriteRenderer sprite)
+    private void AdventureMode(Collider2D col, SpriteRenderer sprite)
     {
+        
         col.enabled = true;    
         sprite.enabled = true;
     }
-    private void CombatMode(bool moving, Collider2D col, SpriteRenderer sprite)
+    private void CombatMode(Collider2D col, SpriteRenderer sprite)
     {
-        moving = false;
+       
         col.enabled = false;
         sprite.enabled = false;
     }
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         adventure += (col, sprite) => AdventureMode(col, sprite);
-        combat += (canMoving, col, sprite) => CombatMode(canMoving, col, sprite);
+        combat += (col, sprite) => CombatMode(col, sprite);
     }
 
     private void Update()

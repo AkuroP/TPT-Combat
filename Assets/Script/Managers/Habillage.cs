@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class Habillage : MonoBehaviour
 {
-    public GameObject[] ennemies;
+    public List<GameObject> ennemies = new List<GameObject>();
     public GameObject player;
     public GameObject Getmob;
     public GameObject GetPlayer;
     public GameObject figthScene;
 
     public BattleHUD playerHUD;
-    public BattleHUD[] mobsHUD;
+    public List<BattleHUD> mobsHUD = new List<BattleHUD>();
     
     public static Habillage instance;
     private void Awake()
@@ -37,7 +37,7 @@ public class Habillage : MonoBehaviour
     IEnumerator SetupBattle()
     {
         yield return new WaitForSeconds(0.1f);
-        for (int i = 0; i < ennemies.Length; i++)
+        for (int i = 0; i < ennemies.Count; i++)
         {
             ennemies[i].GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
             ennemies[i].GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
@@ -49,7 +49,7 @@ public class Habillage : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         playerHUD.SetHUD(player.GetComponent<Shadow>()); playerHUD.SetHP(player.GetComponent<Shadow>().currentHP);
-        for (int i = 0; i < mobsHUD.Length; i++)
+        for (int i = 0; i < mobsHUD.Count; i++)
         {
            mobsHUD[i].SetHUD(ennemies[i].GetComponent<Shadow>());
            mobsHUD[i].SetHP(ennemies[i].GetComponent<Shadow>().currentHP); 

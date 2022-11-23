@@ -18,6 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private CapsuleCollider2D col;
+    private PlayerInput playerInput;
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
@@ -27,8 +28,14 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float particlesTimerMax = 0.6f;
     private float particlesTimer;
     bool particleStop;
-    private bool canMove = true;
+    
 
+
+    public bool canTalk;
+
+    public InputActionMap PlayerActionMap;
+    public InputActionMap DialogueActionMap;
+    
 
     void Start()
     {
@@ -37,6 +44,7 @@ public class PlayerBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider2D>();
+        playerInput = GetComponent<PlayerInput>();
 
         speedSave = moveSpeed;
 
@@ -71,19 +79,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
-            if (canMove)
-            {
-                
-                //Moving
-                rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
-                anim.SetFloat("Xinput", movement.x);
-                anim.SetFloat("Yinput", movement.y);
-                anim.SetBool("isMoving", true);
-                dir = new Vector2(movement.x, movement.y);
-                runParticles.SetActive(true);
-            }
+            //Moving
+            rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
+            anim.SetFloat("Xinput", movement.x);
+            anim.SetFloat("Yinput", movement.y);
+            anim.SetBool("isMoving", true);
+            dir = new Vector2(movement.x, movement.y);
+            runParticles.SetActive(true);
         }
-
         RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
         if (yes.collider != null)rb.velocity = Vector2.zero;
 
@@ -95,26 +98,41 @@ public class PlayerBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                
-                GameManager.instance.combat.Invoke(canMove, col,sprite);
+                moveSpeed = 0;
+                GameManager.instance.combat.Invoke(col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-
+                moveSpeed = 200f;
                 GameManager.instance.adventure.Invoke(col,sprite);
                 break;
         }
     }
 
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
-        movement = ctx.ReadValue<Vector2>();
+    #region Inputs
 
-        if (ctx.canceled)
+        public void OnMove(InputAction.CallbackContext ctx)
         {
-            particlesTimer = particlesTimerMax;
+            movement = ctx.ReadValue<Vector2>();
+
+            if (ctx.canceled)
+            {
+                particlesTimer = particlesTimerMax;
+            }
         }
-    }
+
+        public void OnUse(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed && canTalk)
+            {
+                Debug.Log("blabla");
+
+                playerInput.SwitchCurrentActionMap("UI");
+            }
+        }
+
+
+    #endregion
 
     private void OnDrawGizmos()
     {
