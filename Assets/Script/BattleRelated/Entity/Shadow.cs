@@ -147,7 +147,7 @@ public class Shadow : MonoBehaviour
         transition.GetComponent<Animator>().SetTrigger("Transition");
         
         AudioManager.instance.DestroyOST();
-        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], GameObject.FindWithTag("Player").transform.position, AudioManager.instance.ostMixer);
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], GameObject.FindWithTag("Player").transform.position, AudioManager.instance.ostMixer, false);
         
         yield return new WaitForSeconds(1.2f);
         
@@ -210,6 +210,8 @@ public class Shadow : MonoBehaviour
         Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
+
+        AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
         if (!anEnemy)
         {
             for (int i = 0; i < mobsHealthHUD.Length; i++)

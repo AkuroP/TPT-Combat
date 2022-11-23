@@ -20777,6 +20777,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 6686746396645572855, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8006245811297963179, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -30908,9 +30912,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3355723281791059321, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: anEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355723281791059321, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 958137125}
+    - target: {fileID: 3355723281791059321, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: playerHealthHUD
+      value: 
+      objectReference: {fileID: 757909279}
     - target: {fileID: 3355723281913502866, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -30954,6 +30966,10 @@ PrefabInstance:
     - target: {fileID: 3355723283062771163, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269891961402784509, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: anEnemy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
@@ -36166,6 +36182,16 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: eb4031aa41cc93347a1593f8e56d18e0, type: 3}
   - audioName: battle3
     audio: {fileID: 8300000, guid: e07975fd0b80b3645bcbb724ff122ba7, type: 3}
+  - audioName: Fireball
+    audio: {fileID: 8300000, guid: e7113a96745439540b8f7a1d31813346, type: 3}
+  - audioName: Thunderbolt
+    audio: {fileID: 8300000, guid: d11557ca48e6be34f9230e0a139591da, type: 3}
+  - audioName: Permafrost
+    audio: {fileID: 8300000, guid: 3a30f44a4c6073c4bb2df7742191d448, type: 3}
+  - audioName: Iceball
+    audio: {fileID: 8300000, guid: 6d06c9dd3c52daf4b9f7d77f7b6f148c, type: 3}
+  - audioName: WalkOnGrass
+    audio: {fileID: 8300000, guid: 9a93de88a41cb4948a09152c0f017d05, type: 3}
 --- !u!1 &908230652
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         speedSave = moveSpeed;
 
-        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer);
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer, false);
         runParticles.SetActive(false);
         particlesTimer = 0;
     }
@@ -119,6 +119,16 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay((Vector2)this.transform.position, dir * range);
+    }
+
+    public void WalkSound()
+    {
+        //solution temporaire
+        if((anim.GetFloat("Xinput") > 0 && anim.GetFloat("Yinput") > 0) ||
+        (anim.GetFloat("Xinput") < 0 && anim.GetFloat("Yinput") < 0) ||
+        (anim.GetFloat("Xinput") < 0 && anim.GetFloat("Yinput") > 0) ||
+        (anim.GetFloat("Xinput") > 0 && anim.GetFloat("Yinput") < 0))return;
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["WalkOnGrass"], this.transform.position, AudioManager.instance.soundEffectMixer, true);
     }
 }
     

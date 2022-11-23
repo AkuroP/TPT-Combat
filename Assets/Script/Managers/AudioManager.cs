@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public AudioSource PlayClipAt(AudioClip clip, Vector3 pos, AudioMixerGroup whatMixer)
+    public AudioSource PlayClipAt(AudioClip clip, Vector3 pos, AudioMixerGroup whatMixer, bool isSFX)
     {
         //Create GameObject
         GameObject tempGO = new GameObject("TempAudio");
@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour
         //Add an audiosource
         AudioSource audioSource = tempGO.AddComponent<AudioSource>();
         audioSource.clip = clip;
+        if(isSFX)
+        {
+            float randomPitch = Random.Range(-5, 6);
+            audioSource.pitch += (randomPitch / 60);
+        }
         //Get the audio mixer
         audioSource.outputAudioMixerGroup = whatMixer;
         audioSource.Play();

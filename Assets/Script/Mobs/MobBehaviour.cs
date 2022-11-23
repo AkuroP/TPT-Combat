@@ -195,7 +195,7 @@ public class MobBehaviour : MonoBehaviour
                 battleOST = "battle1";
             break;
         }
-        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[battleOST], player.transform.position, AudioManager.instance.ostMixer);
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[battleOST], player.transform.position, AudioManager.instance.ostMixer, false);
         
         yield return new WaitForSeconds(1.2f);
         transitionObject.SetActive(false);
