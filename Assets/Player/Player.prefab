@@ -90,7 +90,19 @@ MonoBehaviour:
     m_ActionId: 0825a2ce-e01c-4cf6-8ec9-0ad50f54181c
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3915407302710990465}
+        m_TargetAssemblyTypeName: PlayerBehaviour, Assembly-CSharp
+        m_MethodName: OnUse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3cb3b51c-6a6a-485b-b013-747e73d983a3
     m_ActionName: Player/Use[/Keyboard/f]
   - m_PersistentCalls:
@@ -247,6 +259,7 @@ MonoBehaviour:
   range: 0.6
   runParticles: {fileID: 6782669260752862290}
   particlesTimerMax: 0.3
+  canTalk: 0
 --- !u!95 &7055361948115525600
 Animator:
   serializedVersion: 4
