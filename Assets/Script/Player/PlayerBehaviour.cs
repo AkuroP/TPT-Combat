@@ -34,6 +34,8 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canTalk;
     public GameObject dialogueUI;
     public List<string> currentDialog;
+
+    public int playerLvl;
     
 
     void Start()
