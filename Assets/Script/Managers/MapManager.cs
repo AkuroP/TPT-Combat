@@ -15,12 +15,16 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] private List<Tilemap> interactibleMap;
     [SerializeField] private Tilemap mm_interactible;
+
+    [SerializeField] private List<Tilemap> pathMap;
+    [SerializeField] private Tilemap mm_path;
     public MapState mapState;
     public enum MapState
     {
         ACCESSIBLE,
         UNACESSIBLE,
-        INTERACTIBLE
+        INTERACTIBLE,
+        PATH
     }
 
 
@@ -36,6 +40,9 @@ public class MapManager : MonoBehaviour
 
         //Assign blue tile in interactible map / object
         AssignColorTilesInMap(interactibleMap, ref mm_interactible, tileBase);
+
+        //Assign brown tile in path
+        AssignColorTilesInMap(pathMap, ref mm_path, tileBase);
     }
 
     private void AssignColorTilesInMap(List<Tilemap> map, ref Tilemap minimap, TileBase tileBase)

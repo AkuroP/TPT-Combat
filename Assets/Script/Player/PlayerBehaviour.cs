@@ -18,6 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private CapsuleCollider2D col;
+    private PlayerInput playerInput;
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
@@ -30,6 +31,12 @@ public class PlayerBehaviour : MonoBehaviour
     
 
 
+    public bool canTalk;
+
+    public InputActionMap PlayerActionMap;
+    public InputActionMap DialogueActionMap;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +44,7 @@ public class PlayerBehaviour : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider2D>();
+        playerInput = GetComponent<PlayerInput>();
 
         speedSave = moveSpeed;
 
@@ -101,15 +109,30 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
-        movement = ctx.ReadValue<Vector2>();
+    #region Inputs
 
-        if (ctx.canceled)
+        public void OnMove(InputAction.CallbackContext ctx)
         {
-            particlesTimer = particlesTimerMax;
+            movement = ctx.ReadValue<Vector2>();
+
+            if (ctx.canceled)
+            {
+                particlesTimer = particlesTimerMax;
+            }
         }
-    }
+
+        public void OnUse(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed && canTalk)
+            {
+                Debug.Log("blabla");
+
+                playerInput.SwitchCurrentActionMap("UI");
+            }
+        }
+
+
+    #endregion
 
     private void OnDrawGizmos()
     {

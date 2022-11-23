@@ -37,6 +37,11 @@ public class MapManagerEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("interactibleMap"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("mm_interactible"));
             break;
+
+            case MapManager.MapState.PATH :
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("pathMap"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("mm_path"));
+            break;
         }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.HelpBox($"Don't forget to add new {this.mapManager.mapState} maps here !", MessageType.Info);
