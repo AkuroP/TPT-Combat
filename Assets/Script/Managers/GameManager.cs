@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
         Pause
     }
 
-    public delegate void OnAdventureMode(float saveSpeed,float speed, Collider2D col, SpriteRenderer sprite);
-    public delegate void OnCombatMode(float speed, Collider2D col, SpriteRenderer sprite);
+    public delegate void OnAdventureMode(Collider2D col, SpriteRenderer sprite);
+    public delegate void OnCombatMode(bool canMoving, Collider2D col, SpriteRenderer sprite);
 
     public OnAdventureMode adventure;
     public OnCombatMode combat;
@@ -23,15 +23,14 @@ public class GameManager : MonoBehaviour
     // [SerializeField] private Camera cameraFollow;
 
     
-    private void AdventureMode(float saveSpeed, float speed, Collider2D col, SpriteRenderer sprite)
+    private void AdventureMode( Collider2D col, SpriteRenderer sprite)
     {
-        speed = saveSpeed;
         col.enabled = true;    
         sprite.enabled = true;
     }
-    private void CombatMode(float speed, Collider2D col, SpriteRenderer sprite)
+    private void CombatMode(bool moving, Collider2D col, SpriteRenderer sprite)
     {
-        speed = 0;
+        moving = false;
         col.enabled = false;
         sprite.enabled = false;
     }
@@ -44,8 +43,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        adventure += (saveSpeed,speed, col, sprite) => AdventureMode(saveSpeed, speed, col, sprite);
-        combat += (rb, col, sprite) => CombatMode(rb, col, sprite);
+        adventure += (col, sprite) => AdventureMode(col, sprite);
+        combat += (canMoving, col, sprite) => CombatMode(canMoving, col, sprite);
     }
 
     private void Update()

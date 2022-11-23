@@ -27,7 +27,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float particlesTimerMax = 0.6f;
     private float particlesTimer;
     bool particleStop;
-    
+    private bool canMove = true;
+
 
     void Start()
     {
@@ -70,13 +71,17 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
-            //Moving
-            rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
-            anim.SetFloat("Xinput", movement.x);
-            anim.SetFloat("Yinput", movement.y);
-            anim.SetBool("isMoving", true);
-            dir = new Vector2(movement.x, movement.y);
-            runParticles.SetActive(true);
+            if (canMove)
+            {
+                
+                //Moving
+                rb.velocity = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
+                anim.SetFloat("Xinput", movement.x);
+                anim.SetFloat("Yinput", movement.y);
+                anim.SetBool("isMoving", true);
+                dir = new Vector2(movement.x, movement.y);
+                runParticles.SetActive(true);
+            }
         }
 
         RaycastHit2D yes = Physics2D.Raycast((Vector2)this.transform.position, dir, range, wallLayer);
@@ -90,18 +95,13 @@ public class PlayerBehaviour : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameManager.GameState.Combat :
-                // rb.bodyType = RigidbodyType2D.Static;
-                // rb.velocity = Vector2.zero;
-                // sprite.enabled = false;
                 
-                GameManager.instance.combat.Invoke(moveSpeed, col,sprite);
+                GameManager.instance.combat.Invoke(canMove, col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-                // rb.bodyType = RigidbodyType2D.Dynamic;
-                // sprite.enabled = true;
-                
-                GameManager.instance.adventure.Invoke(speedSave,moveSpeed, col,sprite);
+
+                GameManager.instance.adventure.Invoke(col,sprite);
                 break;
         }
     }

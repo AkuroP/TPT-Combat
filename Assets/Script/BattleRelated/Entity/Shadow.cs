@@ -16,7 +16,8 @@ public class Shadow : MonoBehaviour
     public List<SpellsData> ListOfSpells;
 
     public BattleOrderManager BO;
-    public BattleHUD healthHUD;
+    public BattleHUD[] mobsHealthHUD;
+    public BattleHUD playerHealthHUD;
     public GameObject transition;
     [Header("Type de personnage")]
     public bool anEnemy;
@@ -72,6 +73,7 @@ public class Shadow : MonoBehaviour
     IEnumerator InitEntity()
     {
         yield return new WaitForSeconds(1f);
+        mobsHealthHUD = Habillage.instance.mobsHUD;
         _Name = MyEntity._Name;
         maxHP = MyEntity._hp;
         atk = MyEntity._atk;
@@ -208,7 +210,19 @@ public class Shadow : MonoBehaviour
         Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
-        healthHUD.SetHP(EntitySelected.currentHP);        
+        if (!anEnemy)
+        {
+            for (int i = 0; i < mobsHealthHUD.Length; i++)
+            {
+                mobsHealthHUD[i].SetHP(EntitySelected.currentHP); 
+            }
+            
+        }
+        else
+        {
+            playerHealthHUD.SetHP(EntitySelected.currentHP); 
+        }
+               
 
         if(spellSelected.currentStatus == SpellsData.Status.Paralyze)
         {
