@@ -229,6 +229,7 @@ public class Shadow : MonoBehaviour
         EntitySelected.currentHP -= (int)damageFormule;
 
         AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
+        Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
         print("EntitySelected : " + EntitySelected.name);
         if (!anEnemy)
         {

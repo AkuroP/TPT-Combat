@@ -20841,6 +20841,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3355723282668192294, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: spellSelected
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355723282668192294, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: allSpells.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355723282668192294, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: allSpells.Array.data[0].spellName
+      value: Fireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355723282668192294, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: allSpells.Array.data[1].spellName
+      value: Fireball
+      objectReference: {fileID: 0}
     - target: {fileID: 3355723282742035968, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -20910,6 +20926,10 @@ PrefabInstance:
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 847573506}
+    - target: {fileID: 3915407302710990524, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -547618744, guid: 006bdf249c7a2c048863b6004c5171c0, type: 3}
     - target: {fileID: 3915407302710990524, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -36178,6 +36198,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   mmUI: {fileID: 932027380}
+  allSpells:
+  - spellName: Fireball
+    spell: {fileID: 5579868770099327471, guid: ee35468c4abea254aacf232d34041898, type: 3}
+  - spellName: Iceball
+    spell: {fileID: 0}
+  - spellName: Permafrost
+    spell: {fileID: 0}
+  - spellName: Thunderbolt
+    spell: {fileID: 0}
 --- !u!4 &869053374
 Transform:
   m_ObjectHideFlags: 0

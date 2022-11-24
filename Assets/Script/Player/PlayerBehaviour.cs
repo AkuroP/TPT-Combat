@@ -19,6 +19,11 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator anim;
     private CapsuleCollider2D col;
     private PlayerInput playerInput;
+    public PlayerInput PlayerInput
+    {
+        get{return playerInput;}
+        private set{}
+    }
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
@@ -37,6 +42,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public int playerLvl;
     
+    public GameObject triggeredGO;
 
     void Start()
     {
@@ -128,13 +134,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (ctx.performed && canTalk)
             {
-                playerInput.SwitchCurrentActionMap("UI");
-
-                dialogueUI.GetComponent<Dialog>().lines.Clear();
-                foreach(string line in currentDialog)
-                    dialogueUI.GetComponent<Dialog>().lines.Add(line);
-
-                dialogueUI.SetActive(true);
+                
+                var interaction = triggeredGO.GetComponent<IInteract>();
+                if(interaction == null)
+                {
+                    Debug.Log(":'(");
+                    return;
+                }
+                //Debug.Log("INTERACTION ?");
+                //Debug.Log(interaction);
+                interaction.Interact();
                 //dialogueUI.GetComponent<Dialog>().lines = currentDialog;
             }
         }
