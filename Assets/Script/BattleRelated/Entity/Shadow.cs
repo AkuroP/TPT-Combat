@@ -36,6 +36,9 @@ public class Shadow : MonoBehaviour
     public int speed;
     public int mana;
 
+    public int lvl;
+    public int exp;
+
     public float damageFormule;
     public float damages;
 

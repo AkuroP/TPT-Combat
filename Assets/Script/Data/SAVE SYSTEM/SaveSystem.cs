@@ -23,9 +23,9 @@ public static class SaveSystem
     }
 
     #region GAME
-    public static void SaveGameData(string name)
+    public static void SaveGameData()
     {
-        SaveData.GameData saveGame = new SaveData.GameData(name, 0);
+        SaveData.GameData saveGame = new SaveData.GameData(/*Player parametre*/333, 666, 0, 1, 100, 64, 93);
         SaveData data = new SaveData(saveGame, LoadSettingData());
 
         string path = Application.persistentDataPath + "/Game.save";
@@ -51,6 +51,16 @@ public static class SaveSystem
             stream.Close();
 
             Debug.Log("Load game successful");
+
+            //DEBUG ALL PARAMETER
+            /*Debug.Log("player lvl : " + data.MyGameData.playerLVL);
+            Debug.Log("player XP : " + data.MyGameData.playerEXP);
+            Debug.Log("player POS : " + data.MyGameData.playerX + " ; " + data.MyGameData.playerY);
+            Debug.Log("Player HP :" + data.MyGameData.playerHP);
+            Debug.Log("Player Mana : " + data.MyGameData.playerMana);
+            Debug.Log("Player Zone : " + data.MyGameData.whatZone);*/
+
+
 
             return data.MyGameData;
         }
@@ -136,7 +146,7 @@ public static class SaveSystem
 
     #endregion
 
-#if UNITY_EDITOR
+    /*#if UNITY_EDITOR
     public static int GetLocalId(Object obj)
     {
         PropertyInfo inspectorModeInfo =
@@ -150,5 +160,5 @@ public static class SaveSystem
 
         return localIdProp.intValue;
     }
-#endif
+    #endif*/
 }
