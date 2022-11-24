@@ -36202,11 +36202,11 @@ MonoBehaviour:
   - spellName: Fireball
     spell: {fileID: 5579868770099327471, guid: ee35468c4abea254aacf232d34041898, type: 3}
   - spellName: Iceball
-    spell: {fileID: 0}
+    spell: {fileID: 6843846075606006798, guid: e5cc98243c37e67458ecbb62949a6eca, type: 3}
   - spellName: Permafrost
-    spell: {fileID: 0}
+    spell: {fileID: 9035095473947711342, guid: dbee3f9b7e48bb340ba5a1f831cfcb81, type: 3}
   - spellName: Thunderbolt
-    spell: {fileID: 0}
+    spell: {fileID: 5016673612181300468, guid: 371d1e8e3fa3a094cb79a6c62781f6e8, type: 3}
 --- !u!4 &869053374
 Transform:
   m_ObjectHideFlags: 0
