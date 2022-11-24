@@ -21,6 +21,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject mmUI;
     // [SerializeField] private Camera cameraFollow;
+    
+    [System.Serializable]
+    public class SpellsAnim
+    {
+        public string spellName;
+        public GameObject spell;
+    }
+    
+    [Header("All Spells Anim")]
+    public List<SpellsAnim> allSpells = new List<SpellsAnim>();
+    public Dictionary<string, GameObject> spells = new Dictionary<string, GameObject>();
 
     
     private void AdventureMode(Collider2D col, SpriteRenderer sprite)
@@ -40,6 +51,10 @@ public class GameManager : MonoBehaviour
         if(instance != null)Destroy(gameObject);
         instance = this;
         
+        foreach(var ui in allSpells)
+        {
+            spells[ui.spellName] = ui.spell;
+        }
     }
 
     private void Start()

@@ -19,6 +19,11 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator anim;
     private CapsuleCollider2D col;
     private PlayerInput playerInput;
+    public PlayerInput PlayerInput
+    {
+        get{return playerInput;}
+        private set{}
+    }
 
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float range;
@@ -32,10 +37,12 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     public bool canTalk;
+    public GameObject dialogueUI;
+    public List<string> currentDialog;
 
-    public InputActionMap PlayerActionMap;
-    public InputActionMap DialogueActionMap;
+    public int playerLvl;
     
+    public GameObject triggeredGO;
 
     void Start()
     {
@@ -48,9 +55,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         speedSave = moveSpeed;
 
-        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer);
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer, false);
         runParticles.SetActive(false);
         particlesTimer = 0;
+
+        dialogueUI.SetActive(false);
     }
 
 
@@ -125,18 +134,44 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (ctx.performed && canTalk)
             {
-                Debug.Log("blabla");
-
-                playerInput.SwitchCurrentActionMap("UI");
+                
+                var interaction = triggeredGO.GetComponent<IInteract>();
+                if(interaction == null)
+                {
+                    Debug.Log(":'(");
+                    return;
+                }
+                //Debug.Log("INTERACTION ?");
+                //Debug.Log(interaction);
+                interaction.Interact();
+                //dialogueUI.GetComponent<Dialog>().lines = currentDialog;
             }
         }
 
 
     #endregion
 
+    public void SwitchActionMap(string am)
+    {
+        if (GameManager.instance.gameState == GameManager.GameState.Adventure)
+        {
+            playerInput.SwitchCurrentActionMap(am);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay((Vector2)this.transform.position, dir * range);
+    }
+
+    public void WalkSound()
+    {
+        //solution temporaire
+        if((anim.GetFloat("Xinput") > 0 && anim.GetFloat("Yinput") > 0) ||
+        (anim.GetFloat("Xinput") < 0 && anim.GetFloat("Yinput") < 0) ||
+        (anim.GetFloat("Xinput") < 0 && anim.GetFloat("Yinput") > 0) ||
+        (anim.GetFloat("Xinput") > 0 && anim.GetFloat("Yinput") < 0))return;
+        AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["WalkOnGrass"], this.transform.position, AudioManager.instance.soundEffectMixer, true);
     }
 }
     

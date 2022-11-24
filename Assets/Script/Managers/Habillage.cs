@@ -24,6 +24,7 @@ public class Habillage : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(SetupBattle());
+        GetPlayer = GameObject.FindWithTag("Player");
     }
 
     private void Update()
