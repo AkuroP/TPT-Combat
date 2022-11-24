@@ -37,7 +37,10 @@ public class Shadow : MonoBehaviour
     public int mana;
 
     public int lvl;
+    public int maxExp;
     public int exp;
+
+    public bool done;
 
     public float damageFormule;
     public float damages;
@@ -65,7 +68,9 @@ public class Shadow : MonoBehaviour
     private void Start()
     {
         _onSelection = GetComponent<OnSelection>();
-        
+        lvl = 1;
+        maxExp = 100;
+        done = false;
     }
    
     void OnEnable()
@@ -98,6 +103,7 @@ public class Shadow : MonoBehaviour
 
 
     }
+
 
     IEnumerator InitEntity()
     {
@@ -147,6 +153,15 @@ public class Shadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Systeme de lvl 
+        if(exp >= maxExp)
+        {
+            lvl++;
+            exp = exp - maxExp;
+            maxExp *= 2;
+            Debug.Log("Montée au level : " + lvl);
+        }
+        //
 
         if(EntitySelected != null)
             damageFormule = spellSelected._power * atk / EntitySelected.def;
@@ -161,10 +176,15 @@ public class Shadow : MonoBehaviour
         {
             // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
-        else if (currentHP <= -0.1f && anEnemy)
+        else if (currentHP <= -0.1f && anEnemy && !done)
         {
             if (EntitySelected != null) EntitySelected.EntitySelected = null;
+            {
+            EntitySelected.exp += MyEntity._expValue;
+                Debug.Log(EntitySelected.exp);
             EntitySelected?.KilledOpponent(this.gameObject);
+                done = false;
+            }
             
         }
 

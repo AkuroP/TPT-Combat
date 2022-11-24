@@ -12,6 +12,7 @@ public class EntityData : ScriptableObject
 
     [Header("Type d'entit�")]
     public bool _anEnemy;
+    public int _expValue;
 
     [Header("Stats de l'entit�")]
     public int _hp;

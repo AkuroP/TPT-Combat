@@ -16,6 +16,7 @@ MonoBehaviour:
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   _anEnemy: 1
+  _expValue: 100
   _hp: 20
   _atk: 5
   _sAtk: 2

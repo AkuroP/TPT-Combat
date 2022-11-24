@@ -8,12 +8,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6090941585259145130, guid: 384a26c33452bae43adb2ddc77c75983, type: 3}
+      propertyPath: exp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090941585259145130, guid: 384a26c33452bae43adb2ddc77c75983, type: 3}
       propertyPath: MyEntity
       value: 
       objectReference: {fileID: 11400000, guid: ea3ef652a40fabd439246adae4c8733f, type: 2}
     - target: {fileID: 6090941585259145142, guid: 384a26c33452bae43adb2ddc77c75983, type: 3}
       propertyPath: m_Name
-      value: Goblin
+      value: Goblin Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6090941585259145143, guid: 384a26c33452bae43adb2ddc77c75983, type: 3}
       propertyPath: m_Pivot.x

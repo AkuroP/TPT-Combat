@@ -55,14 +55,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellSelected: {fileID: 0}
-  spells: []
-  hp: 200
+  ListOfSpells: []
+  BO: {fileID: 0}
+  mobsHealthHUD: {fileID: 0}
+  playerHealthHUD: {fileID: 0}
+  mobsInLife: []
+  transition: {fileID: 0}
+  anEnemy: 0
+  _Name: 
+  maxHP: 0
+  currentHP: 0
   atk: 40
   sAtk: 0
   def: 10
   sDef: 0
   speed: 0
   mana: 200
+  lvl: 0
+  maxExp: 0
+  exp: 100
   damageFormule: 0
   damages: 0
   burned: 0
@@ -165,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  BattleOrder: {fileID: 0}
   atkSelected: 
   atkButton: []
   selectionSprite: {fileID: 0}
