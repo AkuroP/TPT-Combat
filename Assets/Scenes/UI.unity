@@ -911,6 +911,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   mmUI: {fileID: 1976687314}
+  allSpells:
+  - spellName: Fireball
+    spell: {fileID: 5579868770099327471, guid: ee35468c4abea254aacf232d34041898, type: 3}
+  - spellName: Iceball
+    spell: {fileID: 6843846075606006798, guid: e5cc98243c37e67458ecbb62949a6eca, type: 3}
+  - spellName: Thunderbolt
+    spell: {fileID: 5016673612181300468, guid: 371d1e8e3fa3a094cb79a6c62781f6e8, type: 3}
+  - spellName: Permafrost
+    spell: {fileID: 9035095473947711342, guid: dbee3f9b7e48bb340ba5a1f831cfcb81, type: 3}
+  - spellName: Morsure
+    spell: {fileID: 5016673612181300468, guid: f6d6ca23afc9623469ce1fb9581e2583, type: 3}
 --- !u!4 &1697121499
 Transform:
   m_ObjectHideFlags: 0
@@ -948,6 +959,18 @@ MonoBehaviour:
   - audioName: battle2
     audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
   - audioName: battle3
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: Thunderbolt
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: Permafrost
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: Iceball
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: Fireball
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: WalkOnGrass
+    audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
+  - audioName: Morsure
     audio: {fileID: 8300000, guid: 9e7bac755151f1140a3b61321d22a321, type: 3}
 --- !u!1 &1747355250 stripped
 GameObject:
@@ -1181,6 +1204,10 @@ PrefabInstance:
     - target: {fileID: 3915407302710990464, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: PlayerActionMap.m_Id

@@ -87,6 +87,7 @@ public class Shadow : MonoBehaviour
         }
         else
         {
+            transition.SetActive(false);
             mana = 1000;
         }
 
@@ -263,7 +264,6 @@ public class Shadow : MonoBehaviour
         // Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
         EntitySelected.currentHP -= (int)damageFormule;
-
         AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
         Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
 
