@@ -23,6 +23,7 @@ public class Shadow : MonoBehaviour
     public GameObject transition;
     [Header("Type de personnage")]
     public bool anEnemy;
+    public bool isBoss;
 
     [Header("Statistiques")] 
     public String _Name;
@@ -45,7 +46,7 @@ public class Shadow : MonoBehaviour
 
     [Header("Debug")]
     public EntityData MyEntity;
-
+    
     public Shadow EntitySelected;
 
     public static Shadow instance;
