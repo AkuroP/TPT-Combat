@@ -30,6 +30,10 @@ public class Habillage : MonoBehaviour
     {
         if (GameManager.instance.gameState == GameManager.GameState.Adventure)
         {
+            for (int i = 0; i < ennemies.Count; i++)
+            {
+                ennemies[i].SetActive(true);
+            }
             figthScene.SetActive(false);
             this.gameObject.SetActive(false);
         }

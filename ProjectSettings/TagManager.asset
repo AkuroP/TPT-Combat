@@ -8,6 +8,7 @@ TagManager:
   - BatlleOrder
   - PlayerStation
   - ChangeZone
+  - MobStation
   layers:
   - Default
   - TransparentFX

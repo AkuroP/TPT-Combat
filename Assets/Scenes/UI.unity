@@ -1109,6 +1109,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3355723282668192294, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1856328727}
     - target: {fileID: 3355723282742035968, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1153,6 +1157,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -334.4978
       objectReference: {fileID: 0}
+    - target: {fileID: 7269891961402784509, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1856328727}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
 --- !u!1001 &3915407302345489374
@@ -1173,6 +1181,22 @@ PrefabInstance:
     - target: {fileID: 3915407302710990464, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: PlayerActionMap.m_Id
+      value: 79c3d413-150b-48e6-9bf3-d05eadc7e521
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: DialogueActionMap.m_Id
+      value: 86c512d8-2524-4dfd-a2ec-089355832d21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: PlayerActionMap.m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915407302710990465, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
+      propertyPath: DialogueActionMap.m_Name
+      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 3915407302710990525, guid: 5ccee3521e6e5c641b87629002c44daa, type: 3}
       propertyPath: m_RootOrder
