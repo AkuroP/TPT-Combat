@@ -24,6 +24,7 @@ public class Shadow : MonoBehaviour
     [Header("Type de personnage")]
     public bool anEnemy;
     public bool isBoss;
+    private bool fightBoss;
 
     [Header("Statistiques")] 
     public String _Name;
@@ -166,6 +167,10 @@ public class Shadow : MonoBehaviour
         if(EntitySelected != null)
             damageFormule = spellSelected._power * atk / EntitySelected.def;
         
+        if (EntitySelected is not null && !anEnemy && EntitySelected.isBoss)
+        {
+            fightBoss = true;
+        }
 
         if (burned)
         {
@@ -193,6 +198,7 @@ public class Shadow : MonoBehaviour
             StartCoroutine(OneEnnemyLeft());
             if (AreOpponentsDead())
             {
+                
                 StartCoroutine(Victory());
             }
             
@@ -223,6 +229,10 @@ public class Shadow : MonoBehaviour
         
         yield return new WaitForSeconds(1.2f);
         
+        if (fightBoss)
+        {
+            SceneManager.LoadScene("Generique");
+        }
         GameManager.instance.gameState = GameManager.GameState.Adventure;
         transition.GetComponent<Animator>().SetTrigger("Transition");
         
@@ -233,6 +243,7 @@ public class Shadow : MonoBehaviour
         
         GameManager.instance.ShowMM();
         Habillage.instance.Getmob = null;
+        
         transition.SetActive(false);
     }
 

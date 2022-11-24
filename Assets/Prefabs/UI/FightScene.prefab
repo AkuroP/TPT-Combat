@@ -4328,6 +4328,7 @@ MonoBehaviour:
   mobsInLife: []
   transition: {fileID: 0}
   anEnemy: 0
+  isBoss: 0
   _Name: 
   maxHP: 0
   currentHP: 0
@@ -4337,6 +4338,8 @@ MonoBehaviour:
   sDef: 0
   speed: 0
   mana: 0
+  lvl: 0
+  exp: 0
   damageFormule: 0
   damages: 0
   burned: 0
@@ -4646,6 +4649,7 @@ MonoBehaviour:
   textSpeed: 0.3
   isIntroDialog: 1
   intro: {fileID: 4945520060725725676}
+  player: {fileID: 0}
 --- !u!1 &3355723282238303324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,6 +5162,7 @@ MonoBehaviour:
   mobsInLife: []
   transition: {fileID: 0}
   anEnemy: 0
+  isBoss: 0
   _Name: 
   maxHP: 0
   currentHP: 0
@@ -5167,6 +5172,8 @@ MonoBehaviour:
   sDef: 0
   speed: 0
   mana: 1000
+  lvl: 0
+  exp: 0
   damageFormule: 0
   damages: 0
   burned: 0
@@ -6154,7 +6161,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7978052061595275713}
   m_FillRect: {fileID: 6434370398841515457}
   m_HandleRect: {fileID: 6515435543466487301}
@@ -6989,6 +6996,7 @@ MonoBehaviour:
   mobsInLife: []
   transition: {fileID: 0}
   anEnemy: 0
+  isBoss: 0
   _Name: 
   maxHP: 0
   currentHP: 0
@@ -6998,6 +7006,8 @@ MonoBehaviour:
   sDef: 0
   speed: 0
   mana: 0
+  lvl: 0
+  exp: 0
   damageFormule: 0
   damages: 0
   burned: 0

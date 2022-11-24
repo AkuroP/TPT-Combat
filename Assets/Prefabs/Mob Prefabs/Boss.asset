@@ -15,10 +15,12 @@ MonoBehaviour:
   _Name: Cheese Fang
   _ListOfSpells:
   - {fileID: 11400000, guid: d4d932a65f9116e42ba084d1304fde6b, type: 2}
+  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
+  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   _anEnemy: 1
   _hp: 500
-  _atk: 45
-  _sAtk: 25
+  _atk: 20
+  _sAtk: 10
   _def: 15
   _sDef: 10
   _speed: 8

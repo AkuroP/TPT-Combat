@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Morsure
   m_EditorClassIdentifier: 
   _name: Morsure
-  _description: 
+  _description: "Utilise \xE7a machoir de fou furieux"
   _power: 30
   _manaCost: 0
   _special: 0

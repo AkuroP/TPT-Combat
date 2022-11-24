@@ -138,8 +138,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   fightScene: {fileID: 0}
   transitionObject: {fileID: 0}
-  radius: 2
+  radius: 0
   mobData: {fileID: 11400000, guid: 9ddedbeccacdc4649933dc884465675f, type: 2}
+  isBoss: 1
 --- !u!50 &3877765897357171867
 Rigidbody2D:
   serializedVersion: 4

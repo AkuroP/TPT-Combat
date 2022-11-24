@@ -53,3 +53,5 @@ MonoBehaviour:
   mobsHUD:
   - {fileID: 0}
   - {fileID: 0}
+  sousfifreData: {fileID: 11400000, guid: 5cb75dadbf943bd4fba5aa112de957c9, type: 2}
+  sousfifreSprite: {fileID: 1747734660, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
