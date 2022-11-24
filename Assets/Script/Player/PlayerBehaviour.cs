@@ -8,7 +8,6 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Movement")] 
     public float moveSpeed = 200.0f;
     private float speedSave;
-    public float limiter = 0.7f;
 
     private Vector2 movement;
 
@@ -32,7 +31,6 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject runParticles;
     [SerializeField] private float particlesTimerMax = 0.6f;
     private float particlesTimer;
-    bool particleStop;
     
 
 
@@ -65,14 +63,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = Input.GetAxisRaw("Vertical");
-
-        // if (movement.x != 0 && movement.y != 0)
-        // {
-        //     movement.x *= limiter;
-        //     movement.y *= limiter;
-        // }
 
         bool isIdle = movement.x == 0 && movement.y == 0;
         if (isIdle)
@@ -141,10 +131,7 @@ public class PlayerBehaviour : MonoBehaviour
                     Debug.Log(":'(");
                     return;
                 }
-                //Debug.Log("INTERACTION ?");
-                //Debug.Log(interaction);
                 interaction.Interact();
-                //dialogueUI.GetComponent<Dialog>().lines = currentDialog;
             }
         }
         public void OnManageGame(InputAction.CallbackContext ctx)

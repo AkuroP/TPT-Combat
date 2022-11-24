@@ -25,8 +25,6 @@ public class NPCdetection : MonoBehaviour, IInteract
         {
             player.canTalk = false;
             player.triggeredGO = null;
-            //player.currentDialog = Dialogue;
-            
         }
     }
 

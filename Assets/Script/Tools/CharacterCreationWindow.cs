@@ -29,15 +29,6 @@ public class CharacterCreationWindow : EditorWindow
     void OnGUI()
     {
         GUI.backgroundColor = new Color(1f, .8f, 0.8f, 1);
-
-        // if (GUILayout.Button("bouton"))
-        // {
-        //     Debug.Log("oui");
-        // }
-
-        // scrollPosition = GUI.BeginScrollView(new Rect(10, 10, 300, 400), scrollPosition, new Rect (0, 0, 220, 200));
-        // GUI.Label(new Rect(5, 10, 50, 20), "Name");
-        // GUI.TextField(new Rect(5, 30, 100, 20), "");
         
         entityData = EditorGUILayout.ObjectField(entityData, typeof(SerializedObject), true);
         currentProperty = serializedObject.FindProperty("entityData");

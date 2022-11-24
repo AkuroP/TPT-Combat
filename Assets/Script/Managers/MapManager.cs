@@ -29,7 +29,6 @@ public class MapManager : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
     private void Start()
     {
         //Assign green tile in accessible map

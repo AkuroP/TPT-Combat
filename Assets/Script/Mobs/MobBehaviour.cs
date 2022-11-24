@@ -24,8 +24,6 @@ public class MobBehaviour : MonoBehaviour
     public GameObject fightScene;
     public GameObject transitionObject;
     
-    private Vector2 direction;
-    
     public float radius  = 40.0f;
 
     // The point we are going around in circles
@@ -145,9 +143,6 @@ public class MobBehaviour : MonoBehaviour
             transitionObject.SetActive(true);
             // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());
-            
-            
-
         }
     }
 
@@ -194,18 +189,18 @@ public class MobBehaviour : MonoBehaviour
         
     }
     #if UNITY_EDITOR
-    void OnDrawGizmosSelected()
-    {
-        UnityEditor.Handles.color = Color.red;
-        UnityEditor.Handles.DrawWireDisc(transform.position, new Vector3(0, 0,1 ), mobRadius);
-        
-        UnityEditor.Handles.color = Color.yellow;
-        if (!Application.isPlaying)
+        void OnDrawGizmosSelected()
         {
-            basestartpoint = transform.localPosition;
+            UnityEditor.Handles.color = Color.red;
+            UnityEditor.Handles.DrawWireDisc(transform.position, new Vector3(0, 0,1 ), mobRadius);
+            
+            UnityEditor.Handles.color = Color.yellow;
+            if (!Application.isPlaying)
+            {
+                basestartpoint = transform.localPosition;
+            }
+            
+            UnityEditor.Handles.DrawWireDisc(Random.insideUnitCircle + basestartpoint, new Vector3(0, 0,1), radius);
         }
-        
-        UnityEditor.Handles.DrawWireDisc(Random.insideUnitCircle + basestartpoint, new Vector3(0, 0,1), radius);
-    }
     #endif
 }
