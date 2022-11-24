@@ -17,7 +17,7 @@ public class BattleSystem : MonoBehaviour
 
     [SerializeField] Transform characterBattle;
     public Sprite playerSprite;
-    public Sprite ennemySprite;         //changer ça en fonction de l'ennemi
+    public Sprite ennemySprite;
 
     PlayerBattle playerBattle;
     PlayerBattle enemyBattle;
@@ -36,16 +36,6 @@ public class BattleSystem : MonoBehaviour
         enemyBattle = SpawnCharacter(false);
         
         state = State.START; 
-    }
-
-    void Update()
-    {
-        // if (state == State.WaitingForPlayer)
-        //     if (Input.GetKeyDown(KeyCode.Space))
-        //     {
-        //         state = State.Busy;
-        //         Debug.Log("Attack");
-        //     }
     }
 
     PlayerBattle SpawnCharacter(bool isPlayerTeam)

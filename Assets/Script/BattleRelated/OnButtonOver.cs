@@ -58,8 +58,6 @@ public class OnButtonOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
         if (selection)
         {
             myCharacter.spellSelected = GetComponentInParent<FightSystem>().spellData;

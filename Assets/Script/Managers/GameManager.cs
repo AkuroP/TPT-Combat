@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject mmUI;
-    // [SerializeField] private Camera cameraFollow;
     
     [System.Serializable]
     public class SpellsAnim
@@ -64,11 +63,6 @@ public class GameManager : MonoBehaviour
         combat += (col, sprite) => CombatMode(col, sprite);
     }
 
-    private void Update()
-    {
-
-    }
-    
     public void HideMM()
     {
         mmUI.SetActive(false);
@@ -78,14 +72,4 @@ public class GameManager : MonoBehaviour
     {
         mmUI.SetActive(true);
     }
-
-    // public void OnEnableCamFollow()
-    // {
-    //     cameraFollow.enabled = true;
-    // }
-    //
-    // public void OnDisableCamFollow()
-    // {
-    //     cameraFollow.enabled = false;
-    // }
 }
