@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public List<SpellsAnim> allSpells = new List<SpellsAnim>();
     public Dictionary<string, GameObject> spells = new Dictionary<string, GameObject>();
 
+    public GameObject pauseMenu;
     
     private void AdventureMode(Collider2D col, SpriteRenderer sprite)
     {

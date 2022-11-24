@@ -147,6 +147,14 @@ public class PlayerBehaviour : MonoBehaviour
                 //dialogueUI.GetComponent<Dialog>().lines = currentDialog;
             }
         }
+        public void OnManageGame(InputAction.CallbackContext ctx)
+        {
+            if(ctx.performed)
+            {
+                if(GameManager.instance.pauseMenu.activeSelf)GameManager.instance.pauseMenu.SetActive(true);
+                else GameManager.instance.pauseMenu.SetActive(true);
+            }
+        }
 
 
     #endregion
@@ -173,5 +181,6 @@ public class PlayerBehaviour : MonoBehaviour
         (anim.GetFloat("Xinput") > 0 && anim.GetFloat("Yinput") < 0))return;
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["WalkOnGrass"], this.transform.position, AudioManager.instance.soundEffectMixer, true);
     }
+
 }
     
