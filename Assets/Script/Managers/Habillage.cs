@@ -13,6 +13,10 @@ public class Habillage : MonoBehaviour
 
     public BattleHUD playerHUD;
     public List<BattleHUD> mobsHUD = new List<BattleHUD>();
+
+    [Header("Boss")] 
+    public EntityData sousfifreData;
+    public Sprite sousfifreSprite;
     
     public static Habillage instance;
     private void Awake()
@@ -44,8 +48,24 @@ public class Habillage : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < ennemies.Count; i++)
         {
-            ennemies[i].GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
-            ennemies[i].GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+            if (Getmob.GetComponent<MobBehaviour>().isBoss)
+            {
+                ennemies[0].GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
+                ennemies[0].GetComponent<Shadow>().isBoss = Getmob.GetComponent<MobBehaviour>().isBoss;
+                ennemies[0].GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+                ennemies[0].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
+                
+                // ------- C'est la rue Francko --------- //
+                
+                ennemies[1].GetComponent<Shadow>().MyEntity = sousfifreData;
+                ennemies[1].GetComponent<Image>().sprite = sousfifreSprite;
+            }
+            else
+            {
+                ennemies[i].GetComponent<Shadow>().MyEntity = Getmob.GetComponent<MobBehaviour>().mobData;
+                ennemies[i].GetComponent<Image>().sprite = Getmob.GetComponent<SpriteRenderer>().sprite;
+            }
+            
         }
         
         

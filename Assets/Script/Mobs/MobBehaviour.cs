@@ -41,6 +41,7 @@ public class MobBehaviour : MonoBehaviour
     private float progress = 0.0f;
 
     public EntityData mobData;
+    public bool isBoss;
     
 
     private void Start()
@@ -78,6 +79,8 @@ public class MobBehaviour : MonoBehaviour
             
             case GameManager.GameState.Adventure :
                 speed = 6f;
+                if (isBoss)
+                    speed = 0;
                 GameManager.instance.adventure.Invoke(col,sprite);
                 break;
         }
