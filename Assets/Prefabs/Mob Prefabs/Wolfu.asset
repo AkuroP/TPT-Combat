@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Wolfu
   m_EditorClassIdentifier: 
-  _Name: Akuro
+  _Name: Wolf
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   _anEnemy: 1
+  _expValue: 0
   _hp: 332
   _atk: 5
   _sAtk: 4
   _def: 45
   _sDef: 6
   _speed: 67
+  _lvl: 0
+  _exp: 0
   _burned: 0
   _frozen: 0
   _paralyzed: 0

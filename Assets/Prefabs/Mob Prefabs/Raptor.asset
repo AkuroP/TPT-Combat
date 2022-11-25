@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Raptor
   m_EditorClassIdentifier: 
-  _Name: Red
+  _Name: Raptor
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
@@ -24,6 +24,8 @@ MonoBehaviour:
   _def: 3
   _sDef: 1
   _speed: 1
+  _lvl: 0
+  _exp: 0
   _burned: 0
   _frozen: 0
   _paralyzed: 0

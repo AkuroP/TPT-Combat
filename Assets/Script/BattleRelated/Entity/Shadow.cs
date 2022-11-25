@@ -250,10 +250,10 @@ public class Shadow : MonoBehaviour
         AudioManager.instance.DestroyOST();
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], GameObject.FindWithTag("Player").transform.position, AudioManager.instance.ostMixer, false);
         BO.Shadows.Clear();
+        GameManager.instance.ShowMM();
 
         yield return new WaitForSeconds(1.2f);
         
-        GameManager.instance.ShowMM();
         Habillage.instance.Getmob = null;
         
         transition.SetActive(false);
