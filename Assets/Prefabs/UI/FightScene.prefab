@@ -5401,8 +5401,8 @@ MonoBehaviour:
   spellSelected: {fileID: 0}
   ListOfSpells: []
   BO: {fileID: 0}
-  mobsHealthHUD: {fileID: 0}
-  playerHealthHUD: {fileID: 0}
+  mobsHealthHUD: {fileID: 3355723283165217666}
+  playerHealthHUD: {fileID: 3355723283115219019}
   mobsInLife: []
   transition: {fileID: 0}
   anEnemy: 0
