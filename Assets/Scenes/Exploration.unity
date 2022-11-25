@@ -31925,6 +31925,10 @@ MonoBehaviour:
     spell: {fileID: 5016673612181300468, guid: 371d1e8e3fa3a094cb79a6c62781f6e8, type: 3}
   - spellName: Morsure
     spell: {fileID: 5016673612181300468, guid: f6d6ca23afc9623469ce1fb9581e2583, type: 3}
+  - spellName: Griffe
+    spell: {fileID: 5016673612181300468, guid: 68cd51a1c9a6c164090749e70dee280f, type: 3}
+  - spellName: Tom
+    spell: {fileID: 5016673612181300468, guid: 4e2e0e28287320f42bc27e652cc7e7f1, type: 3}
   pauseMenu: {fileID: 1756267017}
   habillage: {fileID: 53128367}
   fightScene: {fileID: 1557069705}
@@ -32029,6 +32033,10 @@ MonoBehaviour:
     audio: {fileID: 8300000, guid: 9a93de88a41cb4948a09152c0f017d05, type: 3}
   - audioName: Morsure
     audio: {fileID: 8300000, guid: ae4d85ff4d1a1814fa95076e90908fcc, type: 3}
+  - audioName: Griffe
+    audio: {fileID: 8300000, guid: b60c3933a595957498bc5e52fecdf039, type: 3}
+  - audioName: Tom
+    audio: {fileID: 8300000, guid: 14727286401a6ab47a076f7e278054d1, type: 3}
 --- !u!1 &923169718
 GameObject:
   m_ObjectHideFlags: 0
