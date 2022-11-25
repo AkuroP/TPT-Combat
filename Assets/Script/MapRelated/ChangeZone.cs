@@ -8,7 +8,6 @@ public class ChangeZone : MonoBehaviour
 
     public GameObject actualZone;
     public GameObject nextZone;
-    [SerializeField]private int nextZoneID;
     public void GoToZone()
     {
         if(actualZone == null || nextZone == null)return;
