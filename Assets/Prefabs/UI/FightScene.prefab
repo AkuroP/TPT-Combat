@@ -6969,7 +6969,7 @@ GameObject:
   - component: {fileID: 981218240430861308}
   - component: {fileID: 6563787628256253014}
   m_Layer: 5
-  m_Name: Intro
+  m_Name: IntroFightPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

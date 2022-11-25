@@ -20443,6 +20443,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1557069705}
     - target: {fileID: 8515239629641031362, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
+      propertyPath: DialogueCombat
+      value: 
+      objectReference: {fileID: 131258052}
+    - target: {fileID: 8515239629641031362, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
+      propertyPath: introFightPanel
+      value: 
+      objectReference: {fileID: 131258051}
+    - target: {fileID: 8515239629641031362, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
       propertyPath: ennemies.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -20815,6 +20823,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3355723282238303323, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3355723282314314044, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -20991,6 +21003,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 958137125}
+    - target: {fileID: 7377236831141068474, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8521082702639930627, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
       propertyPath: m_text
       value: Enemy
@@ -21009,6 +21025,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+--- !u!1 &131258051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4945520060725725676, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+  m_PrefabInstance: {fileID: 131258050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &131258052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3355723282031452803, guid: dcee30bf84f6d5e4aa6fcf65019e5441, type: 3}
+  m_PrefabInstance: {fileID: 131258050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &149963051
 PrefabInstance:
   m_ObjectHideFlags: 0

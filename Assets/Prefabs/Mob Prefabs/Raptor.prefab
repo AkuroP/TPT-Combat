@@ -135,11 +135,12 @@ MonoBehaviour:
   Huntspeed: 0
   speed: 4
   player: {fileID: 0}
-  animator: {fileID: 0}
+  transitionAnim: {fileID: 0}
   fightScene: {fileID: 0}
   transitionObject: {fileID: 0}
   radius: 2
   mobData: {fileID: 11400000, guid: 11fa65bc90f065249b1e36966638e76d, type: 2}
+  isBoss: 0
 --- !u!50 &3877765897357171867
 Rigidbody2D:
   serializedVersion: 4

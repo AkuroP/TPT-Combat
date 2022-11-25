@@ -10,6 +10,8 @@ public class Habillage : MonoBehaviour
     public GameObject Getmob;
     public GameObject GetPlayer;
     public GameObject figthScene;
+    public GameObject DialogueCombat;
+    public GameObject introFightPanel;
 
     public BattleHUD playerHUD;
     public List<BattleHUD> mobsHUD = new List<BattleHUD>();
@@ -39,6 +41,8 @@ public class Habillage : MonoBehaviour
             {
                 ennemies[i].SetActive(true);
             }
+            DialogueCombat.SetActive(true);
+            introFightPanel.SetActive(true);
             figthScene.SetActive(false);
             this.gameObject.SetActive(false);
         }
