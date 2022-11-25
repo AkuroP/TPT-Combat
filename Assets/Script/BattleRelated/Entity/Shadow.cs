@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public class Shadow : MonoBehaviour
 {
 
-    
+    public PlayerBehaviour playerBehaviour;
     
     public SpellsData spellSelected;
 
@@ -72,6 +72,7 @@ public class Shadow : MonoBehaviour
 
     private void Start()
     {
+        playerBehaviour = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
         _onSelection = GetComponent<OnSelection>();
         lvl = 1;
         maxExp = 100;
@@ -146,8 +147,13 @@ public class Shadow : MonoBehaviour
         entityData = null;
         _Name = null;
 
-        maxhp = 0; CurrentHp = 0;        atk =  0;        sAtk = 0;
-        def =  0;        sDef =  0;        speed =  0;
+        maxhp = 0;
+        CurrentHp = 0;
+        atk =  0;
+        sAtk = 0;
+        def =  0;
+        sDef =  0;
+        speed =  0;
         
         burned = false;
         frozen = false;
@@ -226,6 +232,9 @@ public class Shadow : MonoBehaviour
 
     IEnumerator Victory()
     {
+        Debug.Log("oi");
+        playerBehaviour.SwitchActionMap("Player");
+        
         transition.SetActive(true);
         Destroy(Habillage.instance.Getmob.gameObject);
         
@@ -247,6 +256,7 @@ public class Shadow : MonoBehaviour
         Habillage.instance.Getmob = null;
         
         transition.SetActive(false);
+
     }
 
     public void IsAnEnemy()

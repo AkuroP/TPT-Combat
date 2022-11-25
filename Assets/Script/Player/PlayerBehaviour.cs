@@ -160,9 +160,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void SwitchActionMap(string am)
     {
+        playerInput.SwitchCurrentActionMap(am);
+        Debug.Log("switch to " + am);
         if (GameManager.instance.gameState == GameManager.GameState.Adventure)
         {
-            playerInput.SwitchCurrentActionMap(am);
         }
     }
 

@@ -15,6 +15,7 @@ public class MobBehaviour : MonoBehaviour
     private float saveSpeed;
     private Vector2 mobDir;
     public GameObject player;
+    PlayerBehaviour playerBehaviour;
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private SpriteRenderer sprite;
@@ -47,7 +48,8 @@ public class MobBehaviour : MonoBehaviour
     {
         transitionAnim = transitionObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
-        
+        playerBehaviour = player.GetComponent<PlayerBehaviour>();
+
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -195,6 +197,8 @@ public class MobBehaviour : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
         transitionObject.SetActive(false);
+
+        playerBehaviour.SwitchActionMap("UI");
 
         
     }

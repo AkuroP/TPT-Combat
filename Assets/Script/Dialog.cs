@@ -74,6 +74,7 @@ public class Dialog : MonoBehaviour
 
     void OnDisable()
     {
+        if(GameManager.instance.gameState == GameManager.GameState.Combat) return;
         player.SwitchActionMap("Player");
     }
 }
