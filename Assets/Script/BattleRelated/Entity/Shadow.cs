@@ -266,9 +266,14 @@ public class Shadow : MonoBehaviour
         {
             EntitySelected = GameObject.FindGameObjectWithTag("PlayerStation").GetComponent<Shadow>();
 
-            int randAtk = Random.Range(0, ListOfSpells.Count);
-            spellSelected = ListOfSpells[randAtk];
+            RandomAtkBoss();
         }
+    }
+
+    private void RandomAtkBoss()
+    {
+        int randAtk = Random.Range(0, ListOfSpells.Count);
+        spellSelected = ListOfSpells[randAtk];
     }
     
     public void Attack()
@@ -313,6 +318,8 @@ public class Shadow : MonoBehaviour
         mana -= spellSelected._manaCost;
         if (anEnemy)
             playerHealthHUD.SetMana(mana);
+        if(isBoss)
+            RandomAtkBoss();
         EntitySelected.currentHP -= (int)damageFormule;
         AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
         GameObject vfx = Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
