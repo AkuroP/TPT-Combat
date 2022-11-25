@@ -249,7 +249,8 @@ public class Shadow : MonoBehaviour
         
         AudioManager.instance.DestroyOST();
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], GameObject.FindWithTag("Player").transform.position, AudioManager.instance.ostMixer, false);
-        
+        BO.Shadows.Clear();
+
         yield return new WaitForSeconds(1.2f);
         
         GameManager.instance.ShowMM();
