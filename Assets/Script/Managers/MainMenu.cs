@@ -23,4 +23,11 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(sceneName);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    
 }

@@ -24,6 +24,7 @@ public class Shadow : MonoBehaviour
     public BattleHUD playerHUD;
     public List<GameObject> mobsInLife = new List<GameObject>();
     public GameObject transition;
+    public GameObject gameOverUI;
     [Header("Type de personnage")]
     public bool anEnemy;
     public bool isBoss;
@@ -192,7 +193,7 @@ public class Shadow : MonoBehaviour
 
         if (currentHP <= -0.1f && !anEnemy)
         {
-            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name)ed;
+            gameOverUI.SetActive(true);
         }
         else if (currentHP <= -0.1f && anEnemy && !done)
         {
