@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class NPCdetection : MonoBehaviour, IInteract
 {
-    PlayerBehaviour player;
+    public PlayerBehaviour player;
 
     public List<string> Dialogue;
+
+    private void OnEnable()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {

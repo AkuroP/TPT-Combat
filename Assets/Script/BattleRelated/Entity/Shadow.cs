@@ -39,6 +39,7 @@ public class Shadow : MonoBehaviour
     public int sDef;
     public int speed;
     public int mana;
+    public int manaMax;
 
     public int lvl;
     public int maxExp;
@@ -75,6 +76,8 @@ public class Shadow : MonoBehaviour
         lvl = 1;
         maxExp = 100;
         done = false;
+        manaMax = 1000;
+        mana = manaMax;
     }
    
     void OnEnable()
@@ -101,7 +104,7 @@ public class Shadow : MonoBehaviour
         else
         {
             transition.SetActive(false);
-            mana = 1000;
+            mana = manaMax;
         }
 
 
@@ -153,7 +156,6 @@ public class Shadow : MonoBehaviour
     }
     
 
-    // Update is called once per frame
     void Update()
     {
         // Systeme de lvl 
@@ -164,7 +166,6 @@ public class Shadow : MonoBehaviour
             maxExp *= 2;
             Debug.Log("Montée au level : " + lvl);
         }
-        //
 
         if(EntitySelected != null)
             damageFormule = spellSelected._power * atk / EntitySelected.def;
@@ -181,7 +182,7 @@ public class Shadow : MonoBehaviour
 
         if (currentHP <= -0.1f && !anEnemy)
         {
-            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name)ed;
         }
         else if (currentHP <= -0.1f && anEnemy && !done)
         {
@@ -192,7 +193,6 @@ public class Shadow : MonoBehaviour
                 EntitySelected?.KilledOpponent(this.gameObject);
                 done = false;
             }
-            
         }
 
         if (!anEnemy)
@@ -300,10 +300,13 @@ public class Shadow : MonoBehaviour
     {
         // Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
+        if (anEnemy)
+            playerHealthHUD.SetMana(mana);
         EntitySelected.currentHP -= (int)damageFormule;
         AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
-        Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
-
+        GameObject vfx = Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
+        vfx.transform.SetParent(vfx.GetComponentInParent<BattleOrderManager>().transform);
+        vfx.transform.SetAsFirstSibling();
         if (!anEnemy)
         {
             EntitySelected.mobsHealthHUD.SetHP(EntitySelected.currentHP);
@@ -331,6 +334,7 @@ public class Shadow : MonoBehaviour
         {
             opponent.SetActive(false);
             mobsInLife.Remove(opponent);
+            playerHealthHUD.SetXP(exp);
         }
         
     }

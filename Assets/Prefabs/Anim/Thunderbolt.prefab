@@ -110,3 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f400a10be9737fa48849596342765071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animDestroy: 1

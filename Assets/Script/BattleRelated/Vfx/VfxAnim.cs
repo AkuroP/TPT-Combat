@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class VfxAnim : MonoBehaviour
 {
+    public bool animDestroy;
     
     public void AnimEndDestroy()
     {
+        if(!animDestroy)return;
         Destroy(this.gameObject);
     }
 }
