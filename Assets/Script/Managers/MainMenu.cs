@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame(string sceneName)
     {
         GameObject fade = Instantiate(fadeIn);
+        //Debug.Log(fade.GetComponent<Animator>().runtimeAnimatorController.animationClips[1].length);
         StartCoroutine(WaitForFade(fade.GetComponent<Animator>().runtimeAnimatorController.animationClips[1].length, sceneName));
     }
     public void LoadGame(string sceneName)
