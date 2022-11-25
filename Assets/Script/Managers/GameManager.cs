@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject mmUI;
     
+    
     [System.Serializable]
     public class SpellsAnim
     {
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     public PlayerSavedStats playerSavedStats = new PlayerSavedStats(new Vector2(-0.6f,-23.5f));
     public List<GameObject> allZone;
 
+    
     
     private void AdventureMode(Collider2D col, SpriteRenderer sprite)
     {
@@ -95,6 +97,8 @@ public class GameManager : MonoBehaviour
     {
         mmUI.SetActive(true);
     }
+
+    
 
     // public void OnEnableCamFollow()
     // {

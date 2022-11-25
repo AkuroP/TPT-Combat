@@ -431,7 +431,7 @@ MonoBehaviour:
   Huntspeed: 2
   speed: 2
   player: {fileID: 1417083351}
-  animator: {fileID: 1856328728}
+  transitionAnim: {fileID: 0}
   fightScene: {fileID: 1153941115}
   transitionObject: {fileID: 1856328727}
   radius: 4
@@ -845,6 +845,14 @@ MonoBehaviour:
   - spellName: Griffe
     spell: {fileID: 5016673612181300468, guid: 68cd51a1c9a6c164090749e70dee280f, type: 3}
   pauseMenu: {fileID: 0}
+  playerSavedStats:
+    playerSavedPos: {x: -0.6, y: -23.5}
+    playerActualZone: 0
+    hp: 0
+    mana: 0
+    lvl: 0
+    exp: 0
+  allZone: []
 --- !u!4 &1697121499
 Transform:
   m_ObjectHideFlags: 0

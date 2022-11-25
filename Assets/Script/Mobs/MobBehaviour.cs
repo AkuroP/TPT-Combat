@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MobBehaviour : MonoBehaviour
 {
-    public GameObject habillage;
+    private GetInactiveObject _getInactiveObject = new GetInactiveObject();
+    [HideInInspector]public GameObject habillage;
     [SerializeField] private float mobRadius;
     [SerializeField]private float mobDistance;
     [SerializeField] private LayerMask targetLayer;
@@ -20,9 +21,9 @@ public class MobBehaviour : MonoBehaviour
 
     private bool isHunting;
     private Vector2 mov;
-    public Animator animator;
-    public GameObject fightScene;
-    public GameObject transitionObject;
+    public Animator transitionAnim;
+    [HideInInspector]public GameObject fightScene;
+    [HideInInspector]public GameObject transitionObject;
     
     public float radius  = 40.0f;
 
@@ -44,6 +45,7 @@ public class MobBehaviour : MonoBehaviour
 
     private void Start()
     {
+        transitionAnim = transitionObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         
         rb = GetComponent<Rigidbody2D>();
@@ -144,6 +146,9 @@ public class MobBehaviour : MonoBehaviour
             print("DUEL");
             col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
+            habillage = _getInactiveObject.GetObjectByTag<GameObject>("Habillage");
+            fightScene = _getInactiveObject.GetObjectByTag<GameObject>("FightScene");
+            transitionObject = _getInactiveObject.GetObjectByTag<GameObject>("Transition");
             transitionObject.SetActive(true);
             // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());
@@ -162,7 +167,7 @@ public class MobBehaviour : MonoBehaviour
         GameManager.instance.HideMM();
         yield return new WaitForSeconds(0.5f);
         //End Animation transition
-        animator.SetTrigger("Transition");
+        transitionAnim.SetTrigger("Transition");
 
         AudioManager.instance.DestroyOST();
         int randomBattleOST = Random.Range(0,3);

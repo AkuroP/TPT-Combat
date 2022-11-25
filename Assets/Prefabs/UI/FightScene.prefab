@@ -3871,7 +3871,7 @@ GameObject:
   - component: {fileID: 3355723281351255143}
   m_Layer: 5
   m_Name: FightScene
-  m_TagString: Untagged
+  m_TagString: FightScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4339,7 +4339,9 @@ MonoBehaviour:
   speed: 0
   mana: 0
   lvl: 0
+  maxExp: 0
   exp: 0
+  done: 0
   damageFormule: 0
   damages: 0
   burned: 0
@@ -5173,7 +5175,9 @@ MonoBehaviour:
   speed: 0
   mana: 1000
   lvl: 0
+  maxExp: 0
   exp: 0
+  done: 0
   damageFormule: 0
   damages: 0
   burned: 0
@@ -7007,7 +7011,9 @@ MonoBehaviour:
   speed: 0
   mana: 0
   lvl: 0
+  maxExp: 0
   exp: 0
+  done: 0
   damageFormule: 0
   damages: 0
   burned: 0

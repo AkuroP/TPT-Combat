@@ -11,6 +11,9 @@ using Random = UnityEngine.Random;
 
 public class Shadow : MonoBehaviour
 {
+
+    
+    
     public SpellsData spellSelected;
 
     public List<SpellsData> ListOfSpells;
@@ -184,9 +187,9 @@ public class Shadow : MonoBehaviour
         {
             if (EntitySelected != null) EntitySelected.EntitySelected = null;
             {
-            EntitySelected.exp += MyEntity._expValue;
+                EntitySelected.exp += MyEntity._expValue;
                 Debug.Log(EntitySelected.exp);
-            EntitySelected?.KilledOpponent(this.gameObject);
+                EntitySelected?.KilledOpponent(this.gameObject);
                 done = false;
             }
             
