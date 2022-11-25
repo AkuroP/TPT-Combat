@@ -8,9 +8,12 @@ public class NPCdetection : MonoBehaviour, IInteract
 
     public List<string> Dialogue;
 
+    public GameObject UItalk;
+
     private void OnEnable()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
+        UItalk.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -21,6 +24,7 @@ public class NPCdetection : MonoBehaviour, IInteract
                 player = col.GetComponent<PlayerBehaviour>();
             player.canTalk = true;
             player.triggeredGO = this.gameObject;
+            UItalk.SetActive(true);
         }
     }
 
@@ -30,12 +34,14 @@ public class NPCdetection : MonoBehaviour, IInteract
         {
             player.canTalk = false;
             player.triggeredGO = null;
+            UItalk.SetActive(false);
         }
     }
 
     public void Interact()
     {
         Talk();
+        UItalk.SetActive(false);
     }
 
     private void Talk()
