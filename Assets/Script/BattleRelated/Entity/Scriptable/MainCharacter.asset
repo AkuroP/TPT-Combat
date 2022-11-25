@@ -19,12 +19,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e94cba23f875a8044bca2694a02d3d9b, type: 2}
   - {fileID: 11400000, guid: 39ad443e9b0351144afc344421f0fdc9, type: 2}
   _anEnemy: 0
-  _hp: 250
-  _atk: 40
-  _sAtk: 0
-  _def: 25
-  _sDef: 0
-  _speed: 70
+  _expValue: 0
+  _hp: 400
+  _atk: 5
+  _sAtk: 2
+  _def: 4
+  _sDef: 3
+  _speed: 5
+  _lvl: 1
+  _exp: 0
   _burned: 0
   _frozen: 0
   _paralyzed: 0

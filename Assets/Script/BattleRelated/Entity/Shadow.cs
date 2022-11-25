@@ -265,8 +265,15 @@ public class Shadow : MonoBehaviour
         if (anEnemy)
         {
             EntitySelected = GameObject.FindGameObjectWithTag("PlayerStation").GetComponent<Shadow>();
+<<<<<<< Updated upstream
 
             RandomAtkBoss();
+=======
+            
+            int randAtk = Random.Range(0, ListOfSpells.Count);
+            spellSelected = ListOfSpells[randAtk];
+            
+>>>>>>> Stashed changes
         }
     }
 
@@ -332,7 +339,8 @@ public class Shadow : MonoBehaviour
         }
         else
         {
-            playerHealthHUD.SetHP(EntitySelected.currentHP); 
+            playerHealthHUD.SetHP(EntitySelected.currentHP);
+            print("touché");
         }
                
 

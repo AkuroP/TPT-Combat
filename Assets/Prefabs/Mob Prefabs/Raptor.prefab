@@ -132,8 +132,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  Huntspeed: 0
-  speed: 4
+  Huntspeed: 5
+  speed: 2
   player: {fileID: 0}
   transitionAnim: {fileID: 0}
   fightScene: {fileID: 0}

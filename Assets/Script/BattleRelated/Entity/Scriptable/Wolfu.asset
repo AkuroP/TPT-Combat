@@ -15,6 +15,7 @@ MonoBehaviour:
   _Name: Wolf
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
+  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   _anEnemy: 1
   _expValue: 0
   _hp: 332

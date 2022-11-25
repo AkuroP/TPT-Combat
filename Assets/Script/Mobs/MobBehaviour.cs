@@ -13,6 +13,7 @@ public class MobBehaviour : MonoBehaviour
     public float Huntspeed;
     public float speed = 6f;
     private float saveSpeed;
+    private float saveHuntSpeed;
     private Vector2 mobDir;
     public GameObject player;
     PlayerBehaviour playerBehaviour;
@@ -46,6 +47,8 @@ public class MobBehaviour : MonoBehaviour
 
     private void Start()
     {
+        saveSpeed = speed;
+        saveHuntSpeed = Huntspeed;
         transitionAnim = transitionObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         playerBehaviour = player.GetComponent<PlayerBehaviour>();
@@ -75,13 +78,14 @@ public class MobBehaviour : MonoBehaviour
             case GameManager.GameState.Combat :
 
                 speed = 0;
-                
+                Huntspeed = 0;
 
                 GameManager.instance.combat.Invoke(col,sprite);
                 break;
             
             case GameManager.GameState.Adventure :
-                speed = 6f;
+                speed = saveSpeed;
+                Huntspeed = saveHuntSpeed;
                 if (isBoss)
                     speed = 0;
                 GameManager.instance.adventure.Invoke(col,sprite);
