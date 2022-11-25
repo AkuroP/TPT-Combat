@@ -20416,7 +20416,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1766344269}
+    m_TransformParent: {fileID: 869053374}
     m_Modifications:
     - target: {fileID: 8515239629641031362, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
       propertyPath: ennemy
@@ -20464,7 +20464,7 @@ PrefabInstance:
       objectReference: {fileID: 992556461}
     - target: {fileID: 8515239629641031363, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8515239629641031363, guid: 11089e74cfd5fa640931949323f69d28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20608,10 +20608,6 @@ MonoBehaviour:
   mobToSpawn:
   - {fileID: 3877765897357171866, guid: 37aacceda37270a458cf8f43e75d95ff, type: 3}
   mobSpawned: []
-  mobFightUI:
-  - {fileID: 53128367}
-  - {fileID: 0}
-  - {fileID: 958137125}
 --- !u!1001 &131258050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31773,7 +31769,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1766344269}
+    m_TransformParent: {fileID: 869053374}
     m_Modifications:
     - target: {fileID: 338887611172070132, guid: d76470a920816eb4b9a83c65a85d0733, type: 3}
       propertyPath: m_Pivot.x
@@ -31785,7 +31781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 338887611172070132, guid: d76470a920816eb4b9a83c65a85d0733, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 338887611172070132, guid: d76470a920816eb4b9a83c65a85d0733, type: 3}
       propertyPath: m_AnchorMax.x
@@ -31930,6 +31926,9 @@ MonoBehaviour:
   - spellName: Morsure
     spell: {fileID: 5016673612181300468, guid: f6d6ca23afc9623469ce1fb9581e2583, type: 3}
   pauseMenu: {fileID: 1756267017}
+  habillage: {fileID: 53128367}
+  fightScene: {fileID: 1557069705}
+  transition: {fileID: 958137125}
   playerSavedStats:
     playerSavedPos: {x: -0.6, y: -23.5}
     playerActualZone: 0
@@ -31956,6 +31955,9 @@ Transform:
   - {fileID: 1145376658}
   - {fileID: 1134639908}
   - {fileID: 1557069706}
+  - {fileID: 847573505}
+  - {fileID: 958137126}
+  - {fileID: 53128366}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32218,7 +32220,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1766344269}
+    m_TransformParent: {fileID: 869053374}
     m_Modifications:
     - target: {fileID: 8216484315703358112, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_Name
@@ -32238,7 +32240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -32282,15 +32284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216484315703358123, guid: bd6013770f8dfc34f95fe0a5ce6716e9, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -32503,10 +32505,6 @@ MonoBehaviour:
   - {fileID: 3877765897357171866, guid: 85aa81353c4d5a643abca38b81ac2450, type: 3}
   - {fileID: 3877765897357171866, guid: 85aa81353c4d5a643abca38b81ac2450, type: 3}
   mobSpawned: []
-  mobFightUI:
-  - {fileID: 53128367}
-  - {fileID: 1557069705}
-  - {fileID: 958137125}
 --- !u!1 &1015144221
 GameObject:
   m_ObjectHideFlags: 0
@@ -33107,10 +33105,6 @@ MonoBehaviour:
   mobToSpawn:
   - {fileID: 3877765897357171866, guid: 85aa81353c4d5a643abca38b81ac2450, type: 3}
   mobSpawned: []
-  mobFightUI:
-  - {fileID: 53128367}
-  - {fileID: 1557069705}
-  - {fileID: 958137125}
 --- !u!1 &1323310724
 GameObject:
   m_ObjectHideFlags: 0
@@ -115595,7 +115589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1766344269
 Transform:
   m_ObjectHideFlags: 0
@@ -115607,10 +115601,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 847573505}
-  - {fileID: 958137126}
-  - {fileID: 53128366}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118311,10 +118302,6 @@ MonoBehaviour:
   mobToSpawn:
   - {fileID: 3877765897357171866, guid: 85aa81353c4d5a643abca38b81ac2450, type: 3}
   mobSpawned: []
-  mobFightUI:
-  - {fileID: 53128367}
-  - {fileID: 0}
-  - {fileID: 958137125}
 --- !u!1 &2094044499
 GameObject:
   m_ObjectHideFlags: 0

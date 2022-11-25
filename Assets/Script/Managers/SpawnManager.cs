@@ -7,8 +7,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject[] mobToSpawn;
     [SerializeField] private List<GameObject> mobSpawned;
-    
-    [SerializeField] private GameObject[] mobFightUI = new GameObject[3];
+
     private void OnEnable()
     {
         //dispawn spawned mob if exist
@@ -17,16 +16,15 @@ public class SpawnManager : MonoBehaviour
             Destroy(mob);
         }
         mobSpawned.Clear();
-
         //spawn mob
         for(int i = 0; i < mobToSpawn.Length; i++)
         {
             GameObject tempMob = Instantiate(mobToSpawn[i], this.transform);
             MobBehaviour mobBehaviour = tempMob.GetComponent<MobBehaviour>();
-            mobBehaviour.habillage = mobFightUI[0];
-            //mobBehaviour.fightScene = mobFightUI[1];
-            mobBehaviour.transitionObject = mobFightUI[2];
-            mobBehaviour.transitionAnim = mobFightUI[2].GetComponent<Animator>();
+            mobBehaviour.habillage = GameManager.instance.habillage;
+            mobBehaviour.fightScene = GameManager.instance.fightScene;
+            mobBehaviour.transitionObject = GameManager.instance.transition;
+            mobBehaviour.transitionAnim = GameManager.instance.transition.GetComponent<Animator>();
             mobSpawned.Add(tempMob);
         }
         

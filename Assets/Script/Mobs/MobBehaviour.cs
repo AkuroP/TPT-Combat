@@ -146,8 +146,11 @@ public class MobBehaviour : MonoBehaviour
             print("DUEL");
             col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
+            transitionObject.SetActive(true);
+
             
             transitionObject.SetActive(true);
+
             // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());
         }
