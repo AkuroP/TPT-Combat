@@ -306,7 +306,7 @@ public class Shadow : MonoBehaviour
         AudioSource sfx = AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio[spellSelected._name], EntitySelected.transform.position, AudioManager.instance.soundEffectMixer, true);
         GameObject vfx = Instantiate(GameManager.instance.spells[spellSelected._name], EntitySelected.transform);
         vfx.transform.SetParent(vfx.GetComponentInParent<BattleOrderManager>().transform);
-        vfx.transform.SetAsFirstSibling();
+        vfx.transform.SetAsLastSibling();
         if (!anEnemy)
         {
             EntitySelected.mobsHealthHUD.SetHP(EntitySelected.currentHP);
