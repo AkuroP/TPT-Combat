@@ -9,6 +9,7 @@ public class SaveController : MonoBehaviour
 
     public PlayerBehaviour player;
     public Shadow playerStation;
+    public static bool menuLoading;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class SaveController : MonoBehaviour
     }
     private void OnEnable()
     {
+        if(GameObject.FindWithTag("Player") == null)return;
         player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
     }
     //public Text txtGameName;

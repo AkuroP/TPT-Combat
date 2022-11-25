@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public GameObject habillage;
     public GameObject fightScene;
     public GameObject transition;
+    public GameObject dialogueUI;
 
     
     [System.Serializable]
@@ -88,10 +89,28 @@ public class GameManager : MonoBehaviour
         {
             spells[ui.spellName] = ui.spell;
         }
+
+        //FADE OUT
+        GameObject fade = Instantiate(transition);
+        fade.SetActive(true);
+        Canvas canvas = fade.GetComponent<Canvas>();
+        VfxAnim anim = fade.GetComponent<VfxAnim>();
+        Animator animator = fade.GetComponent<Animator>();
+        canvas.enabled = true;
+        anim.animDestroy = true;
+        animator.enabled = true;
+        animator.SetTrigger("Transition");
     }
 
     private void Start()
     {
+        //load save if button load was pressed
+        if(SaveController.menuLoading)
+        {
+            SaveController menuload = this.GetComponentInChildren<SaveController>(true);
+            menuload.OnLoad();
+            SaveController.menuLoading = false;
+        }
         SetPlayerMap();
     }
     public void HideMM()

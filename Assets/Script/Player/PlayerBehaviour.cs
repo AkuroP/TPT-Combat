@@ -48,7 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider2D>();
         playerInput = GetComponent<PlayerInput>();
-
+        dialogueUI = GameManager.instance.dialogueUI;
         speedSave = moveSpeed;
 
         AudioManager.instance.PlayClipAt(AudioManager.instance.allAudio["exploration"], this.transform.position, AudioManager.instance.ostMixer, false);
@@ -127,8 +127,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (ctx.performed && canTalk)
             {
-                
+                if(triggeredGO == null) return;
                 var interaction = triggeredGO.GetComponent<IInteract>();
+                Debug.Log(interaction);
                 if(interaction == null)
                 {
                     Debug.Log(":'(");

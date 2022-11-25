@@ -31921,6 +31921,7 @@ MonoBehaviour:
   habillage: {fileID: 53128367}
   fightScene: {fileID: 1557069705}
   transition: {fileID: 958137125}
+  dialogueUI: {fileID: 847573506}
   playerSavedStats:
     playerSavedPos: {x: -0.6, y: -23.5}
     playerActualZone: 0
@@ -118955,7 +118956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b9aef2f87ef748809df8da58ddae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNeeded: 1
+  levelNeeded: 3
   entity: {fileID: 11400000, guid: 00635e523f8458642ae15d64f0fad574, type: 2}
   player: {fileID: 149963056}
 --- !u!1 &2140678144
