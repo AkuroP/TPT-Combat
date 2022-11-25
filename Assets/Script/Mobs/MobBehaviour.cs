@@ -6,7 +6,7 @@ using UnityEngine;
 public class MobBehaviour : MonoBehaviour
 {
     private GetInactiveObject _getInactiveObject = new GetInactiveObject();
-    [HideInInspector]public GameObject habillage;
+    public GameObject habillage;
     [SerializeField] private float mobRadius;
     [SerializeField]private float mobDistance;
     [SerializeField] private LayerMask targetLayer;
@@ -22,8 +22,8 @@ public class MobBehaviour : MonoBehaviour
     private bool isHunting;
     private Vector2 mov;
     public Animator transitionAnim;
-    [HideInInspector]public GameObject fightScene;
-    [HideInInspector]public GameObject transitionObject;
+    public GameObject fightScene;
+    public GameObject transitionObject;
     
     public float radius  = 40.0f;
 
@@ -146,9 +146,7 @@ public class MobBehaviour : MonoBehaviour
             print("DUEL");
             col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
-            habillage = _getInactiveObject.GetObjectByTag<GameObject>("Habillage");
-            fightScene = _getInactiveObject.GetObjectByTag<GameObject>("FightScene");
-            transitionObject = _getInactiveObject.GetObjectByTag<GameObject>("Transition");
+            
             transitionObject.SetActive(true);
             // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());

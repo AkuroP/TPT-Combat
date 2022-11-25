@@ -9,10 +9,7 @@ TagManager:
   - PlayerStation
   - ChangeZone
   - MobStation
-  - FightScene
-  - Transition
   - GM
-  
   layers:
   - Default
   - TransparentFX

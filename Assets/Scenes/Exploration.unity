@@ -21308,7 +21308,7 @@ MonoBehaviour:
   Huntspeed: 0
   speed: 4
   player: {fileID: 149963052}
-  animator: {fileID: 0}
+  transitionAnim: {fileID: 0}
   fightScene: {fileID: 0}
   transitionObject: {fileID: 0}
   radius: 2
