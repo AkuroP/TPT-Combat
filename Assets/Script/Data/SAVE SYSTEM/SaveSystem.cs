@@ -23,9 +23,9 @@ public static class SaveSystem
     }
 
     #region GAME
-    public static void SaveGameData()
+    public static void SaveGameData(int lvl, int exp, float posX, float posY, int hp, int mana, int zone)
     {
-        SaveData.GameData saveGame = new SaveData.GameData(/*Player parametre*/333, 666, 0, 1, 100, 64, 93);
+        SaveData.GameData saveGame = new SaveData.GameData(lvl, exp, posX, posY, hp, mana, zone);
         SaveData data = new SaveData(saveGame, LoadSettingData());
 
         string path = Application.persistentDataPath + "/Game.save";

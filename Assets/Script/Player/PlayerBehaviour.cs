@@ -37,8 +37,6 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canTalk;
     public GameObject dialogueUI;
     public List<string> currentDialog;
-
-    public int playerLvl;
     
     public GameObject triggeredGO;
 
@@ -58,6 +56,11 @@ public class PlayerBehaviour : MonoBehaviour
         particlesTimer = 0;
 
         dialogueUI.SetActive(false);
+
+        //load
+        this.transform.position = GameManager.instance.playerSavedStats.playerSavedPos;
+        GameManager.instance.AddMode();
+        
     }
 
 
@@ -138,8 +141,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if(ctx.performed)
             {
-                if(GameManager.instance.pauseMenu.activeSelf)GameManager.instance.pauseMenu.SetActive(true);
-                else GameManager.instance.pauseMenu.SetActive(true);
+                if(GameManager.instance.pauseMenu.activeSelf)
+                {
+                    GameManager.instance.pauseMenu.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    GameManager.instance.pauseMenu.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
 

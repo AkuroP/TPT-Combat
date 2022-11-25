@@ -10,19 +10,21 @@ public class EntityData : ScriptableObject
     [Header("Attaques")]
     public List<SpellsData> _ListOfSpells;
 
-    [Header("Type d'entit�")]
+    [Header("Type d'entite")]
     public bool _anEnemy;
     public int _expValue;
 
-    [Header("Stats de l'entit�")]
+    [Header("Stats de l'entite")]
     public int _hp;
     public int _atk;
     public int _sAtk;
     public int _def;
     public int _sDef;
     public int _speed;
+    public int _lvl;
+    public int _exp;
 
-    [Header("StatusAppliqu�s")]
+    [Header("StatusAppliques")]
     public bool _burned;
     public bool _frozen;
     public bool _paralyzed;

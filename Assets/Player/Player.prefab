@@ -260,6 +260,10 @@ MonoBehaviour:
   runParticles: {fileID: 6782669260752862290}
   particlesTimerMax: 0.3
   canTalk: 0
+  dialogueUI: {fileID: 0}
+  currentDialog: []
+  playerSavedPos: {x: -0.6, y: -23.5}
+  triggeredGO: {fileID: 0}
 --- !u!95 &7055361948115525600
 Animator:
   serializedVersion: 4

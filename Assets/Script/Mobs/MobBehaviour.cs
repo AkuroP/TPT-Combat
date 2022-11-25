@@ -56,6 +56,7 @@ public class MobBehaviour : MonoBehaviour
         progress = 0.0f;
 
         saveSpeed = speed;
+        fightScene = GameManager.instance.GetComponentInChildren<BattleOrderManager>(true).gameObject;
 
         PickNewRandomDestination();
 

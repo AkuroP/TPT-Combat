@@ -81,7 +81,7 @@ public class Shadow : MonoBehaviour
             mobsInLife.AddRange(GameObject.FindGameObjectsWithTag("MobStation"));
         }
         
-        StartCoroutine(InitEntity());
+        StartCoroutine(InitEntity(1f));
     }
     
     
@@ -105,12 +105,11 @@ public class Shadow : MonoBehaviour
 
     }
 
-
-    IEnumerator InitEntity()
+    public IEnumerator InitEntity(float waitSecond)
     {
         
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(waitSecond);
         
         _Name = MyEntity._Name;
         maxHP = MyEntity._hp;

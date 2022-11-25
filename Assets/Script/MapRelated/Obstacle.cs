@@ -7,13 +7,27 @@ public class Obstacle : MonoBehaviour, IInteract
 {
     [SerializeField] private int levelNeeded;
     private Collider2D obstacleColl;
-    private PlayerBehaviour player;
+    [SerializeField] private EntityData entity;
+    private Shadow playerStation;
+    public PlayerBehaviour player;
 
     private void OnEnable()
     {
         obstacleColl = this.GetComponent<Collider2D>();
-        PlayerBehaviour player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
-        if(player.playerLvl >= levelNeeded)OpenLimit(player.GetComponent<Collider2D>());
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerBehaviour>();
+        //playerStation = GameManager.instance.GetComponentInChildren<Shadow>();
+        
+        //if(playerStation.lvl >= levelNeeded)OpenLimit(player.GetComponent<Collider2D>());
+        Shadow[] stations = GameManager.instance.GetComponentsInChildren<Shadow>(true);
+        foreach(Shadow shadow in stations)
+        {
+            if(shadow.MyEntity == entity)
+            {
+                playerStation = shadow;
+                break;
+            }
+        }
+        if(playerStation.lvl >= levelNeeded)OpenLimit(player.GetComponent<Collider2D>());
     }
     private void OnCollisionEnter2D(Collision2D coll)
     {
@@ -38,7 +52,7 @@ public class Obstacle : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        if(player.playerLvl < levelNeeded)return;
+        if(playerStation.lvl < levelNeeded)return;
         Collider2D playerColl = player.GetComponent<Collider2D>();
         OpenLimit(playerColl);
     }
