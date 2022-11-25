@@ -12,6 +12,7 @@ public class Doors : MonoBehaviour, IInteract
     {
         if(!coll.collider.CompareTag("Player"))return;
         player = coll.gameObject.GetComponent<PlayerBehaviour>();
+        Interact();
     }
 
     public void Interact()
