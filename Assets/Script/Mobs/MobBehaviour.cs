@@ -146,10 +146,10 @@ public class MobBehaviour : MonoBehaviour
             print("DUEL");
             col.enabled = false;
             GameManager.instance.gameState = GameManager.GameState.Combat;
-            habillage = _getInactiveObject.GetObjectByTag<GameObject>("Habillage");
+            /*habillage = _getInactiveObject.GetObjectByTag<GameObject>("Habillage");
             fightScene = _getInactiveObject.GetObjectByTag<GameObject>("FightScene");
             transitionObject = _getInactiveObject.GetObjectByTag<GameObject>("Transition");
-            transitionObject.SetActive(true);
+            transitionObject.SetActive(true);*/
             // GameManager.instance.OnDisableCamFollow();
             StartCoroutine(Transition());
         }

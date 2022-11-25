@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Save & Load")]
     public GameObject pauseMenu;
+
+    [Header("Fight UI")]
+    public GameObject habillage;
+    public GameObject fightScene;
+    public GameObject transition;
+
     
     [System.Serializable]
     public class PlayerSavedStats
