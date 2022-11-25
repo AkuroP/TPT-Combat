@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class BattleHUD : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelTxt;
     public Slider hpSlider;
     public Slider manaSlider;
     public Slider xpSlider;
+    
 
     public void SetHUD(Shadow data)
     {
@@ -35,5 +37,10 @@ public class BattleHUD : MonoBehaviour
     public void SetXP(int xp)
     {
         xpSlider.value = xp;
+    }
+    
+    public void SetLevel(int lvl)
+    {
+        levelTxt.text = "Lv : " + lvl;
     }
 }

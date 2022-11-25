@@ -21,7 +21,7 @@ public class Shadow : MonoBehaviour
     private OnSelection _onSelection;
     public BattleOrderManager BO;
     public BattleHUD mobsHealthHUD;
-    public BattleHUD playerHealthHUD;
+    public BattleHUD playerHUD;
     public List<GameObject> mobsInLife = new List<GameObject>();
     public GameObject transition;
     [Header("Type de personnage")]
@@ -173,7 +173,11 @@ public class Shadow : MonoBehaviour
             Debug.Log("Montée au level : " + lvl);
         }
 
-        if(EntitySelected != null)
+        if (!anEnemy)
+            playerHUD.SetLevel(lvl);
+
+
+            if(EntitySelected != null)
             damageFormule = spellSelected._power * atk / EntitySelected.def;
         
         if (EntitySelected is not null && !anEnemy && EntitySelected.isBoss)
@@ -195,7 +199,6 @@ public class Shadow : MonoBehaviour
             if (EntitySelected != null) EntitySelected.EntitySelected = null;
             {
                 EntitySelected.exp += MyEntity._expValue;
-                Debug.Log(EntitySelected.exp);
                 EntitySelected?.KilledOpponent(this.gameObject);
                 done = false;
             }
@@ -317,8 +320,8 @@ public class Shadow : MonoBehaviour
     {
         // Debug.Log("Attaque r�ussie !, " + MyEntity._Name + " a inflig� " + damageFormule + " d�g�ts avec " + spellSelected._name );
         mana -= spellSelected._manaCost;
-        if (anEnemy)
-            playerHealthHUD.SetMana(mana);
+        if (!anEnemy)
+            playerHUD.SetMana(mana);
         if(isBoss)
             RandomAtkBoss();
         EntitySelected.currentHP -= (int)damageFormule;
@@ -333,7 +336,7 @@ public class Shadow : MonoBehaviour
         }
         else
         {
-            playerHealthHUD.SetHP(EntitySelected.currentHP);
+            playerHUD.SetHP(EntitySelected.currentHP);
             print("touché");
         }
                
@@ -354,7 +357,7 @@ public class Shadow : MonoBehaviour
         {
             opponent.SetActive(false);
             mobsInLife.Remove(opponent);
-            playerHealthHUD.SetXP(exp);
+            playerHUD.SetXP(exp);
         }
         
     }
