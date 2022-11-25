@@ -182,7 +182,7 @@ public class Shadow : MonoBehaviour
 
         if (currentHP <= -0.1f && !anEnemy)
         {
-            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            // Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name)ed;
         }
         else if (currentHP <= -0.1f && anEnemy && !done)
         {
