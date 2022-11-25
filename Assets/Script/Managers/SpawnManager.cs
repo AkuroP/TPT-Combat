@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
             GameObject tempMob = Instantiate(mobToSpawn[i], this.transform);
             MobBehaviour mobBehaviour = tempMob.GetComponent<MobBehaviour>();
             mobBehaviour.habillage = mobFightUI[0];
-            mobBehaviour.fightScene = mobFightUI[1];
+            //mobBehaviour.fightScene = mobFightUI[1];
             mobBehaviour.transitionObject = mobFightUI[2];
             mobBehaviour.transitionAnim = mobFightUI[2].GetComponent<Animator>();
             mobSpawned.Add(tempMob);

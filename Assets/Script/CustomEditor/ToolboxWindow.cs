@@ -21,24 +21,26 @@ public class ToolboxWindow : EditorWindow
     }
 
 
-    private string aled = "Assets/Scenes/";
-    private string entitiesPath = "Script/BattleRelated/Entity/";
+    private string scenePath = "Assets/Scenes/";
+    private string entitiesPath = "Script/BattleRelated/Entity/Scriptable/";
     private Vector2 scrollPos;
-    [SerializeField] private ChangeZone[] explorationMaps;
+    [SerializeField] private List<GameObject> explorationMaps;
     private void OnGUI()
     {
         if(!EditorApplication.isPlaying)
         {
             //Scenes TP
-            aled = EditorGUILayout.TextField("Path mark last / in the end", aled);
+            scenePath = EditorGUILayout.TextField("Path mark last / in the end", scenePath);
             //if(GUILayout.Button("Search"))
             //{
-                    if(System.IO.Directory.Exists(aled))
+                    //verify if Directory exist
+                    if(System.IO.Directory.Exists(scenePath))
                     {
                         GUILayout.BeginHorizontal();
                         GUILayout.Label("GO TO :");
 
-                        string[] allScene = Directory.GetFiles(aled, "*.unity");
+                        //get all scenes
+                        string[] allScene = Directory.GetFiles(scenePath, "*.unity");
                         if(allScene.Length > 0)
                         {
 
@@ -48,25 +50,26 @@ public class ToolboxWindow : EditorWindow
                                 string sceneName = Path.GetFileName(file);
                                 
                                 Scene scene;
-                                if(!EditorSceneManager.GetSceneByPath(aled + sceneName).isSubScene && !EditorSceneManager.GetSceneByPath(aled + sceneName).IsValid())
+                                if(!EditorSceneManager.GetSceneByPath(scenePath + sceneName).isSubScene && !EditorSceneManager.GetSceneByPath(scenePath + sceneName).IsValid())
                                 {
                                     //Debug.Log(removedExtension);
-                                    scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName));
+                                    scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName, ".unity"));
                                 }
                                 else
                                 {
-                                    if(SceneManager.sceneCount < allScene.Length)scene = EditorSceneManager.OpenScene(aled + sceneName, OpenSceneMode.AdditiveWithoutLoading);
-                                    else scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName));
+                                    if(SceneManager.sceneCount < allScene.Length)scene = EditorSceneManager.OpenScene(scenePath + sceneName, OpenSceneMode.AdditiveWithoutLoading);
+                                    else scene = EditorSceneManager.GetSceneByName(NameWithoutExt(sceneName, ".unity"));
                                     //Debug.Log(scene.name);
                                 }
                                 //Debug.Log(sceneName);
-                                bool ye = GUILayout.Button(scene.name);
-                                if(ye)
+                                bool sceneButton = GUILayout.Button(scene.name);
+                                //Open scene if not already open
+                                if(sceneButton)
                                 {
                                     if(EditorSceneManager.GetActiveScene() != EditorSceneManager.GetSceneByName(sceneName))
                                     {
                                         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-                                        EditorSceneManager.OpenScene(aled + sceneName, OpenSceneMode.Single);
+                                        EditorSceneManager.OpenScene(scenePath + sceneName, OpenSceneMode.Single);
                                     }
                                     else Debug.LogError($"{SceneManager.GetActiveScene().name} SCENE ALREADY OPEN");
                                 }
@@ -78,13 +81,13 @@ public class ToolboxWindow : EditorWindow
                         }
                         else
                         {
-                            EditorGUILayout.HelpBox($"No scenes currently in path {aled}", MessageType.Warning);
+                            EditorGUILayout.HelpBox($"No scenes currently in path {scenePath}", MessageType.Warning);
                             GUILayout.EndHorizontal();
                         }
                     }
                     else
                     {
-                        EditorGUILayout.HelpBox($"No path existing in path {aled}", MessageType.Warning);
+                        EditorGUILayout.HelpBox($"No path existing in path {scenePath}", MessageType.Warning);
                     }  
             //}
 
@@ -95,11 +98,13 @@ public class ToolboxWindow : EditorWindow
                 FileInfo[] allEntitiesInfo = new DirectoryInfo(Application.dataPath + "/" + entitiesPath).GetFiles("*.asset");
                 scrollPos = GUILayout.BeginScrollView(scrollPos,true, false);
                 GUILayout.BeginHorizontal();
-                foreach(var ui in allEntitiesInfo)
+                for(int i = 0; i < allEntitiesInfo.Length; i++)
                 {
-                    if(GUILayout.Button(ui.Name))
+                    if(GUILayout.Button(allEntitiesInfo[i].Name))
                     {
                         
+                        //affiche une fenêtre avec les stats de l'entite
+                        //EntityData entity = allEntitiesInfo[i] as entitiesPath;
                     }
                 }
                 GUILayout.EndHorizontal();
@@ -109,30 +114,56 @@ public class ToolboxWindow : EditorWindow
 
             //Exploration maps
             //EditorGUILayout.LabelField("All Exploration Maps :", explorationMaps);
+
+            //Change map
             SerializedObject so = new SerializedObject(this);
-            explorationMaps = GameObject.FindObjectsOfType<ChangeZone>(true);
-            
-            SerializedProperty allExplorMaps = so.FindProperty("explorationMaps");
-            EditorGUILayout.PropertyField(allExplorMaps);
-            so.ApplyModifiedProperties();
-            
+            if(GameObject.FindGameObjectWithTag("GM") != null)
+            {
+                explorationMaps = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().allZone;
+                
+                SerializedProperty allExplorMaps = so.FindProperty("explorationMaps");
+                EditorGUILayout.PropertyField(allExplorMaps);
+                so.ApplyModifiedProperties();
+
+                GUILayout.BeginHorizontal();
+                for(int i = 0; i < explorationMaps.Count; i++)
+                {
+                    if(GUILayout.Button(explorationMaps[i].name))
+                    {
+                        foreach(GameObject map in explorationMaps)
+                        {
+                            if(map != explorationMaps[i])map.SetActive(false);
+                            else explorationMaps[i].SetActive(true);
+                        }
+                        
+                    }
+                }
+                GUILayout.EndHorizontal();
+
+            }
+
+            //open player prefab
+            if(GUILayout.Button("Open Player Prefab"))
+            {
+                AssetDatabase.OpenAsset(AssetDatabase.LoadMainAssetAtPath("Assets/Player/Player.prefab"));
+            }
+
         }
         else
         {
-            if(GUILayout.Button("SAVE"))
+            //Reload Game
+            if(GUILayout.Button("Reload Game"))
             {
-                //SAVE PLAYER
-                // GameObject.FindGameObjectWithTag("Player").transform.position;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-
-            //LOAD PLAYER
         }
     }
 
-    private string NameWithoutExt(string sceneName)
+    //Remove extention of name
+    private string NameWithoutExt(string name, string extName)
     {
-        string copy = sceneName;
-        string removedExtension = copy.Replace(".unity", "");
+        string copy = name;
+        string removedExtension = copy.Replace(extName, "");
         return removedExtension;
     }
 }
