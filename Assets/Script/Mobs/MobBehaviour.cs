@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MobBehaviour : MonoBehaviour
 {
-    private GetInactiveObject _getInactiveObject = new GetInactiveObject();
+   
     public GameObject habillage;
     [SerializeField] private float mobRadius;
     [SerializeField]private float mobDistance;
