@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Thunderbolt
   _description: Strike your enemy with the power of the thunder
-  _power: 70
+  _power: 50
   _manaCost: 80
   _special: 0
   _Status: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Tom
   _description: Just Tom
-  _power: 55
+  _power: 30
   _manaCost: 0
   _special: 0
   _Status: 0

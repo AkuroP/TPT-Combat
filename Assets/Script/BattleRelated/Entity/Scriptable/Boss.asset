@@ -20,7 +20,7 @@ MonoBehaviour:
   _anEnemy: 1
   _expValue: 0
   _hp: 500
-  _atk: 2
+  _atk: 5
   _sAtk: 10
   _def: 15
   _sDef: 10

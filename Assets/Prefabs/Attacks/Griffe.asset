@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Griffe
   _description: Utlise ces papate
-  _power: 50
+  _power: 25
   _manaCost: 0
   _special: 0
   _Status: 0

@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   _anEnemy: 1
   _expValue: 100
-  _hp: 20
-  _atk: 5
+  _hp: 200
+  _atk: 3
   _sAtk: 2
   _def: 3
   _sDef: 1

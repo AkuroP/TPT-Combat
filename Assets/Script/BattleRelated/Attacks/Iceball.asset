@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iceball
   _description: Iceball to freeze the enemy
-  _power: 40
+  _power: 20
   _manaCost: 30
   _special: 1
   _Status: 1
