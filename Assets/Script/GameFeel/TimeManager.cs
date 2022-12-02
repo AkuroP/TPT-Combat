@@ -27,7 +27,7 @@ public class TimeManager : MonoBehaviour
         Time.fixedDeltaTime += (1 / slowdownLength) * Time.unscaledDeltaTime;
         Time.fixedDeltaTime = Mathf.Clamp(Time.fixedDeltaTime, 0f, 0.02f);
         
-        print("time :" + Time.timeScale);
+        //print("time :" + Time.timeScale);
         
     }
 
