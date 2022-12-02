@@ -45,7 +45,7 @@ public class CreateMobEditor : EditorWindow
         rootVisualElement.styleSheets.Add(styleSheet);
         
         //Import the ListView Entity Template
-        entityTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/WUG/Editor/ItemRowTemplate.uxml");
+        entityTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/MobRowTemplate.uxml");
         DefaultSprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Image/UnknownIcon.png", typeof(Sprite));
 
         //Load all entity asset
