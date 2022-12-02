@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
-  m_Name: Boss
+  m_Name: Wolfu
   m_EditorClassIdentifier: 
-  _Name: Focalor
+  sprite: {fileID: 2102150450, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
+  _Name: Wolf
   _ListOfSpells:
-  - {fileID: 11400000, guid: d4d932a65f9116e42ba084d1304fde6b, type: 2}
-  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
+  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   _anEnemy: 1
   _expValue: 0
-  _hp: 500
-  _atk: 5
-  _sAtk: 10
-  _def: 15
-  _sDef: 10
-  _speed: 8
+  _hp: 300
+  _atk: 3
+  _sAtk: 4
+  _def: 7
+  _sDef: 6
+  _speed: 5
   _lvl: 0
   _exp: 0
   _burned: 0

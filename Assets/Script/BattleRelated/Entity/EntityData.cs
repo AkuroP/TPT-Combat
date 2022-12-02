@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EntityData", menuName = "My game/EntityData")]
 public class EntityData : ScriptableObject
 {
+    public Sprite sprite;
     public string _Name;
 
     [Header("Attaques")]

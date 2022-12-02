@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
-  m_Name: Raptor
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  _Name: Raptor
+  sprite: {fileID: 1843158712, guid: 006bdf249c7a2c048863b6004c5171c0, type: 3}
+  _Name: Goblin
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
-  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   _anEnemy: 1
-  _expValue: 100
-  _hp: 200
-  _atk: 3
-  _sAtk: 2
-  _def: 3
-  _sDef: 1
-  _speed: 1
+  _expValue: 0
+  _hp: 100
+  _atk: 60
+  _sAtk: 0
+  _def: 15
+  _sDef: 0
+  _speed: 120
   _lvl: 0
   _exp: 0
   _burned: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CheatMenu : EditorWindow
 {
-    [MenuItem("Tools/CheatMenu")]
+    [MenuItem("Toolbox/CheatMenu")]
     public static void CreateWindows()
     {
         EditorWindow.GetWindow<CheatMenu>();
