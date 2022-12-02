@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public float slowdowdFactor = 0.05f;
+    public float slowdowdFactor = 0.5f;
     public float slowdownLength = 2f;
     public static TimeManager instance;
 
@@ -24,6 +24,8 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale += (1 / slowdownLength) * Time.unscaledDeltaTime;
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+        Time.fixedDeltaTime += (1 / slowdownLength) * Time.unscaledDeltaTime;
+        Time.fixedDeltaTime = Mathf.Clamp(Time.fixedDeltaTime, 0f, 0.02f);
         
         print("time :" + Time.timeScale);
         
