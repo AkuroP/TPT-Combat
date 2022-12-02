@@ -194,6 +194,7 @@ public class Shadow : MonoBehaviour
         if (currentHP <= -0.1f && !anEnemy)
         {
             gameOverUI.SetActive(true);
+            
         }
         else if (currentHP <= -0.1f && anEnemy && !done)
         {
@@ -236,7 +237,8 @@ public class Shadow : MonoBehaviour
 
     IEnumerator Victory()
     {
-        Debug.Log("oi");
+        TimeManager.instance.DoSlowmotion();
+        yield return new WaitForSeconds(TimeManager.instance.slowdownLength);
         playerBehaviour.SwitchActionMap("Player");
         
         transition.SetActive(true);

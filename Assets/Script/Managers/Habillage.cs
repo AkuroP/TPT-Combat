@@ -9,7 +9,7 @@ public class Habillage : MonoBehaviour
     public GameObject player;
     public GameObject Getmob;
     public GameObject GetPlayer;
-    public GameObject gameover;
+  
     public GameObject figthScene;
     public GameObject DialogueCombat;
     public GameObject introFightPanel;
@@ -44,7 +44,7 @@ public class Habillage : MonoBehaviour
             }
             DialogueCombat.SetActive(true);
             introFightPanel.SetActive(true);
-            gameover.SetActive(false);
+            
             figthScene.SetActive(false);
             this.gameObject.SetActive(false);
         }
