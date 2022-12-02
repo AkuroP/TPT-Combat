@@ -15,10 +15,10 @@
             <ui:VisualElement name="Content" style="flex-grow: 1;">
                 <ui:VisualElement name="Row" style="flex-direction: row; align-items: center;">
                     <ui:VisualElement name="Icon" style="padding-right: 0; width: 122px; height: 122px; background-image: url(&apos;project://database/Assets/Image/UnknownIcon.png?fileID=2800000&amp;guid=9eb92037aa60700418f5dd74fe49f9c7&amp;type=3#UnknownIcon&apos;); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
-                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; -unity-background-image-tint-color: rgb(56, 56, 56); background-color: rgb(65, 65, 65);">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; -unity-background-image-tint-color: rgb(56, 56, 56); background-color: rgb(65, 65, 65); justify-content: space-around;">
                         <ui:Label text="General" display-tooltip-when-elided="true" name="Header" class="details-header" />
-                        <ui:TextField picking-mode="Ignore" label="Name" value="filler text" binding-path="FriendlyName" name="EntityName" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
-                        <uie:ObjectField label="Icon" name="IconPicker" binding-path="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+                        <ui:TextField picking-mode="Ignore" label="Name" value="filler text" binding-path="_Name" name="EntityName" focusable="true" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+                        <uie:ObjectField label="Icon" name="IconPicker" binding-path="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" focusable="true" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Row" style="flex-direction: row;">
@@ -27,8 +27,29 @@
                         <ui:TextField picking-mode="Ignore" multiline="true" readonly="false" name="Description" binding-path="Description" style="height: 100px; margin-left: 8px; margin-right: 8px; margin-top: 5px; margin-bottom: 8px; align-items: stretch; white-space: normal; flex-grow: 1; flex-direction: column; flex-wrap: wrap; -unity-text-align: middle-left;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="Row" style="flex-direction: row;">
-                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; background-color: rgb(65, 65, 65);" />
+                <ui:VisualElement name="ListAttackRow" style="flex-direction: row;">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; background-color: rgb(65, 65, 65); height: auto;">
+                        <ui:Label text="List Attack" display-tooltip-when-elided="true" name="Header" class="details-header" style="background-color: rgb(38, 38, 38); padding-left: 5px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; -unity-font-style: bold; font-size: 14px; margin-bottom: 5px;" />
+                        <ui:ListView focusable="true" binding-path="_ListOfSpells" name="ListSpell" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="TypeEntityRow" style="flex-direction: row;">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; -unity-background-image-tint-color: rgb(56, 56, 56); background-color: rgb(65, 65, 65);">
+                        <ui:Label text="Stats" display-tooltip-when-elided="true" name="Header" class="details-header" />
+                        <ui:Toggle label="An Enemy" name="AnEnemy" binding-path="_anEnemy" />
+                        <uie:IntegerField label="Exp Value" value="0" name="EntityExp" binding-path="_expValue" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="StatRow" style="flex-direction: row;">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; -unity-background-image-tint-color: rgb(56, 56, 56); background-color: rgb(65, 65, 65);">
+                        <ui:Label text="Stats" display-tooltip-when-elided="true" name="Header" class="details-header" />
+                        <uie:IntegerField label="HP" value="0" name="EntityHP" binding-path="_hp" />
+                        <uie:IntegerField label="Atk" value="0" name="EntityAtk" binding-path="_atk" />
+                        <uie:IntegerField label="sAtk" value="0" name="EntitySATK" binding-path="_sAtk" />
+                        <uie:IntegerField label="Def" value="0" name="EntityDef" binding-path="_def" />
+                        <uie:IntegerField label="sDef" value="0" name="EntitySDef" binding-path="_sDef" />
+                        <uie:IntegerField label="Speed" value="0" name="EntitySpeed" binding-path="_speed" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:ScrollView>

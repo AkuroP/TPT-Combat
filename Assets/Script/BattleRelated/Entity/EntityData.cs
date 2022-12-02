@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "EntityData", menuName = "My game/EntityData")]
 public class EntityData : ScriptableObject
 {
-    public Sprite sprite;
+    public Sprite Icon;
     public string _Name;
-
+    public string Description;
+    
     [Header("Attaques")]
     public List<SpellsData> _ListOfSpells;
 

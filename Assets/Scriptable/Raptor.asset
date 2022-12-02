@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Raptor
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1796136139, guid: 2c60421bc0849574ea5241d2bf0760d9, type: 3}
+  Icon: {fileID: -194466470, guid: 2c60421bc0849574ea5241d2bf0760d9, type: 3}
   _Name: Raptor
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}

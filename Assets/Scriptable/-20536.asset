@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
-  m_Name: Wolfu
+  m_Name: -20536
   m_EditorClassIdentifier: 
-  Icon: {fileID: -354937481, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
-  _Name: Wolf
+  Icon: {fileID: 21300000, guid: f2f989a5bbbb8ca4d9c3668638424159, type: 3}
+  _Name: Tom
+  Description: Cheese
   _ListOfSpells:
+  - {fileID: 11400000, guid: d4d932a65f9116e42ba084d1304fde6b, type: 2}
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
   _anEnemy: 1
-  _expValue: 0
-  _hp: 300
-  _atk: 3
-  _sAtk: 4
-  _def: 7
-  _sDef: 6
-  _speed: 5
+  _expValue: 400
+  _hp: 400
+  _atk: 9
+  _sAtk: 1
+  _def: 3
+  _sDef: 4
+  _speed: 20
   _lvl: 0
   _exp: 0
   _burned: 0

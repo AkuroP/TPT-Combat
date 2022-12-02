@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  sprite: {fileID: 1747734660, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
+  Icon: {fileID: 2102150450, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
   _Name: Focalor
+  Description: Chef Wolfu
   _ListOfSpells:
   - {fileID: 11400000, guid: d4d932a65f9116e42ba084d1304fde6b, type: 2}
   - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
