@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Wolfu
   m_EditorClassIdentifier: 
-  Icon: {fileID: -354937481, guid: 531ffcbda37809c46a2f2cc6a44247cc, type: 3}
+  Icon: {fileID: 21300000, guid: 7f9ba1d46207e5643942242da9fc8733, type: 3}
   _Name: Wolf
+  Description: 
   _ListOfSpells:
   - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
-  - {fileID: 11400000, guid: f54e7e9d81439854d80b952d2ad66bab, type: 2}
+  - {fileID: 11400000, guid: fa7c050c391f65147937b4caa183f676, type: 2}
   _anEnemy: 1
   _expValue: 0
   _hp: 300

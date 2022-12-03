@@ -97,7 +97,7 @@ public class CreateMobEditor : EditorWindow
                 entityListView.Rebuild();
             });
             
-            DetailSection.Q<IntegerField>("AnEnemy").RegisterValueChangedCallback(evt =>
+            DetailSection.Q<IntegerField>("EntityExp").RegisterValueChangedCallback(evt =>
             { 
                 activeEntity._expValue = evt.newValue;
                 entityListView.Rebuild();
@@ -169,7 +169,7 @@ public class CreateMobEditor : EditorWindow
 
     private void GenerateListView()
     {
-        //Defining what each item will visually look like. In this case, the makeItem function is creating a clone of the ItemRowTemplate.
+        //Defining what each entity will visually look like. In this case, the makeEntity function is creating a clone of the EntityRowTemplate.
         Func<VisualElement> makeEntity = () => entityTemplate.CloneTree();
 
         //Define the binding of each individual Entity that is created. Specifically, 
@@ -193,7 +193,7 @@ public class CreateMobEditor : EditorWindow
 
     private void ListView_onSelectionChange(IEnumerable<object> selectedEntities)
     {
-        //Get the first item in the selectedItems list. 
+        //Get the first entity in the selectedEntity list. 
         //There will only ever be one because SelectionType is set to Single
         activeEntity = (EntityData)selectedEntities.First();
 
@@ -208,7 +208,7 @@ public class CreateMobEditor : EditorWindow
             LargeDisplayIcon.style.backgroundImage = activeEntity.Icon.texture;
         }
 
-        //Make sure the detail section is visible. This can turn off when you delete an item
+        //Make sure the detail section is visible. This can turn off when you delete an entity
         DetailSection.style.visibility = Visibility.Visible;
     }
 

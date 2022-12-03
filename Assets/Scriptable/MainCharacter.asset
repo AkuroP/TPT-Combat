@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  Icon: {fileID: -275664930, guid: 006bdf249c7a2c048863b6004c5171c0, type: 3}
+  Icon: {fileID: 21300000, guid: 5d39929118fbf6442b5545c889bb42cf, type: 3}
   _Name: Sung Woo
   Description: Hero
   _ListOfSpells:

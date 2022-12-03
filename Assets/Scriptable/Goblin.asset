@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248a793735c2bf478ccae3053721219, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
-  Icon: {fileID: 442313330, guid: 006bdf249c7a2c048863b6004c5171c0, type: 3}
-  _Name: Goblin
+  Icon: {fileID: 21300000, guid: ed775c2c74544bf4c8e35a7a540e4d18, type: 3}
+  _Name: bird
   Description: 'Yo
 
 '
